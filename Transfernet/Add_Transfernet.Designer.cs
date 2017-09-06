@@ -28,75 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroCheckBox1 = new MetroFramework.Controls.MetroCheckBox();
-            this.saveInComboBox = new MetroFramework.Controls.MetroComboBox();
-            this.saveFileButton = new MetroFramework.Controls.MetroButton();
+            this.components = new System.ComponentModel.Container();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.selectAllButton = new MetroFramework.Controls.MetroButton();
             this.selectNoneButton = new MetroFramework.Controls.MetroButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.nameSaveFile = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.metroCheckBox3 = new MetroFramework.Controls.MetroCheckBox();
-            this.metroCheckBox2 = new MetroFramework.Controls.MetroCheckBox();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.displayTime = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroCheckBox8 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox7 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox6 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox5 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox4 = new MetroFramework.Controls.MetroCheckBox();
+            this.Buy = new MetroFramework.Controls.MetroButton();
             this.okButton = new MetroFramework.Controls.MetroButton();
             this.cancelButton = new MetroFramework.Controls.MetroButton();
             this.advButton = new MetroFramework.Controls.MetroButton();
-            this.Buy = new MetroFramework.Controls.MetroButton();
-            this.metroCheckBox4 = new MetroFramework.Controls.MetroCheckBox();
-            this.metroCheckBox5 = new MetroFramework.Controls.MetroCheckBox();
-            this.metroCheckBox6 = new MetroFramework.Controls.MetroCheckBox();
-            this.metroCheckBox7 = new MetroFramework.Controls.MetroCheckBox();
-            this.metroCheckBox8 = new MetroFramework.Controls.MetroCheckBox();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
-            this.groupBox1.SuspendLayout();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // metroCheckBox1
-            // 
-            this.metroCheckBox1.AutoSize = true;
-            this.metroCheckBox1.Location = new System.Drawing.Point(6, 132);
-            this.metroCheckBox1.Name = "metroCheckBox1";
-            this.metroCheckBox1.Size = new System.Drawing.Size(111, 15);
-            this.metroCheckBox1.TabIndex = 1;
-            this.metroCheckBox1.Text = "Create Subfolder";
-            this.metroCheckBox1.UseSelectable = true;
-            // 
-            // saveInComboBox
-            // 
-            this.saveInComboBox.FormattingEnabled = true;
-            this.saveInComboBox.ItemHeight = 23;
-            this.saveInComboBox.Items.AddRange(new object[] {
-            "C:\\Downloads"});
-            this.saveInComboBox.Location = new System.Drawing.Point(6, 39);
-            this.saveInComboBox.Name = "saveInComboBox";
-            this.saveInComboBox.Size = new System.Drawing.Size(311, 29);
-            this.saveInComboBox.TabIndex = 2;
-            this.saveInComboBox.UseSelectable = true;
-            this.saveInComboBox.SelectedIndexChanged += new System.EventHandler(this.metroComboBox1_SelectedIndexChanged);
-            // 
-            // saveFileButton
-            // 
-            this.saveFileButton.Location = new System.Drawing.Point(323, 39);
-            this.saveFileButton.Name = "saveFileButton";
-            this.saveFileButton.Size = new System.Drawing.Size(31, 29);
-            this.saveFileButton.TabIndex = 3;
-            this.saveFileButton.Text = "...";
-            this.saveFileButton.UseSelectable = true;
-            this.saveFileButton.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // metroLabel3
             // 
@@ -143,20 +100,9 @@
             this.selectNoneButton.Text = "Select None";
             this.selectNoneButton.UseSelectable = true;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.saveInComboBox);
-            this.groupBox1.Controls.Add(this.saveFileButton);
-            this.groupBox1.Controls.Add(this.metroCheckBox1);
-            this.groupBox1.Location = new System.Drawing.Point(23, 44);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(413, 165);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Save In";
-            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.displayTime);
             this.groupBox2.Controls.Add(this.metroLabel9);
             this.groupBox2.Controls.Add(this.metroLabel8);
             this.groupBox2.Controls.Add(this.metroLabel7);
@@ -174,64 +120,140 @@
             this.groupBox2.Controls.Add(this.metroLabel4);
             this.groupBox2.Controls.Add(this.metroLabel5);
             this.groupBox2.Controls.Add(this.selectAllButton);
-            this.groupBox2.Location = new System.Drawing.Point(442, 44);
+            this.groupBox2.Location = new System.Drawing.Point(23, 35);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(548, 465);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Contents";
             // 
-            // groupBox3
+            // displayTime
             // 
-            this.groupBox3.Controls.Add(this.nameSaveFile);
-            this.groupBox3.Location = new System.Drawing.Point(23, 215);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(413, 100);
-            this.groupBox3.TabIndex = 13;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Name";
+            this.displayTime.AutoSize = true;
+            this.displayTime.Location = new System.Drawing.Point(80, 133);
+            this.displayTime.Name = "displayTime";
+            this.displayTime.Size = new System.Drawing.Size(173, 19);
+            this.displayTime.TabIndex = 22;
+            this.displayTime.Text = "Active Date/ Time DIsplayed";
+            this.displayTime.Click += new System.EventHandler(this.displayTime_Click);
             // 
-            // nameSaveFile
+            // metroLabel9
             // 
-            this.nameSaveFile.Location = new System.Drawing.Point(6, 44);
-            this.nameSaveFile.Name = "nameSaveFile";
-            this.nameSaveFile.Size = new System.Drawing.Size(401, 20);
-            this.nameSaveFile.TabIndex = 1;
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(26, 371);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(82, 19);
+            this.metroLabel9.TabIndex = 21;
+            this.metroLabel9.Text = "Total = $1.55";
             // 
-            // groupBox4
+            // metroLabel8
             // 
-            this.groupBox4.Controls.Add(this.metroCheckBox3);
-            this.groupBox4.Controls.Add(this.metroCheckBox2);
-            this.groupBox4.Location = new System.Drawing.Point(23, 321);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(413, 113);
-            this.groupBox4.TabIndex = 14;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Options";
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.Location = new System.Drawing.Point(134, 342);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(132, 19);
+            this.metroLabel8.TabIndex = 20;
+            this.metroLabel8.Text = "Kraken195 | 20123523";
             // 
-            // metroCheckBox3
+            // metroLabel7
             // 
-            this.metroCheckBox3.AutoSize = true;
-            this.metroCheckBox3.Location = new System.Drawing.Point(24, 69);
-            this.metroCheckBox3.Name = "metroCheckBox3";
-            this.metroCheckBox3.Size = new System.Drawing.Size(113, 15);
-            this.metroCheckBox3.TabIndex = 1;
-            this.metroCheckBox3.Text = "metroCheckBox3";
-            this.metroCheckBox3.UseSelectable = true;
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(134, 319);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(129, 19);
+            this.metroLabel7.TabIndex = 19;
+            this.metroLabel7.Text = "Quazaaar\t | 21537571";
             // 
-            // metroCheckBox2
+            // metroLabel6
             // 
-            this.metroCheckBox2.AutoSize = true;
-            this.metroCheckBox2.Location = new System.Drawing.Point(24, 34);
-            this.metroCheckBox2.Name = "metroCheckBox2";
-            this.metroCheckBox2.Size = new System.Drawing.Size(113, 15);
-            this.metroCheckBox2.TabIndex = 0;
-            this.metroCheckBox2.Text = "metroCheckBox2";
-            this.metroCheckBox2.UseSelectable = true;
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.Location = new System.Drawing.Point(134, 298);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(129, 19);
+            this.metroLabel6.TabIndex = 18;
+            this.metroLabel6.Text = "Gemini69\t | 30012458";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(135, 277);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(130, 19);
+            this.metroLabel2.TabIndex = 17;
+            this.metroLabel2.Text = "Kraken221 | 32351123";
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(135, 256);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(128, 19);
+            this.metroLabel1.TabIndex = 16;
+            this.metroLabel1.Text = "BigMike | 409123879";
+            // 
+            // metroCheckBox8
+            // 
+            this.metroCheckBox8.AutoSize = true;
+            this.metroCheckBox8.Location = new System.Drawing.Point(61, 344);
+            this.metroCheckBox8.Name = "metroCheckBox8";
+            this.metroCheckBox8.Size = new System.Drawing.Size(50, 15);
+            this.metroCheckBox8.TabIndex = 15;
+            this.metroCheckBox8.Text = "$1.80";
+            this.metroCheckBox8.UseSelectable = true;
+            // 
+            // metroCheckBox7
+            // 
+            this.metroCheckBox7.AutoSize = true;
+            this.metroCheckBox7.Location = new System.Drawing.Point(61, 323);
+            this.metroCheckBox7.Name = "metroCheckBox7";
+            this.metroCheckBox7.Size = new System.Drawing.Size(50, 15);
+            this.metroCheckBox7.TabIndex = 14;
+            this.metroCheckBox7.Text = "$1.45";
+            this.metroCheckBox7.UseSelectable = true;
+            // 
+            // metroCheckBox6
+            // 
+            this.metroCheckBox6.AutoSize = true;
+            this.metroCheckBox6.Location = new System.Drawing.Point(61, 302);
+            this.metroCheckBox6.Name = "metroCheckBox6";
+            this.metroCheckBox6.Size = new System.Drawing.Size(50, 15);
+            this.metroCheckBox6.TabIndex = 13;
+            this.metroCheckBox6.Text = "$1.30";
+            this.metroCheckBox6.UseSelectable = true;
+            // 
+            // metroCheckBox5
+            // 
+            this.metroCheckBox5.AutoSize = true;
+            this.metroCheckBox5.Location = new System.Drawing.Point(61, 281);
+            this.metroCheckBox5.Name = "metroCheckBox5";
+            this.metroCheckBox5.Size = new System.Drawing.Size(50, 15);
+            this.metroCheckBox5.TabIndex = 12;
+            this.metroCheckBox5.Text = "$1.70";
+            this.metroCheckBox5.UseSelectable = true;
+            // 
+            // metroCheckBox4
+            // 
+            this.metroCheckBox4.AutoSize = true;
+            this.metroCheckBox4.Location = new System.Drawing.Point(61, 260);
+            this.metroCheckBox4.Name = "metroCheckBox4";
+            this.metroCheckBox4.Size = new System.Drawing.Size(50, 15);
+            this.metroCheckBox4.TabIndex = 11;
+            this.metroCheckBox4.Text = "$1.50";
+            this.metroCheckBox4.UseSelectable = true;
+            // 
+            // Buy
+            // 
+            this.Buy.Location = new System.Drawing.Point(191, 404);
+            this.Buy.Name = "Buy";
+            this.Buy.Size = new System.Drawing.Size(75, 23);
+            this.Buy.TabIndex = 10;
+            this.Buy.Text = "Buy";
+            this.Buy.UseSelectable = true;
+            this.Buy.Click += new System.EventHandler(this.Buy_Click);
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(828, 520);
+            this.okButton.Location = new System.Drawing.Point(369, 520);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 15;
@@ -241,7 +263,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(909, 520);
+            this.cancelButton.Location = new System.Drawing.Point(490, 520);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 16;
@@ -257,164 +279,36 @@
             this.advButton.TabIndex = 17;
             this.advButton.Text = "Advanced";
             this.advButton.UseSelectable = true;
+            this.advButton.Click += new System.EventHandler(this.advButton_Click);
             // 
-            // Buy
+            // timer1
             // 
-            this.Buy.Location = new System.Drawing.Point(191, 404);
-            this.Buy.Name = "Buy";
-            this.Buy.Size = new System.Drawing.Size(75, 23);
-            this.Buy.TabIndex = 10;
-            this.Buy.Text = "Buy";
-            this.Buy.UseSelectable = true;
-            this.Buy.Click += new System.EventHandler(this.Buy_Click);
-            // 
-            // metroCheckBox4
-            // 
-            this.metroCheckBox4.AutoSize = true;
-            this.metroCheckBox4.Location = new System.Drawing.Point(61, 260);
-            this.metroCheckBox4.Name = "metroCheckBox4";
-            this.metroCheckBox4.Size = new System.Drawing.Size(50, 15);
-            this.metroCheckBox4.TabIndex = 11;
-            this.metroCheckBox4.Text = "$1.50";
-            this.metroCheckBox4.UseSelectable = true;
-            // 
-            // metroCheckBox5
-            // 
-            this.metroCheckBox5.AutoSize = true;
-            this.metroCheckBox5.Location = new System.Drawing.Point(61, 281);
-            this.metroCheckBox5.Name = "metroCheckBox5";
-            this.metroCheckBox5.Size = new System.Drawing.Size(50, 15);
-            this.metroCheckBox5.TabIndex = 12;
-            this.metroCheckBox5.Text = "$1.70";
-            this.metroCheckBox5.UseSelectable = true;
-            // 
-            // metroCheckBox6
-            // 
-            this.metroCheckBox6.AutoSize = true;
-            this.metroCheckBox6.Location = new System.Drawing.Point(61, 302);
-            this.metroCheckBox6.Name = "metroCheckBox6";
-            this.metroCheckBox6.Size = new System.Drawing.Size(50, 15);
-            this.metroCheckBox6.TabIndex = 13;
-            this.metroCheckBox6.Text = "$1.30";
-            this.metroCheckBox6.UseSelectable = true;
-            // 
-            // metroCheckBox7
-            // 
-            this.metroCheckBox7.AutoSize = true;
-            this.metroCheckBox7.Location = new System.Drawing.Point(61, 323);
-            this.metroCheckBox7.Name = "metroCheckBox7";
-            this.metroCheckBox7.Size = new System.Drawing.Size(50, 15);
-            this.metroCheckBox7.TabIndex = 14;
-            this.metroCheckBox7.Text = "$1.45";
-            this.metroCheckBox7.UseSelectable = true;
-            // 
-            // metroCheckBox8
-            // 
-            this.metroCheckBox8.AutoSize = true;
-            this.metroCheckBox8.Location = new System.Drawing.Point(61, 344);
-            this.metroCheckBox8.Name = "metroCheckBox8";
-            this.metroCheckBox8.Size = new System.Drawing.Size(50, 15);
-            this.metroCheckBox8.TabIndex = 15;
-            this.metroCheckBox8.Text = "$1.80";
-            this.metroCheckBox8.UseSelectable = true;
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(135, 256);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(128, 19);
-            this.metroLabel1.TabIndex = 16;
-            this.metroLabel1.Text = "BigMike | 409123879";
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(135, 277);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(130, 19);
-            this.metroLabel2.TabIndex = 17;
-            this.metroLabel2.Text = "Kraken221 | 32351123";
-            // 
-            // metroLabel6
-            // 
-            this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(134, 298);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(129, 19);
-            this.metroLabel6.TabIndex = 18;
-            this.metroLabel6.Text = "Gemini69\t | 30012458";
-            // 
-            // metroLabel7
-            // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(134, 319);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(129, 19);
-            this.metroLabel7.TabIndex = 19;
-            this.metroLabel7.Text = "Quazaaar\t | 21537571";
-            // 
-            // metroLabel8
-            // 
-            this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(134, 342);
-            this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(132, 19);
-            this.metroLabel8.TabIndex = 20;
-            this.metroLabel8.Text = "Kraken195 | 20123523";
-            // 
-            // metroLabel9
-            // 
-            this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(26, 371);
-            this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(82, 19);
-            this.metroLabel9.TabIndex = 21;
-            this.metroLabel9.Text = "Total = $1.55";
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Add_Transfernet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1013, 566);
+            this.ClientSize = new System.Drawing.Size(591, 566);
             this.Controls.Add(this.advButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Name = "Add_Transfernet";
             this.Load += new System.EventHandler(this.Add_Transfernet_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox1;
-        private MetroFramework.Controls.MetroComboBox saveInComboBox;
-        private MetroFramework.Controls.MetroButton saveFileButton;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroButton selectAllButton;
         private MetroFramework.Controls.MetroButton selectNoneButton;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.TextBox nameSaveFile;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox3;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox2;
         private MetroFramework.Controls.MetroButton okButton;
         private MetroFramework.Controls.MetroButton cancelButton;
         private MetroFramework.Controls.MetroButton advButton;
@@ -430,5 +324,7 @@
         private MetroFramework.Controls.MetroCheckBox metroCheckBox4;
         private MetroFramework.Controls.MetroButton Buy;
         private MetroFramework.Controls.MetroLabel metroLabel9;
+        private MetroFramework.Controls.MetroLabel displayTime;
+        private System.Windows.Forms.Timer timer1;
     }
 }

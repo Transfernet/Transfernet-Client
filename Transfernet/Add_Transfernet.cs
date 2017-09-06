@@ -15,11 +15,13 @@ namespace WindowsFormsApplication1
         public Add_Transfernet()
         {
             InitializeComponent();
+            
+
         }
 
         private void Add_Transfernet_Load(object sender, EventArgs e)
         {
-
+            timer1.Start();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -29,14 +31,9 @@ namespace WindowsFormsApplication1
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            // Displays a SaveFileDialog so the user can save the Image  
-            // assigned to Button2.  
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "Transfernet File| *.transfernet";
-            saveFileDialog1.Title = "Save File";
-            saveFileDialog1.ShowDialog();
 
-            
+
+
         }
 
         private void metroButton5_Click(object sender, EventArgs e)
@@ -66,6 +63,23 @@ namespace WindowsFormsApplication1
         private void Buy_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void advButton_Click(object sender, EventArgs e)
+        {
+            Advanced_Settings frm = new Advanced_Settings();
+            frm.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DateTime datetime = DateTime.Now;
+            this.displayTime.Text = datetime.ToString();
+        }
+
+        private void displayTime_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

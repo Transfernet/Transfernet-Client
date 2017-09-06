@@ -64,6 +64,12 @@
     <Compile Include="Add_Transfernet.Designer.cs">
       <DependentUpon>Add_Transfernet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Advanced_Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Advanced_Settings.Designer.cs">
+      <DependentUpon>Advanced_Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main_Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Add_Transfernet.resx">
       <DependentUpon>Add_Transfernet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Advanced_Settings.resx">
+      <DependentUpon>Advanced_Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main_Menu.resx">
       <DependentUpon>Main_Menu.cs</DependentUpon>
