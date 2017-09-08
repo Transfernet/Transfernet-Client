@@ -15,12 +15,13 @@ namespace WindowsFormsApplication1
         public Advanced_Settings()
         {
             InitializeComponent();
-            
+           
+
         }
 
         private void Advanced_Settings_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

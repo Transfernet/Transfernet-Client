@@ -28,10 +28,12 @@ namespace WindowsFormsApplication1
 
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.InitialDirectory = "c:\\Downloads" ;
             openFileDialog1.Filter = "transfernet files (*.transfernet)|*.transfernet|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 1;
             openFileDialog1.RestoreDirectory = true;
+            
+      
 
             // Show the dialog and get result.
             DialogResult result = openFileDialog1.ShowDialog();
@@ -43,17 +45,22 @@ namespace WindowsFormsApplication1
                 //when a transfernet file is added, the savefilename is displayed in the files control box
                 tabFiles.Controls.Add(new Label());
                 filesName.Text = openFileDialog1.SafeFileName;
+
+                //also want the filename to show up on the Add_Transfernet page
+                // having issues getting lables to change on a different form due to private
+
+                //set the label to public and still having issues
             }
 
 
             Console.WriteLine(result); // <-- For debugging use.
-
+            
 
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-
+          
         }
 
         private void metroGrid2_CellContentClick(object sender, DataGridViewCellEventArgs e)

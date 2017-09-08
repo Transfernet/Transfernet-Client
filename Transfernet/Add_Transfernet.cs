@@ -15,9 +15,10 @@ namespace WindowsFormsApplication1
         public Add_Transfernet()
         {
             InitializeComponent();
-            
 
         }
+
+
 
         private void Add_Transfernet_Load(object sender, EventArgs e)
         {
@@ -31,7 +32,6 @@ namespace WindowsFormsApplication1
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-
 
 
         }
@@ -63,6 +63,7 @@ namespace WindowsFormsApplication1
         private void Buy_Click(object sender, EventArgs e)
         {
             this.Close();
+
         }
 
         private void advButton_Click(object sender, EventArgs e)
@@ -80,6 +81,43 @@ namespace WindowsFormsApplication1
         private void displayTime_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void selectAllButton_Click(object sender, EventArgs e)
+        {
+            foreach(Control c in groupBoxBuy.Controls)
+            {
+                if(c is CheckBox)
+                {
+                    CheckBox cb = (CheckBox)c;
+
+                    if(cb.Checked==false)
+                    {
+                        cb.Checked = true;
+                    }
+                }
+            }
+        }
+
+        private void selectNoneButton_Click(object sender, EventArgs e)
+        {
+            foreach (Control c in groupBoxBuy.Controls)
+            {
+                if (c is CheckBox)
+                {
+                    CheckBox cb = (CheckBox)c;
+
+                    if (cb.Checked == true)
+                    {
+                        cb.Checked = false;
+                    }
+                }
+            }
         }
     }
 }
