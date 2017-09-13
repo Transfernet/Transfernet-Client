@@ -12,9 +12,14 @@ namespace WindowsFormsApplication1
 {
     public partial class Add_Transfernet : MetroFramework.Forms.MetroForm
     {
-        public Add_Transfernet()
+        public Transfernet referenceToTransfernet;
+
+        public Add_Transfernet(string fileName, string fileSize)
         {
             InitializeComponent();
+            this.labelName2.Text = fileName;
+            this.labelSize.Text = fileSize;
+            this.labelName.Text = fileName;
 
         }
 
@@ -22,6 +27,7 @@ namespace WindowsFormsApplication1
 
         private void Add_Transfernet_Load(object sender, EventArgs e)
         {
+            //displays the current time and date
             timer1.Start();
         }
 
@@ -30,11 +36,7 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
 
-
-        }
 
         private void metroButton5_Click(object sender, EventArgs e)
         {
@@ -53,19 +55,36 @@ namespace WindowsFormsApplication1
             
         }
 
-        private void metroButton4_Click(object sender, EventArgs e)
-        {
-            //this is the ok button to save the transfernet file
-
-            
-        }
-
         private void Buy_Click(object sender, EventArgs e)
         {
-            this.Close();
+
+            if (!metroCheckBox4.Checked && !metroCheckBox5.Checked && !metroCheckBox6.Checked && !metroCheckBox7.Checked && !metroCheckBox8.Checked)
+            {
+                MessageBox.Show("No Files Selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+
+                //try
+                // {
+                //     if (rdr.read())
+                //     {
+
+                //         referencetotransfernet.metrolabel1.text = rdr.getstring(1);
+                //         referencetotransfernet.textbox2_dis.text = rdr.getstring(2);
+                //     }
+                // }
+                //     this.close();
+
+                // }
+                
+                //referenceToTransfernet.metroLabel1.Text = "hi";
+                this.Close();
+
+            }
 
         }
-
+           
         private void advButton_Click(object sender, EventArgs e)
         {
             Advanced_Settings frm = new Advanced_Settings();
@@ -79,6 +98,10 @@ namespace WindowsFormsApplication1
         }
 
         private void displayTime_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void metroButton4_Click(object sender, EventArgs e)
         {
 
         }

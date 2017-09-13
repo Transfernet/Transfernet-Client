@@ -52,7 +52,6 @@
             this.metroCheckBox4 = new MetroFramework.Controls.MetroCheckBox();
             this.displayTime = new MetroFramework.Controls.MetroLabel();
             this.Buy = new MetroFramework.Controls.MetroButton();
-            this.okButton = new MetroFramework.Controls.MetroButton();
             this.cancelButton = new MetroFramework.Controls.MetroButton();
             this.advButton = new MetroFramework.Controls.MetroButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -300,16 +299,6 @@
             this.Buy.UseSelectable = true;
             this.Buy.Click += new System.EventHandler(this.Buy_Click);
             // 
-            // okButton
-            // 
-            this.okButton.Location = new System.Drawing.Point(425, 580);
-            this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(75, 23);
-            this.okButton.TabIndex = 15;
-            this.okButton.Text = "OK";
-            this.okButton.UseSelectable = true;
-            this.okButton.Click += new System.EventHandler(this.metroButton4_Click);
-            // 
             // cancelButton
             // 
             this.cancelButton.Location = new System.Drawing.Point(506, 580);
@@ -337,7 +326,7 @@
             // metroCheckBox1
             // 
             this.metroCheckBox1.AutoSize = true;
-            this.metroCheckBox1.Location = new System.Drawing.Point(36, 506);
+            this.metroCheckBox1.Location = new System.Drawing.Point(49, 506);
             this.metroCheckBox1.Name = "metroCheckBox1";
             this.metroCheckBox1.Size = new System.Drawing.Size(102, 15);
             this.metroCheckBox1.TabIndex = 34;
@@ -347,7 +336,7 @@
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(144, 503);
+            this.metroLabel10.Location = new System.Drawing.Point(157, 502);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(59, 19);
             this.metroLabel10.TabIndex = 35;
@@ -373,7 +362,6 @@
             this.Controls.Add(this.advButton);
             this.Controls.Add(this.Buy);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.okButton);
             this.Controls.Add(this.groupBox2);
             this.Name = "Add_Transfernet";
             this.Load += new System.EventHandler(this.Add_Transfernet_Load);
@@ -393,7 +381,6 @@
         private MetroFramework.Controls.MetroButton selectAllButton;
         private MetroFramework.Controls.MetroButton selectNoneButton;
         private System.Windows.Forms.GroupBox groupBox2;
-        private MetroFramework.Controls.MetroButton okButton;
         private MetroFramework.Controls.MetroButton cancelButton;
         private MetroFramework.Controls.MetroButton advButton;
         private MetroFramework.Controls.MetroButton Buy;

@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Threading;
+using System.IO;
 
 namespace WindowsFormsApplication1
 {
@@ -16,10 +17,39 @@ namespace WindowsFormsApplication1
         public Transfernet()
         {
             InitializeComponent();
+            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
+            backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1_Run();
+        }
+
+        
+
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                Thread.Sleep(1000);
+                backgroundWorker1.ReportProgress(i);
+            }
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            metroProgressBar1.Value = e.ProgressPercentage;
+            metroProgressBar2.Value = e.ProgressPercentage;
+            metroProgressBar3.Value = e.ProgressPercentage;
+            metroProgressBar4.Value = e.ProgressPercentage;
+        }
+
+        public void backgroundWorker1_Run()
+        {
+            backgroundWorker1.RunWorkerAsync();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
 
         }
 
@@ -33,30 +63,29 @@ namespace WindowsFormsApplication1
             openFileDialog1.FilterIndex = 1;
             openFileDialog1.RestoreDirectory = true;
             
-      
+
 
             // Show the dialog and get result.
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK) // Test result.
             {
-                    Add_Transfernet frm = new Add_Transfernet();
-                    frm.Show();
+                var size = new FileInfo(openFileDialog1.FileName).Length;
+                Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, size.ToString());
 
+                frm.Show();
+                
                 //when a transfernet file is added, the savefilename is displayed in the files control box
-                tabFiles.Controls.Add(new Label());
-                filesName.Text = openFileDialog1.SafeFileName;
 
-                //also want the filename to show up on the Add_Transfernet page
-                // having issues getting lables to change on a different form due to private
-
-                //set the label to public and still having issues
+                //tabFiles.Controls.Add(new Label());
+                //filesName.Text = openFileDialog1.SafeFileName
             }
 
-
             Console.WriteLine(result); // <-- For debugging use.
-            
 
         }
+
+
+    
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
@@ -88,6 +117,16 @@ namespace WindowsFormsApplication1
         }
 
         private void metroLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroProgressBar4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroProgressBar2_Click(object sender, EventArgs e)
         {
 
         }
