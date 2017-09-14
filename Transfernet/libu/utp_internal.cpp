@@ -73,7 +73,6 @@
 // 29 seconds determined from measuring many home NAT devices
 #define KEEPALIVE_INTERVAL 29000
 
-
 #define SEQ_NR_MASK 0xFFFF
 #define ACK_NR_MASK 0xFFFF
 #define TIMESTAMP_MASK 0xFFFFFFFF

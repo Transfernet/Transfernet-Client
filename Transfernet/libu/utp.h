@@ -79,7 +79,6 @@ enum {
 	UTP_GET_RANDOM,
 	UTP_LOG,
 	UTP_SENDTO,
-
 	// context and socket options that may be set/queried
     UTP_LOG_NORMAL,
     UTP_LOG_MTU,
@@ -87,7 +86,6 @@ enum {
 	UTP_SNDBUF,
 	UTP_RCVBUF,
 	UTP_TARGET_DELAY,
-
 	UTP_ARRAY_SIZE,	// must be last
 };
 
