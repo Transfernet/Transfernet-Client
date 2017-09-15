@@ -21,9 +21,22 @@ namespace WindowsFormsApplication1
             backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1_Run();
+
+            //timer
+            timer1.Tick += new EventHandler(timer1_Tick); // Everytime timer ticks, timer_Tick will be called
+            timer1.Interval = (1000) * (1);              // Timer will tick every second
+            timer1.Enabled = true;                       // Enable the timer
+            timer1.Start();                              // Start the timer
+
+        }
+          void timer1_Tick(object sender, EventArgs e)
+         {
+            //want to only display seconds
+            metroLabel25.Text = DateTime.Now.ToShortTimeString();
         }
 
-        
+
+
 
         private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
@@ -49,8 +62,8 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
 
+            this.timer1.Start();
         }
 
         private void addTorrentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -76,8 +89,8 @@ namespace WindowsFormsApplication1
                 
                 //when a transfernet file is added, the savefilename is displayed in the files control box
 
-                //tabFiles.Controls.Add(new Label());
-                //filesName.Text = openFileDialog1.SafeFileName
+                tabFiles.Controls.Add(new Label());
+                filesName.Text = openFileDialog1.SafeFileName;
             }
 
             Console.WriteLine(result); // <-- For debugging use.
