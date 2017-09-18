@@ -12,15 +12,16 @@ using System.IO;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Transfernet : MetroFramework.Forms.MetroForm
+    public partial class General : MetroFramework.Forms.MetroForm
     {
-        public Transfernet()
+        public General()
         {
             InitializeComponent();
+            this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
             backgroundWorker1.DoWork += backgroundWorker1_DoWork;
             backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
             backgroundWorker1.WorkerReportsProgress = true;
-            backgroundWorker1_Run();
+            backgroundWorker1.RunWorkerAsync();
 
             //timer
             timer1.Tick += new EventHandler(timer1_Tick); // Everytime timer ticks, timer_Tick will be called
@@ -40,11 +41,12 @@ namespace WindowsFormsApplication1
 
         private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i <= 100; i++)
             {
                 Thread.Sleep(1000);
                 backgroundWorker1.ReportProgress(i);
             }
+            metroLabel31.Show();
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
@@ -55,15 +57,16 @@ namespace WindowsFormsApplication1
             metroProgressBar4.Value = e.ProgressPercentage;
         }
 
-        public void backgroundWorker1_Run()
-        {
-            backgroundWorker1.RunWorkerAsync();
-        }
+
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
             this.timer1.Start();
+            metroLabel31.Hide();
+    
         }
 
         private void addTorrentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -142,6 +145,23 @@ namespace WindowsFormsApplication1
         private void metroProgressBar2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void releaseNotesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //webBrowser1.Navigate("https://github.com/Transfernet");
+
+        }
+
+        private void aboutTransfernetClientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About frm = new About();
+            frm.Show();
         }
     }
 }

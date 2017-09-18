@@ -15,7 +15,8 @@ namespace WindowsFormsApplication1
         public Advanced_Settings()
         {
             InitializeComponent();
-           
+            this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
+
 
         }
 

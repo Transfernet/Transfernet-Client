@@ -168,6 +168,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
             this.Name = "Advanced_Settings";
+            this.Resizable = false;
             this.Text = "Advanced Settings";
             this.Load += new System.EventHandler(this.Advanced_Settings_Load);
             this.groupBox1.ResumeLayout(false);

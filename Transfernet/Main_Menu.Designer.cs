@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class Transfernet
+    partial class General
     {
         /// <summary>
         /// Required designer variable.
@@ -41,6 +41,12 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutTransfernetClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.releaseNotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportABugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fAQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.webpageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forumsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +80,7 @@
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabInfo = new System.Windows.Forms.TabPage();
+            this.metroLabel31 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel30 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel29 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel28 = new MetroFramework.Controls.MetroLabel();
@@ -106,6 +113,7 @@
             this.metroProgressBar3 = new MetroFramework.Controls.MetroProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -125,7 +133,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(20, 60);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1176, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1121, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -150,6 +158,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // optionsToolStripMenuItem
             // 
@@ -159,9 +168,54 @@
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutTransfernetClientToolStripMenuItem,
+            this.releaseNotesToolStripMenuItem,
+            this.reportABugToolStripMenuItem,
+            this.fAQToolStripMenuItem,
+            this.webpageToolStripMenuItem,
+            this.forumsToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutTransfernetClientToolStripMenuItem
+            // 
+            this.aboutTransfernetClientToolStripMenuItem.Name = "aboutTransfernetClientToolStripMenuItem";
+            this.aboutTransfernetClientToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.aboutTransfernetClientToolStripMenuItem.Text = "About Transfernet Client";
+            this.aboutTransfernetClientToolStripMenuItem.Click += new System.EventHandler(this.aboutTransfernetClientToolStripMenuItem_Click);
+            // 
+            // releaseNotesToolStripMenuItem
+            // 
+            this.releaseNotesToolStripMenuItem.Name = "releaseNotesToolStripMenuItem";
+            this.releaseNotesToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.releaseNotesToolStripMenuItem.Text = "Release Notes";
+            this.releaseNotesToolStripMenuItem.Click += new System.EventHandler(this.releaseNotesToolStripMenuItem_Click);
+            // 
+            // reportABugToolStripMenuItem
+            // 
+            this.reportABugToolStripMenuItem.Name = "reportABugToolStripMenuItem";
+            this.reportABugToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.reportABugToolStripMenuItem.Text = "Report A Bug";
+            // 
+            // fAQToolStripMenuItem
+            // 
+            this.fAQToolStripMenuItem.Name = "fAQToolStripMenuItem";
+            this.fAQToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.fAQToolStripMenuItem.Text = "FAQ";
+            // 
+            // webpageToolStripMenuItem
+            // 
+            this.webpageToolStripMenuItem.Name = "webpageToolStripMenuItem";
+            this.webpageToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.webpageToolStripMenuItem.Text = "Webpage";
+            // 
+            // forumsToolStripMenuItem
+            // 
+            this.forumsToolStripMenuItem.Name = "forumsToolStripMenuItem";
+            this.forumsToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.forumsToolStripMenuItem.Text = "Forums";
             // 
             // openFileDialog1
             // 
@@ -205,7 +259,7 @@
             this.metroGrid2.EnableHeadersVisualStyles = false;
             this.metroGrid2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid2.Location = new System.Drawing.Point(273, 100);
+            this.metroGrid2.Location = new System.Drawing.Point(275, 100);
             this.metroGrid2.Name = "metroGrid2";
             this.metroGrid2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -218,7 +272,7 @@
             this.metroGrid2.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid2.Size = new System.Drawing.Size(932, 150);
+            this.metroGrid2.Size = new System.Drawing.Size(863, 150);
             this.metroGrid2.TabIndex = 3;
             this.metroGrid2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellContentClick);
             // 
@@ -329,9 +383,9 @@
             // 
             this.tabSpeed.Location = new System.Drawing.Point(4, 38);
             this.tabSpeed.Name = "tabSpeed";
-            this.tabSpeed.Size = new System.Drawing.Size(932, 225);
+            this.tabSpeed.Size = new System.Drawing.Size(819, 214);
             this.tabSpeed.TabIndex = 4;
-            this.tabSpeed.Text = "Speed";
+            this.tabSpeed.Text = " Speed";
             // 
             // tabPeers
             // 
@@ -346,9 +400,9 @@
             this.tabPeers.Controls.Add(this.metroGrid3);
             this.tabPeers.Location = new System.Drawing.Point(4, 38);
             this.tabPeers.Name = "tabPeers";
-            this.tabPeers.Size = new System.Drawing.Size(932, 225);
+            this.tabPeers.Size = new System.Drawing.Size(819, 214);
             this.tabPeers.TabIndex = 2;
-            this.tabPeers.Text = "Peers";
+            this.tabPeers.Text = "  Peers";
             // 
             // metroLabel13
             // 
@@ -504,6 +558,7 @@
             // 
             // tabInfo
             // 
+            this.tabInfo.Controls.Add(this.metroLabel31);
             this.tabInfo.Controls.Add(this.metroLabel30);
             this.tabInfo.Controls.Add(this.metroLabel29);
             this.tabInfo.Controls.Add(this.metroLabel28);
@@ -522,9 +577,18 @@
             this.tabInfo.Controls.Add(this.metroProgressBar1);
             this.tabInfo.Location = new System.Drawing.Point(4, 38);
             this.tabInfo.Name = "tabInfo";
-            this.tabInfo.Size = new System.Drawing.Size(932, 225);
+            this.tabInfo.Size = new System.Drawing.Size(819, 214);
             this.tabInfo.TabIndex = 1;
-            this.tabInfo.Text = "Info";
+            this.tabInfo.Text = "   Info";
+            // 
+            // metroLabel31
+            // 
+            this.metroLabel31.AutoSize = true;
+            this.metroLabel31.Location = new System.Drawing.Point(435, 0);
+            this.metroLabel31.Name = "metroLabel31";
+            this.metroLabel31.Size = new System.Drawing.Size(56, 19);
+            this.metroLabel31.TabIndex = 16;
+            this.metroLabel31.Text = "Finished";
             // 
             // metroLabel30
             // 
@@ -604,7 +668,7 @@
             this.metroLabel22.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel22.Location = new System.Drawing.Point(0, 140);
             this.metroLabel22.Name = "metroLabel22";
-            this.metroLabel22.Size = new System.Drawing.Size(932, 23);
+            this.metroLabel22.Size = new System.Drawing.Size(823, 23);
             this.metroLabel22.TabIndex = 7;
             this.metroLabel22.Text = "General";
             this.metroLabel22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -616,7 +680,7 @@
             this.metroLabel21.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel21.Location = new System.Drawing.Point(0, 25);
             this.metroLabel21.Name = "metroLabel21";
-            this.metroLabel21.Size = new System.Drawing.Size(932, 23);
+            this.metroLabel21.Size = new System.Drawing.Size(819, 23);
             this.metroLabel21.TabIndex = 6;
             this.metroLabel21.Text = "Transfer";
             this.metroLabel21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -679,9 +743,9 @@
             this.tabFiles.Controls.Add(this.filesName);
             this.tabFiles.Location = new System.Drawing.Point(4, 38);
             this.tabFiles.Name = "tabFiles";
-            this.tabFiles.Size = new System.Drawing.Size(932, 225);
+            this.tabFiles.Size = new System.Drawing.Size(832, 230);
             this.tabFiles.TabIndex = 0;
-            this.tabFiles.Text = "Files";
+            this.tabFiles.Text = "   Files";
             this.tabFiles.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // filesName
@@ -699,10 +763,12 @@
             this.tabControl.Controls.Add(this.tabInfo);
             this.tabControl.Controls.Add(this.tabPeers);
             this.tabControl.Controls.Add(this.tabSpeed);
-            this.tabControl.Location = new System.Drawing.Point(273, 276);
+            this.tabControl.Location = new System.Drawing.Point(287, 280);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(0);
+            this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 1;
-            this.tabControl.Size = new System.Drawing.Size(940, 267);
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(840, 272);
             this.tabControl.TabIndex = 4;
             this.tabControl.UseSelectable = true;
             // 
@@ -797,12 +863,25 @@
             this.metroProgressBar3.Size = new System.Drawing.Size(101, 19);
             this.metroProgressBar3.TabIndex = 15;
             // 
-            // Transfernet
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.Color.DimGray;
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.richTextBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.richTextBox1.Location = new System.Drawing.Point(275, 266);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.richTextBox1.Size = new System.Drawing.Size(863, 297);
+            this.richTextBox1.TabIndex = 17;
+            this.richTextBox1.Text = "";
+            // 
+            // General
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1216, 586);
+            this.ClientSize = new System.Drawing.Size(1161, 586);
             this.Controls.Add(this.metroProgressBar3);
             this.Controls.Add(this.metroProgressBar2);
             this.Controls.Add(this.metroLabel7);
@@ -817,10 +896,12 @@
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.metroGrid2);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.richTextBox1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MainMenuStrip = this.menuStrip1;
-
-            this.Text = "General";
+            this.Name = "General";
+            this.Resizable = false;
+            this.Text = "Transfernet";
             this.Theme = MetroFramework.MetroThemeStyle.Default;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -914,6 +995,14 @@
         private MetroFramework.Controls.MetroLabel metroLabel26;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.BindingSource bindingSource1;
+        private MetroFramework.Controls.MetroLabel metroLabel31;
+        private System.Windows.Forms.ToolStripMenuItem aboutTransfernetClientToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem releaseNotesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportABugToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fAQToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem webpageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem forumsToolStripMenuItem;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

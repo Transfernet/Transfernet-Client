@@ -120,7 +120,7 @@
             this.groupBox2.Controls.Add(this.metroLabel4);
             this.groupBox2.Controls.Add(this.metroLabel5);
             this.groupBox2.Controls.Add(this.selectAllButton);
-            this.groupBox2.Location = new System.Drawing.Point(10, 35);
+            this.groupBox2.Location = new System.Drawing.Point(10, 63);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(570, 465);
             this.groupBox2.TabIndex = 12;
@@ -291,7 +291,7 @@
             // 
             // Buy
             // 
-            this.Buy.Location = new System.Drawing.Point(344, 506);
+            this.Buy.Location = new System.Drawing.Point(344, 534);
             this.Buy.Name = "Buy";
             this.Buy.Size = new System.Drawing.Size(75, 23);
             this.Buy.TabIndex = 10;
@@ -326,7 +326,7 @@
             // metroCheckBox1
             // 
             this.metroCheckBox1.AutoSize = true;
-            this.metroCheckBox1.Location = new System.Drawing.Point(49, 506);
+            this.metroCheckBox1.Location = new System.Drawing.Point(49, 534);
             this.metroCheckBox1.Name = "metroCheckBox1";
             this.metroCheckBox1.Size = new System.Drawing.Size(102, 15);
             this.metroCheckBox1.TabIndex = 34;
@@ -336,7 +336,7 @@
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(157, 502);
+            this.metroLabel10.Location = new System.Drawing.Point(157, 530);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(59, 19);
             this.metroLabel10.TabIndex = 35;
@@ -345,7 +345,7 @@
             // metroLabel11
             // 
             this.metroLabel11.AutoSize = true;
-            this.metroLabel11.Location = new System.Drawing.Point(425, 506);
+            this.metroLabel11.Location = new System.Drawing.Point(425, 534);
             this.metroLabel11.Name = "metroLabel11";
             this.metroLabel11.Size = new System.Drawing.Size(128, 19);
             this.metroLabel11.TabIndex = 36;
@@ -364,6 +364,8 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.groupBox2);
             this.Name = "Add_Transfernet";
+            this.Resizable = false;
+            this.Text = "Buy Torrents";
             this.Load += new System.EventHandler(this.Add_Transfernet_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

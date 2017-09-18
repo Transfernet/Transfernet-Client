@@ -12,11 +12,12 @@ namespace WindowsFormsApplication1
 {
     public partial class Add_Transfernet : MetroFramework.Forms.MetroForm
     {
-        public Transfernet referenceToTransfernet;
+        public General referenceToTransfernet;
 
         public Add_Transfernet(string fileName, string fileSize)
         {
             InitializeComponent();
+            this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
             this.labelName2.Text = fileName;
             this.labelSize.Text = fileSize;
             this.labelName.Text = fileName;
