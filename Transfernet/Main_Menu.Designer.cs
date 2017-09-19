@@ -899,7 +899,7 @@
             this.Controls.Add(this.richTextBox1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "General";
+            this.Name.Name = "General";
             this.Resizable = false;
             this.Text = "Transfernet";
             this.Theme = MetroFramework.MetroThemeStyle.Default;
