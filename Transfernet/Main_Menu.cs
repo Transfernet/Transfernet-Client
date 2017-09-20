@@ -46,6 +46,8 @@ namespace WindowsFormsApplication1
                 Thread.Sleep(1000);
                 backgroundWorker1.ReportProgress(i);
             }
+            //There is a threading problem here.  If you have a background worker you need to make sure it only
+            //issues commands to GUI elements while it is running on the main thread 
             metroLabel31.Show();
         }
 
