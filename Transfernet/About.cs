@@ -18,25 +18,23 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
+          
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            System.Reflection.Assembly myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
-            Stream myStream = myAssembly.GetManifestResourceStream("TransferNet (logo).png");
-            Bitmap image = new Bitmap(myStream);
+            
 
-            this.ClientSize = new Size(image.Width, image.Height);
-
-            PictureBox pb = new PictureBox();
-            pb.Image = image;
-            pb.Dock = DockStyle.Fill;
-            this.Controls.Add(pb);
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void webButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://transfernet.io");
         }
     }
 }

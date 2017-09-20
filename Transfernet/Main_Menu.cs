@@ -48,7 +48,7 @@ namespace WindowsFormsApplication1
             }
             //There is a threading problem here.  If you have a background worker you need to make sure it only
             //issues commands to GUI elements while it is running on the main thread 
-            metroLabel31.Show();
+           // metroLabel31.Show();
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
@@ -56,7 +56,7 @@ namespace WindowsFormsApplication1
             metroProgressBar1.Value = e.ProgressPercentage;
             metroProgressBar2.Value = e.ProgressPercentage;
             metroProgressBar3.Value = e.ProgressPercentage;
-            metroProgressBar4.Value = e.ProgressPercentage;
+            row1Progress.Value = e.ProgressPercentage;
         }
 
 
@@ -67,7 +67,7 @@ namespace WindowsFormsApplication1
         {
 
             this.timer1.Start();
-            metroLabel31.Hide();
+           
     
         }
 
@@ -96,6 +96,10 @@ namespace WindowsFormsApplication1
 
                 tabFiles.Controls.Add(new Label());
                 filesName.Text = openFileDialog1.SafeFileName;
+                row1Name.Text = openFileDialog1.SafeFileName;
+                row1Size.Text = size.ToString();
+                row1Name.Visible = true;
+                row1Size.Visible = true;
             }
 
             Console.WriteLine(result); // <-- For debugging use.
@@ -131,14 +135,19 @@ namespace WindowsFormsApplication1
         }
         private void tabPage1_Click(object sender, EventArgs e)
         {
+            tabFiles.Paint += tabpage_Paint;
+        }
+        private void tabpage_Paint(object sender, PaintEventArgs e)
+        {
+            SolidBrush fillBrush = new SolidBrush(BackColor);
 
+            e.Graphics.FillRectangle(fillBrush, e.ClipRectangle);
         }
 
         private void metroLabel1_Click(object sender, EventArgs e)
         {
 
         }
-
         private void metroProgressBar4_Click(object sender, EventArgs e)
         {
 
@@ -156,7 +165,7 @@ namespace WindowsFormsApplication1
 
         private void releaseNotesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //webBrowser1.Navigate("https://github.com/Transfernet");
+            System.Diagnostics.Process.Start("https://github.com/transfernet");
 
         }
 
@@ -165,5 +174,62 @@ namespace WindowsFormsApplication1
             About frm = new About();
             frm.Show();
         }
+
+        private void reportABugToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/transfernet");
+        }
+
+        private void webpageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://transfernet.io");
+        }
+
+        private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Updates frm = new Updates();
+            frm.Show();
+        }
+
+        private void transferButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = "c:\\Downloads";
+            openFileDialog1.Filter = "transfernet files (*.transfernet)|*.transfernet|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+
+
+
+            // Show the dialog and get result.
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK) // Test result.
+            {
+                var size = new FileInfo(openFileDialog1.FileName).Length;
+                Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, size.ToString());
+
+                frm.Show();
+
+                //when a transfernet file is added, the savefilename is displayed in the files control box
+
+                tabFiles.Controls.Add(new Label());
+                filesName.Text = openFileDialog1.SafeFileName;
+                row1Name.Text = openFileDialog1.SafeFileName;
+                row1Size.Text = size.ToString();
+                row1Name.Visible = true;
+                row1Size.Visible = true;
+            }
+
+            Console.WriteLine(result); // <-- For debugging use.
+        }
+
+        private void seedButton_Click(object sender, EventArgs e)
+        {
+            Seeding frm = new Seeding();
+            frm.Show();
+        }
+
+
     }
 }

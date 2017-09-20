@@ -32,8 +32,6 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.selectAllButton = new MetroFramework.Controls.MetroButton();
-            this.selectNoneButton = new MetroFramework.Controls.MetroButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.labelSize = new MetroFramework.Controls.MetroLabel();
             this.labelName2 = new MetroFramework.Controls.MetroLabel();
@@ -51,13 +49,15 @@
             this.metroCheckBox5 = new MetroFramework.Controls.MetroCheckBox();
             this.metroCheckBox4 = new MetroFramework.Controls.MetroCheckBox();
             this.displayTime = new MetroFramework.Controls.MetroLabel();
-            this.Buy = new MetroFramework.Controls.MetroButton();
             this.cancelButton = new MetroFramework.Controls.MetroButton();
             this.advButton = new MetroFramework.Controls.MetroButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.metroCheckBox1 = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBoxBuy.SuspendLayout();
             this.SuspendLayout();
@@ -89,37 +89,17 @@
             this.metroLabel5.TabIndex = 7;
             this.metroLabel5.Text = "Date:";
             // 
-            // selectAllButton
-            // 
-            this.selectAllButton.Location = new System.Drawing.Point(379, 201);
-            this.selectAllButton.Name = "selectAllButton";
-            this.selectAllButton.Size = new System.Drawing.Size(75, 23);
-            this.selectAllButton.TabIndex = 8;
-            this.selectAllButton.Text = "Select All";
-            this.selectAllButton.UseSelectable = true;
-            this.selectAllButton.Click += new System.EventHandler(this.selectAllButton_Click);
-            // 
-            // selectNoneButton
-            // 
-            this.selectNoneButton.Location = new System.Drawing.Point(467, 201);
-            this.selectNoneButton.Name = "selectNoneButton";
-            this.selectNoneButton.Size = new System.Drawing.Size(75, 23);
-            this.selectNoneButton.TabIndex = 9;
-            this.selectNoneButton.Text = "Select None";
-            this.selectNoneButton.UseSelectable = true;
-            this.selectNoneButton.Click += new System.EventHandler(this.selectNoneButton_Click);
-            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.labelSize);
             this.groupBox2.Controls.Add(this.labelName2);
             this.groupBox2.Controls.Add(this.groupBoxBuy);
             this.groupBox2.Controls.Add(this.displayTime);
-            this.groupBox2.Controls.Add(this.selectNoneButton);
             this.groupBox2.Controls.Add(this.metroLabel3);
             this.groupBox2.Controls.Add(this.metroLabel4);
             this.groupBox2.Controls.Add(this.metroLabel5);
-            this.groupBox2.Controls.Add(this.selectAllButton);
             this.groupBox2.Location = new System.Drawing.Point(10, 63);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(570, 465);
@@ -289,16 +269,6 @@
             this.displayTime.Text = "Active Date/ Time DIsplayed";
             this.displayTime.Click += new System.EventHandler(this.displayTime_Click);
             // 
-            // Buy
-            // 
-            this.Buy.Location = new System.Drawing.Point(344, 534);
-            this.Buy.Name = "Buy";
-            this.Buy.Size = new System.Drawing.Size(75, 23);
-            this.Buy.TabIndex = 10;
-            this.Buy.Text = "Buy";
-            this.Buy.UseSelectable = true;
-            this.Buy.Click += new System.EventHandler(this.Buy_Click);
-            // 
             // cancelButton
             // 
             this.cancelButton.Location = new System.Drawing.Point(506, 580);
@@ -351,16 +321,48 @@
             this.metroLabel11.TabIndex = 36;
             this.metroLabel11.Text = "Grand Total = $ 2.55";
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(357, 201);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(90, 23);
+            this.button2.TabIndex = 34;
+            this.button2.Text = "Select All";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(453, 201);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(90, 23);
+            this.button3.TabIndex = 35;
+            this.button3.Text = "Select None";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(344, 534);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "Buy";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Add_Transfernet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 626);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.metroLabel11);
             this.Controls.Add(this.metroLabel10);
             this.Controls.Add(this.metroCheckBox1);
             this.Controls.Add(this.advButton);
-            this.Controls.Add(this.Buy);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.groupBox2);
             this.Name = "Add_Transfernet";
@@ -380,12 +382,9 @@
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroButton selectAllButton;
-        private MetroFramework.Controls.MetroButton selectNoneButton;
         private System.Windows.Forms.GroupBox groupBox2;
         private MetroFramework.Controls.MetroButton cancelButton;
         private MetroFramework.Controls.MetroButton advButton;
-        private MetroFramework.Controls.MetroButton Buy;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel displayTime;
         private System.Windows.Forms.Timer timer1;
@@ -406,5 +405,8 @@
         private MetroFramework.Controls.MetroLabel metroLabel11;
         public MetroFramework.Controls.MetroLabel labelName2;
         public MetroFramework.Controls.MetroLabel labelName;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }

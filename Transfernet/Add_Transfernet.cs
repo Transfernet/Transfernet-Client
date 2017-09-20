@@ -21,6 +21,7 @@ namespace WindowsFormsApplication1
             this.labelName2.Text = fileName;
             this.labelSize.Text = fileSize;
             this.labelName.Text = fileName;
+            button1.Select();
 
         }
 
@@ -142,6 +143,48 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (Control c in groupBoxBuy.Controls)
+            {
+                if (c is CheckBox)
+                {
+                    CheckBox cb = (CheckBox)c;
+
+                    if (cb.Checked == false)
+                    {
+                        cb.Checked = true;
+                    }
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            foreach (Control c in groupBoxBuy.Controls)
+            {
+                if (c is CheckBox)
+                {
+                    CheckBox cb = (CheckBox)c;
+
+                    if (cb.Checked == true)
+                    {
+                        cb.Checked = false;
+                    }
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!metroCheckBox4.Checked && !metroCheckBox5.Checked && !metroCheckBox6.Checked && !metroCheckBox7.Checked && !metroCheckBox8.Checked)
+            {
+                MessageBox.Show("No Files Selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                this.Close();
         }
     }
 }

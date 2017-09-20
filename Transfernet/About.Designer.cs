@@ -28,23 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             this.webButton = new MetroFramework.Controls.MetroButton();
             this.cancelButton = new MetroFramework.Controls.MetroButton();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // webButton
             // 
-            this.webButton.Location = new System.Drawing.Point(23, 304);
+            this.webButton.Location = new System.Drawing.Point(20, 351);
             this.webButton.Name = "webButton";
             this.webButton.Size = new System.Drawing.Size(75, 23);
             this.webButton.TabIndex = 0;
             this.webButton.Text = "Webpage";
             this.webButton.UseSelectable = true;
+            this.webButton.Click += new System.EventHandler(this.webButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(236, 304);
+            this.cancelButton.Location = new System.Drawing.Point(255, 351);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 1;
@@ -55,7 +59,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(11, 116);
+            this.metroLabel2.Location = new System.Drawing.Point(20, 165);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(310, 171);
             this.metroLabel2.TabIndex = 3;
@@ -63,17 +67,31 @@
     "r experience. \r\n\r\nThanks to:\r\n\r\n";
             this.metroLabel2.WrapToLine = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.ErrorImage = global::WindowsFormsApplication1.Properties.Resources.logo;
+            this.pictureBox1.Image = global::WindowsFormsApplication1.Properties.Resources.logo;
+            this.pictureBox1.InitialImage = global::WindowsFormsApplication1.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(46, 16);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(257, 130);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 333);
+            this.ClientSize = new System.Drawing.Size(354, 397);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.webButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "About";
             this.Resizable = false;
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -84,5 +102,6 @@
         private MetroFramework.Controls.MetroButton webButton;
         private MetroFramework.Controls.MetroButton cancelButton;
         private MetroFramework.Controls.MetroLabel metroLabel2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
