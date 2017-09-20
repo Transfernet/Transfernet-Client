@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1
           void timer1_Tick(object sender, EventArgs e)
          {
             //want to only display seconds
-            metroLabel25.Text = DateTime.Now.ToShortTimeString();
+            
         }
 
 
@@ -53,7 +53,7 @@ namespace WindowsFormsApplication1
 
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
-            metroProgressBar1.Value = e.ProgressPercentage;
+            //metroProgressBar1.Value = e.ProgressPercentage;
             metroProgressBar2.Value = e.ProgressPercentage;
             metroProgressBar3.Value = e.ProgressPercentage;
             row1Progress.Value = e.ProgressPercentage;
@@ -94,8 +94,8 @@ namespace WindowsFormsApplication1
                 
                 //when a transfernet file is added, the savefilename is displayed in the files control box
 
-                tabFiles.Controls.Add(new Label());
-                filesName.Text = openFileDialog1.SafeFileName;
+                tabControl1.Controls.Add(new Label());
+                metroLabel1.Text = openFileDialog1.SafeFileName;
                 row1Name.Text = openFileDialog1.SafeFileName;
                 row1Size.Text = size.ToString();
                 row1Name.Visible = true;
@@ -114,10 +114,6 @@ namespace WindowsFormsApplication1
           
         }
 
-        private void metroGrid2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
@@ -133,30 +129,10 @@ namespace WindowsFormsApplication1
         {
 
         }
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-            tabFiles.Paint += tabpage_Paint;
-        }
-        private void tabpage_Paint(object sender, PaintEventArgs e)
-        {
-            SolidBrush fillBrush = new SolidBrush(BackColor);
 
-            e.Graphics.FillRectangle(fillBrush, e.ClipRectangle);
-        }
 
-        private void metroLabel1_Click(object sender, EventArgs e)
-        {
 
-        }
-        private void metroProgressBar4_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void metroProgressBar2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -194,13 +170,14 @@ namespace WindowsFormsApplication1
         private void transferButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
+            int j;
+            j = 1;
             openFileDialog1.InitialDirectory = "c:\\Downloads";
             openFileDialog1.Filter = "transfernet files (*.transfernet)|*.transfernet|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 1;
             openFileDialog1.RestoreDirectory = true;
 
-
+            
 
             // Show the dialog and get result.
             DialogResult result = openFileDialog1.ShowDialog();
@@ -211,17 +188,24 @@ namespace WindowsFormsApplication1
 
                 frm.Show();
 
-                //when a transfernet file is added, the savefilename is displayed in the files control box
-
-                tabFiles.Controls.Add(new Label());
-                filesName.Text = openFileDialog1.SafeFileName;
-                row1Name.Text = openFileDialog1.SafeFileName;
-                row1Size.Text = size.ToString();
-                row1Name.Visible = true;
-                row1Size.Visible = true;
+                //each time a new transfernet file is added a new label needs to be added to the tabs and not overwrite the previous files added
+                //This section is a work in progress to adjust the label poition based on how many transfers have been added
+                for (int i = j; i<100; i++ )
+                {
+                    //when a transfernet file is added, the savefilename is displayed in the files control box
+                    var file = new Label();
+                    file.Text = openFileDialog1.SafeFileName;
+                    file.Location = new Point(tabPage1.Location.X + 10, tabPage1.Location.Y + 1 * i);
+                    tabPage1.Controls.Add(file);
+                    row1Name.Text = openFileDialog1.SafeFileName;
+                    row1Size.Text = size.ToString();
+                    row1Name.Visible = true;
+                    row1Size.Visible = true;
+                    break;
+                }
+                j++; 
             }
 
-            Console.WriteLine(result); // <-- For debugging use.
         }
 
         private void seedButton_Click(object sender, EventArgs e)

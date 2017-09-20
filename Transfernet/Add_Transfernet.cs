@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1
             this.labelName2.Text = fileName;
             this.labelSize.Text = fileSize;
             this.labelName.Text = fileName;
-            button1.Select();
+
 
         }
 
