@@ -383,7 +383,7 @@
             // 
             this.tabSpeed.Location = new System.Drawing.Point(4, 38);
             this.tabSpeed.Name = "tabSpeed";
-            this.tabSpeed.Size = new System.Drawing.Size(819, 214);
+            this.tabSpeed.Size = new System.Drawing.Size(832, 230);
             this.tabSpeed.TabIndex = 4;
             this.tabSpeed.Text = " Speed";
             // 
@@ -400,7 +400,7 @@
             this.tabPeers.Controls.Add(this.metroGrid3);
             this.tabPeers.Location = new System.Drawing.Point(4, 38);
             this.tabPeers.Name = "tabPeers";
-            this.tabPeers.Size = new System.Drawing.Size(819, 214);
+            this.tabPeers.Size = new System.Drawing.Size(832, 230);
             this.tabPeers.TabIndex = 2;
             this.tabPeers.Text = "  Peers";
             // 
@@ -577,7 +577,7 @@
             this.tabInfo.Controls.Add(this.metroProgressBar1);
             this.tabInfo.Location = new System.Drawing.Point(4, 38);
             this.tabInfo.Name = "tabInfo";
-            this.tabInfo.Size = new System.Drawing.Size(819, 214);
+            this.tabInfo.Size = new System.Drawing.Size(832, 230);
             this.tabInfo.TabIndex = 1;
             this.tabInfo.Text = "   Info";
             // 
@@ -767,7 +767,7 @@
             this.tabControl.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
+            this.tabControl.SelectedIndex = 1;
             this.tabControl.Size = new System.Drawing.Size(840, 272);
             this.tabControl.TabIndex = 4;
             this.tabControl.UseSelectable = true;
