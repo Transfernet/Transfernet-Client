@@ -15,6 +15,7 @@ namespace WindowsFormsApplication1
         public Seeding()
         {
             InitializeComponent();
+            this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
         }
 
         private void Form1_Load(object sender, EventArgs e)

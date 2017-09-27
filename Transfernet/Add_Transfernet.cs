@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,13 +15,36 @@ namespace WindowsFormsApplication1
     {
         public General referenceToTransfernet;
 
-        public Add_Transfernet(string fileName, string fileSize)
+        public Add_Transfernet(string fileName, string fileSize, string filePath)
         {
             InitializeComponent();
             this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
             this.labelName2.Text = fileName;
             this.labelSize.Text = fileSize;
             this.labelName.Text = fileName;
+
+            //want to randomly select some users and prices from the openfile to be displayed
+            string[] allLines = File.ReadAllLines(filePath);
+            Random rand = new Random();
+            var lineNumber = rand.Next(0, allLines.Length);
+            seeder1.Text = allLines[lineNumber];
+            string[] subStrings = allLines[lineNumber].Split('\t');
+            Console.WriteLine(allLines);
+
+            int i = 1;
+            foreach (string str in subStrings)
+            {
+            
+                // setup label and add them to the page hierarchy
+                Label lbl = new Label();
+                lbl.Name = "seeder" + i;
+                lbl.Text = str.ToString();
+                i++;
+                //assuming form1 is a form in your page with a runat="server" attribute.
+                this.Controls.Add(lbl);
+            }
+
+            //Console.WriteLine(allLines[rnd1.Next(allLines.Length)]);
 
 
         }
@@ -31,6 +55,9 @@ namespace WindowsFormsApplication1
         {
             //displays the current time and date
             timer1.Start();
+
+
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -56,37 +83,7 @@ namespace WindowsFormsApplication1
         {
             
         }
-
-        private void Buy_Click(object sender, EventArgs e)
-        {
-
-            if (!metroCheckBox4.Checked && !metroCheckBox5.Checked && !metroCheckBox6.Checked && !metroCheckBox7.Checked && !metroCheckBox8.Checked)
-            {
-                MessageBox.Show("No Files Selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-
-                //try
-                // {
-                //     if (rdr.read())
-                //     {
-
-                //         referencetotransfernet.metrolabel1.text = rdr.getstring(1);
-                //         referencetotransfernet.textbox2_dis.text = rdr.getstring(2);
-                //     }
-                // }
-                //     this.close();
-
-                // }
-                
-                //referenceToTransfernet.metroLabel1.Text = "hi";
-                this.Close();
-
-            }
-
-        }
-           
+  
         private void advButton_Click(object sender, EventArgs e)
         {
             Advanced_Settings frm = new Advanced_Settings();
@@ -177,14 +174,18 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Buy_Click_1(object sender, EventArgs e)
         {
             if (!metroCheckBox4.Checked && !metroCheckBox5.Checked && !metroCheckBox6.Checked && !metroCheckBox7.Checked && !metroCheckBox8.Checked)
             {
-                MessageBox.Show("No Files Selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No Files Selected. Please select at least one item if you wish to buy.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
+            {
+
                 this.Close();
+
+            }
         }
     }
 }
