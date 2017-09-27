@@ -59,10 +59,6 @@ namespace WindowsFormsApplication1
             row1Progress.Value = e.ProgressPercentage;
         }
 
-
-
-
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
