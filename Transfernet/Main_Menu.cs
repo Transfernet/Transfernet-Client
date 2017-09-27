@@ -19,11 +19,13 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
 
-            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
-            backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
-            backgroundWorker1.WorkerReportsProgress = true;
-            backgroundWorker1.RunWorkerAsync();
+            //you shouldnt have to run background workers until a tnet file is actually uploaded
+            //backgroundWorker1.DoWork += backgroundWorker1_DoWork;
+            //backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
+            //backgroundWorker1.WorkerReportsProgress = true;
+            //backgroundWorker1.RunWorkerAsync();
 
+            //what is this timer for?
             //timer
             timer1.Tick += new EventHandler(timer1_Tick); // Everytime timer ticks, timer_Tick will be called
             timer1.Interval = (1000) * (1);              // Timer will tick every second
@@ -51,15 +53,17 @@ namespace WindowsFormsApplication1
             }
             //There is a threading problem here.  If you have a background worker you need to make sure it only
             //issues commands to GUI elements while it is running on the main thread 
+
+            //you need to use a delegate to run a function from the background thread so it can access the main thread
            // metroLabel31.Show();
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             //metroProgressBar1.Value = e.ProgressPercentage;
-            metroProgressBar2.Value = e.ProgressPercentage;
-            metroProgressBar3.Value = e.ProgressPercentage;
-            row1Progress.Value = e.ProgressPercentage;
+            //metroProgressBar2.Value = e.ProgressPercentage;
+            //metroProgressBar3.Value = e.ProgressPercentage;
+            //row1Progress.Value = e.ProgressPercentage;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -111,27 +115,23 @@ namespace WindowsFormsApplication1
         {
           
         }
-
-
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private void metroButton2_Click(object sender, EventArgs e)
         {
 
         }
-
         private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
 
         #region HelpMenu
 
