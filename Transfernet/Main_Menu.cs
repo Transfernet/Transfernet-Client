@@ -18,6 +18,7 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
+
             backgroundWorker1.DoWork += backgroundWorker1_DoWork;
             backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
             backgroundWorker1.WorkerReportsProgress = true;
@@ -30,8 +31,9 @@ namespace WindowsFormsApplication1
             timer1.Start();                              // Start the timer
 
         }
-          void timer1_Tick(object sender, EventArgs e)
-         {
+
+        void timer1_Tick(object sender, EventArgs e)
+        {
             //want to only display seconds
             
         }
@@ -43,7 +45,8 @@ namespace WindowsFormsApplication1
         {
             for (int i = 0; i <= 100; i++)
             {
-                Thread.Sleep(1000);
+                //this was commented out because it is blocking selection of tabs
+                //Thread.Sleep(1000);
                 backgroundWorker1.ReportProgress(i);
             }
             //There is a threading problem here.  If you have a background worker you need to make sure it only
@@ -61,10 +64,7 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             this.timer1.Start();
-           
-    
         }
 
         private void addTorrentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -87,9 +87,11 @@ namespace WindowsFormsApplication1
                 Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, size.ToString());
 
                 frm.Show();
-                
+
                 //when a transfernet file is added, the savefilename is displayed in the files control box
 
+                //need to make it so that this does not show up until the user has confirmed 
+                //that they want to "buy" the tnet file
                 tabControl1.Controls.Add(new Label());
                 metroLabel1.Text = openFileDialog1.SafeFileName;
                 row1Name.Text = openFileDialog1.SafeFileName;
@@ -104,7 +106,7 @@ namespace WindowsFormsApplication1
 
 
     
-
+        //what are these functions for?  for future use?
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
           
@@ -126,14 +128,12 @@ namespace WindowsFormsApplication1
 
         }
 
-
-
-
-
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        #region HelpMenu
 
         private void releaseNotesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -162,6 +162,8 @@ namespace WindowsFormsApplication1
             Updates frm = new Updates();
             frm.Show();
         }
+        #endregion
+
 
         private void transferButton_Click(object sender, EventArgs e)
         {
