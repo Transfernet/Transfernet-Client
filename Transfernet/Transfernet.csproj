@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>TransferNet %28logo%29.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\TransferNet %28logo%29.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
@@ -95,6 +95,19 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="BEncoding.cs" />
+    <Compile Include="Seeding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Seeding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Updates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Updates.Designer.cs">
+      <DependentUpon>Updates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main_Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +125,9 @@
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Seeding.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main_Menu.resx">
       <DependentUpon>Main_Menu.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +141,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Updates.resx">
+      <DependentUpon>Updates.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -140,10 +159,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\logo.png" />
     <None Include="Resources\Icon1.ico" />
-    <Content Include="TransferNet %28logo%29.ico" />
-    <Content Include="logo.png" />
+    <None Include="Resources\logo2.png" />
+    <None Include="Resources\logo3.png" />
+    <None Include="Resources\logoText.png" />
+    <Content Include="Resources\TransferNet %28logo%29.ico" />
+    <Content Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
