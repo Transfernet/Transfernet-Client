@@ -13,6 +13,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
 
+
             //you shouldnt have to run background workers until a tnet file is actually uploaded
             //backgroundWorker1.DoWork += backgroundWorker1_DoWork;
             //backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
@@ -63,6 +64,11 @@ namespace WindowsFormsApplication1
 
         #region AddTransfernet
 
+        //need to store the info from the recently opened file
+        public string filename;
+        public string size;
+        public string path;
+
         //there are two ways to add a transfernet file: from the menu strip or button on menu
         private void addTorrentToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -77,8 +83,14 @@ namespace WindowsFormsApplication1
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK) // Test result.
             {
-                var size = new FileInfo(openFileDialog1.FileName).Length;
-                Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, size.ToString(), openFileDialog1.FileName);
+                var filesize = new FileInfo(openFileDialog1.FileName).Length;
+
+                size = filesize.ToString();
+                filename = openFileDialog1.SafeFileName;
+                path = openFileDialog1.FileName;
+
+                Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, filesize.ToString(), openFileDialog1.FileName);
+                frm.FormClosing += new FormClosingEventHandler(this.Form2_FormClosing);
 
                 frm.Show();
 
@@ -87,15 +99,33 @@ namespace WindowsFormsApplication1
                 //need to make it so that this does not show up until the user has confirmed
                 //that they want to "buy" the tnet file
                 //tabControl1.Controls.Add(new Label());
-                metroLabel1.Text = openFileDialog1.SafeFileName;
-                row1Name.Text = openFileDialog1.SafeFileName;
-                row1Size.Text = size.ToString();
-                row1Name.Visible = true;
-                row1Size.Visible = true;
+
             }
 
             Console.WriteLine(result); // <-- For debugging use.
         }
+
+
+
+        //
+        public int count = 0;
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+
+                update();
+                
+            }
+
+            else
+            {
+                // Then assume that X has been clicked and act accordingly.
+            }
+
+        }
+
+
 
         public int j = 1;
 
@@ -112,28 +142,62 @@ namespace WindowsFormsApplication1
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK) // Test result.
             {
-                var size = new FileInfo(openFileDialog1.FileName).Length;
-                Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, size.ToString(), openFileDialog1.FileName);
+                var filesize = new FileInfo(openFileDialog1.FileName).Length;
+                Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, filesize.ToString(), openFileDialog1.FileName);
+                frm.FormClosing += new FormClosingEventHandler(this.Form2_FormClosing);
 
                 frm.Show();
+
+                size = filesize.ToString();
+                filename = openFileDialog1.SafeFileName;
+                path = openFileDialog1.FileName;
 
                 //each time a new transfernet file is added a new label needs to be added to the tabs and not overwrite the previous files added
                 //This section is a work in progress to adjust the label poition based on how many transfers have been added
 
                 //when a transfernet file is added, the savefilename is displayed in the files control box
-                var file = new Label();
-                file.Text = openFileDialog1.SafeFileName;
-                file.Location = new Point(tabPage1.Location.X + 10, tabPage1.Location.Y + 1 * j);
-                tabPage1.Controls.Add(file);
-                row1Name.Text = openFileDialog1.SafeFileName;
-                row1Size.Text = size.ToString();
-                row1Name.Visible = true;
-                row1Size.Visible = true;
+
 
                 j++;
             }
         }
 
+        //right now you can add multiple files but they are not showing up in the right place
+        public void update()
+        {
+            count++;
+            countLabel.Text = count.ToString();
+            //lable for num
+            Label num = new Label();
+            num.Location = new Point(280, metroPanel1.Location.Y + (25 * count));
+            num.Text = count.ToString();
+            metroPanel1.Controls.Add(num);
+
+            //label for name
+            Label name = new Label();
+            name.Location = new Point(metroPanel1.Location.X + 100, metroPanel1.Location.Y + (25 * count));
+            name.Text = filename;
+            metroPanel1.Controls.Add(name);
+
+            //label for size
+            Label siz = new Label();
+            siz.Location = new Point(metroPanel1.Location.X + 300, metroPanel1.Location.Y + (25 * count));
+            siz.Text = size;
+            metroPanel1.Controls.Add(siz);
+            //progerssbar
+
+            //labels for tab pages
+            Label num2 = new Label();
+            num2.Text = num.Text;
+            num2.Location = new Point(metroPanel2.Location.X + 5, metroPanel2.Location.Y + (25 * count));
+            metroPanel2.Controls.Add(num2);
+            Label file = new Label();
+            file.Text = filename;
+            file.Location = new Point(metroPanel2.Location.X + 10, metroPanel2.Location.Y + (25 * count));
+            metroPanel2.Controls.Add(file);
+
+
+        }
         #endregion AddTransfernet
 
         #region exit
@@ -182,8 +246,8 @@ namespace WindowsFormsApplication1
             Seeding frm = new Seeding();
             frm.Show();
         }
-        #endregion ButtonMenu
 
+        #endregion ButtonMenu
 
     }
 }
