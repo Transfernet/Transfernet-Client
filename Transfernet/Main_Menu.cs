@@ -1,6 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Diagnostics;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
@@ -12,53 +15,73 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
-
-
-            //you shouldnt have to run background workers until a tnet file is actually uploaded
-            //backgroundWorker1.DoWork += backgroundWorker1_DoWork;
-            //backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
-            //backgroundWorker1.WorkerReportsProgress = true;
-            //backgroundWorker1.RunWorkerAsync();
-
-            //what is this timer for?
-            //timer
-            timer1.Tick += new EventHandler(timer1_Tick); // Everytime timer ticks, timer_Tick will be called
-            timer1.Interval = (1000) * (1);              // Timer will tick every second
-            timer1.Enabled = true;                       // Enable the timer
-            timer1.Start();                              // Start the timer
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        #region backgroundworker
+
+        private void checkStatus()
         {
-            //want to only display seconds for the "Time Elapsed" label in the info tab
+
         }
 
-        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        static bool done;
+
+        public static bool Done
         {
-            for (int i = 0; i <= 100; i++)
+            get
             {
-                //this was commented out because it is blocking selection of tabs
-                //Thread.Sleep(1000);
-                backgroundWorker1.ReportProgress(i);
+                return done;
             }
-            //There is a threading problem here.  If you have a background worker you need to make sure it only
-            //issues commands to GUI elements while it is running on the main thread
-
-            //you need to use a delegate to run a function from the background thread so it can access the main thread
-            // metroLabel31.Show();
+            set
+            {
+                done = value;
+            }
         }
 
-        private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            //metroProgressBar1.Value = e.ProgressPercentage;
-            //metroProgressBar2.Value = e.ProgressPercentage;
-            //metroProgressBar3.Value = e.ProgressPercentage;
-            //row1Progress.Value = e.ProgressPercentage;
+            General.Done = false;
+
+
+            for (int k = 0; k <= progressBar1.Maximum; k++)
+            {
+                // Report progress to 'UI' thread
+                backgroundWorker1.ReportProgress(k);
+                // Simulate long task
+                Thread.Sleep(100);
+            }
+            
         }
+
+        void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+            // The progress percentage is a property of e
+            progressBar1.Value = e.ProgressPercentage;
+            
+            
+            metroLabel9.Text = e.ProgressPercentage.ToString() + "%";
+            metroLabel10.Text = "Downloading";
+
+
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender,RunWorkerCompletedEventArgs e)
+        {
+            metroLabel10.Text = "Download Complete";
+            General.Done = true;
+
+        }
+
+
+        #endregion backgroundworker 
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.timer1.Start();
+            
+
         }
         #endregion basics
 
@@ -109,18 +132,21 @@ namespace WindowsFormsApplication1
 
         //
         public int count = 0;
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        public void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.CloseReason == CloseReason.UserClosing)
+            bool y = Add_Transfernet.Purchase;
+            if (y == true)
+            //if (e.CloseReason == CloseReason.UserClosing)
+           // if (string.Equals((sender as Button).Name, @"buyButton"))
             {
-
+                
                 update();
                 
             }
 
             else
             {
-                // Then assume that X has been clicked and act accordingly.
+                // Then assume that "Close" has been clicked and add nothing.
             }
 
         }
@@ -162,43 +188,79 @@ namespace WindowsFormsApplication1
             }
         }
 
-        //right now you can add multiple files but they are not showing up in the right place
+        #endregion AddTransfernet
+
+        #region update_sync
         public void update()
         {
+           
+            backgroundWorker1.RunWorkerAsync();
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
+            backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker1_ProgressChanged);
+            backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker1_RunWorkerCompleted);
+
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
+
             count++;
-            countLabel.Text = count.ToString();
+
+            tabControl1.SelectedTab = tabPage2;
+            
+
+            //location inside metro panel is independent of panel's location on the form
             //lable for num
             Label num = new Label();
-            num.Location = new Point(280, metroPanel1.Location.Y + (25 * count));
+            num.AutoSize = true;
+            num.Location = new Point(0,0+(25*(count-1)));
             num.Text = count.ToString();
             metroPanel1.Controls.Add(num);
 
             //label for name
             Label name = new Label();
-            name.Location = new Point(metroPanel1.Location.X + 100, metroPanel1.Location.Y + (25 * count));
+            name.AutoSize = true;
+            name.Location = new Point(70, 0 + (25 * (count-1)));
             name.Text = filename;
             metroPanel1.Controls.Add(name);
 
             //label for size
             Label siz = new Label();
-            siz.Location = new Point(metroPanel1.Location.X + 300, metroPanel1.Location.Y + (25 * count));
+            siz.AutoSize = true;
+            siz.Location = new Point(355, 0 + (25 * (count-1)));
             siz.Text = size;
             metroPanel1.Controls.Add(siz);
-            //progerssbar
+
+            //progerssbar does not update with main progress bar
+            ProgressBar pBar = new ProgressBar();
+            pBar.Location = new Point(445, 0 + (25 * (count - 1)));
+            pBar.Width = 100;
+            pBar.Height = 15;
+            pBar.Maximum = 100;
+            metroPanel1.Controls.Add(pBar);
+
+
+
+
+            if (General.Done == true)
+                {
+                    stopWatch.Stop();
+                   // metroLabel8.Text = elapsedTime.ToString();
+
+                }
+            
+
 
             //labels for tab pages
-            Label num2 = new Label();
-            num2.Text = num.Text;
-            num2.Location = new Point(metroPanel2.Location.X + 5, metroPanel2.Location.Y + (25 * count));
-            metroPanel2.Controls.Add(num2);
             Label file = new Label();
-            file.Text = filename;
-            file.Location = new Point(metroPanel2.Location.X + 10, metroPanel2.Location.Y + (25 * count));
+            file.AutoSize = true;
+            file.Text = num.Text + " " + filename;
+            file.Location = new Point(metroPanel2.Location.X, metroPanel2.Location.Y + (25 * count));
             metroPanel2.Controls.Add(file);
 
 
         }
-        #endregion AddTransfernet
+        #endregion update_sync
 
         #region exit
 
@@ -248,6 +310,7 @@ namespace WindowsFormsApplication1
         }
 
         #endregion ButtonMenu
+
 
     }
 }

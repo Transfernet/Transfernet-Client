@@ -50,8 +50,7 @@
             this.seedButton = new MetroFramework.Controls.MetroButton();
             this.blockButton = new MetroFramework.Controls.MetroButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.timer0 = new System.Windows.Forms.Timer(this.components);
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -78,11 +77,9 @@
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
-            this.countLabel = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.menuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.metroPanel2.SuspendLayout();
@@ -257,11 +254,6 @@
             this.blockButton.Text = "Block List";
             this.blockButton.UseSelectable = true;
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
-            // 
             // richTextBox1
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.DimGray;
@@ -317,7 +309,7 @@
             // 
             this.metroLabel17.AutoSize = true;
             this.metroLabel17.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel17.Location = new System.Drawing.Point(6, 0);
+            this.metroLabel17.Location = new System.Drawing.Point(-1, 0);
             this.metroLabel17.Name = "metroLabel17";
             this.metroLabel17.Size = new System.Drawing.Size(45, 19);
             this.metroLabel17.TabIndex = 1;
@@ -535,16 +527,6 @@
             this.metroLabel16.TabIndex = 16;
             this.metroLabel16.Text = "Downloading";
             // 
-            // countLabel
-            // 
-            this.countLabel.AutoSize = true;
-            this.countLabel.Location = new System.Drawing.Point(26, 360);
-            this.countLabel.Name = "countLabel";
-            this.countLabel.Size = new System.Drawing.Size(41, 19);
-            this.countLabel.TabIndex = 25;
-            this.countLabel.Text = "count";
-            this.countLabel.Visible = false;
-            // 
             // metroPanel1
             // 
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -566,7 +548,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1161, 627);
             this.Controls.Add(this.metroPanel1);
-            this.Controls.Add(this.countLabel);
             this.Controls.Add(this.metroLabel16);
             this.Controls.Add(this.metroLabel15);
             this.Controls.Add(this.metroLabel14);
@@ -587,7 +568,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.metroPanel2.ResumeLayout(false);
@@ -615,8 +595,7 @@
         private MetroFramework.Controls.MetroButton dlButton;
         private MetroFramework.Controls.MetroButton seedButton;
         public System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.Timer timer0;
         private System.Windows.Forms.ToolStripMenuItem aboutTransfernetClientToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem releaseNotesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportABugToolStripMenuItem;
@@ -651,7 +630,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel15;
         private MetroFramework.Controls.MetroLabel metroLabel16;
         private MetroFramework.Controls.MetroPanel metroPanel2;
-        private MetroFramework.Controls.MetroLabel countLabel;
         private MetroFramework.Controls.MetroPanel metroPanel1;
     }
 }

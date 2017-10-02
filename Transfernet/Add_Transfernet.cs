@@ -24,15 +24,17 @@ namespace WindowsFormsApplication1
             this.labelName.Text = fileName;
             this.labelPath.Text = filePath;
 
+
+
             
 
-           
 
-        }
+    }
 
 
         private void Add_Transfernet_Load(object sender, EventArgs e)
         {
+
             //displays the current time and date
             timer1.Start();
             int i = 1;
@@ -137,6 +139,7 @@ namespace WindowsFormsApplication1
         //Cancel
         private void metroButton5_Click(object sender, EventArgs e)
         {
+            Add_Transfernet.Purchase = false;
             this.Close();
         }
 
@@ -178,9 +181,10 @@ namespace WindowsFormsApplication1
         }
 
         //buy
-        bool purchase;
-        
-        public bool Purchase
+
+        static bool purchase;
+
+        public static bool Purchase
         {
             get
             {
@@ -191,6 +195,7 @@ namespace WindowsFormsApplication1
                 purchase = value;
             }
         }
+       
 
         private void Buy_Click_1(object sender, EventArgs e)
         {
@@ -218,7 +223,7 @@ namespace WindowsFormsApplication1
             else
             {
 
-                purchase = false;
+                Add_Transfernet.Purchase = true;
             
                 this.Close();
             }

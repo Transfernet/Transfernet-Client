@@ -50,7 +50,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
-            this.Buy = new MetroFramework.Controls.MetroButton();
+            this.buyButton = new MetroFramework.Controls.MetroButton();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.labelTotal = new MetroFramework.Controls.MetroLabel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -173,10 +173,11 @@
             // labelPath
             // 
             this.labelPath.AutoSize = true;
+            this.labelPath.FontSize = MetroFramework.MetroLabelSize.Small;
             this.labelPath.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelPath.Location = new System.Drawing.Point(93, 91);
+            this.labelPath.Location = new System.Drawing.Point(93, 94);
             this.labelPath.Name = "labelPath";
-            this.labelPath.Size = new System.Drawing.Size(37, 19);
+            this.labelPath.Size = new System.Drawing.Size(31, 15);
             this.labelPath.TabIndex = 37;
             this.labelPath.Text = "Path";
             // 
@@ -217,30 +218,33 @@
             // labelSize
             // 
             this.labelSize.AutoSize = true;
+            this.labelSize.FontSize = MetroFramework.MetroLabelSize.Small;
             this.labelSize.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelSize.Location = new System.Drawing.Point(93, 110);
+            this.labelSize.Location = new System.Drawing.Point(93, 114);
             this.labelSize.Name = "labelSize";
-            this.labelSize.Size = new System.Drawing.Size(100, 19);
+            this.labelSize.Size = new System.Drawing.Size(86, 15);
             this.labelSize.TabIndex = 33;
             this.labelSize.Text = "Added File Size";
             // 
             // labelName2
             // 
             this.labelName2.AutoSize = true;
+            this.labelName2.FontSize = MetroFramework.MetroLabelSize.Small;
             this.labelName2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelName2.Location = new System.Drawing.Point(93, 70);
+            this.labelName2.Location = new System.Drawing.Point(93, 73);
             this.labelName2.Name = "labelName2";
-            this.labelName2.Size = new System.Drawing.Size(113, 19);
+            this.labelName2.Size = new System.Drawing.Size(98, 15);
             this.labelName2.TabIndex = 32;
             this.labelName2.Text = "Added File Name";
             // 
             // displayTime
             // 
             this.displayTime.AutoSize = true;
+            this.displayTime.FontSize = MetroFramework.MetroLabelSize.Small;
             this.displayTime.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.displayTime.Location = new System.Drawing.Point(93, 130);
+            this.displayTime.Location = new System.Drawing.Point(93, 133);
             this.displayTime.Name = "displayTime";
-            this.displayTime.Size = new System.Drawing.Size(181, 19);
+            this.displayTime.Size = new System.Drawing.Size(156, 15);
             this.displayTime.TabIndex = 22;
             this.displayTime.Text = "Active Date/ Time DIsplayed";
             // 
@@ -289,16 +293,16 @@
             this.metroLabel11.TabIndex = 36;
             this.metroLabel11.Text = "Grand Total = $ ";
             // 
-            // Buy
+            // buyButton
             // 
-            this.Buy.Location = new System.Drawing.Point(344, 534);
-            this.Buy.Name = "Buy";
-            this.Buy.Size = new System.Drawing.Size(75, 23);
-            this.Buy.TabIndex = 37;
-            this.Buy.TabStop = false;
-            this.Buy.Text = "Buy";
-            this.Buy.UseSelectable = true;
-            this.Buy.Click += new System.EventHandler(this.Buy_Click_1);
+            this.buyButton.Location = new System.Drawing.Point(344, 534);
+            this.buyButton.Name = "buyButton";
+            this.buyButton.Size = new System.Drawing.Size(75, 23);
+            this.buyButton.TabIndex = 37;
+            this.buyButton.TabStop = false;
+            this.buyButton.Text = "Buy";
+            this.buyButton.UseSelectable = true;
+            this.buyButton.Click += new System.EventHandler(this.Buy_Click_1);
             // 
             // metroLabel8
             // 
@@ -346,10 +350,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 626);
+            this.ControlBox = false;
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.labelTotal);
-            this.Controls.Add(this.Buy);
+            this.Controls.Add(this.buyButton);
             this.Controls.Add(this.metroLabel11);
             this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.metroLabel10);
@@ -384,7 +389,7 @@
         public MetroFramework.Controls.MetroLabel labelName2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private MetroFramework.Controls.MetroButton Buy;
+        private MetroFramework.Controls.MetroButton buyButton;
         public MetroFramework.Controls.MetroLabel labelPath;
         private MetroFramework.Controls.MetroLabel labelLocation;
         private MetroFramework.Controls.MetroPanel metroPanel1;
