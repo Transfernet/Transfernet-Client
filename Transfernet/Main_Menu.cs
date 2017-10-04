@@ -56,11 +56,16 @@ namespace WindowsFormsApplication1
 
         void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            ProgressBar pBar = new ProgressBar();
+            pBar.Location = new Point(445, 0 + (25 * (count - 1)));
+            pBar.Width = 100;
+            pBar.Height = 15;
+            pBar.Maximum = 100;
+            metroPanel1.Controls.Add(pBar);
 
             // The progress percentage is a property of e
+            pBar.Value = e.ProgressPercentage;
             progressBar1.Value = e.ProgressPercentage;
-            
-            
             metroLabel9.Text = e.ProgressPercentage.ToString() + "%";
             metroLabel10.Text = "Downloading";
 
@@ -117,11 +122,15 @@ namespace WindowsFormsApplication1
 
                 frm.Show();
 
-                //when a transfernet file is added, the savefilename is displayed in the files control box
-
-                //need to make it so that this does not show up until the user has confirmed
-                //that they want to "buy" the tnet file
-                //tabControl1.Controls.Add(new Label());
+                richTextBox2.SelectionTabs = new int[] { 100, 200, 300, 400 };
+                richTextBox2.Width = 580;
+                richTextBox2.Text =
+                    "24,34\t1228\tC:\\14035/61439\tD:\\399175/415186\t01 02 03 04 05 06 07 08 09 10 11\t0 1 2 3 " +
+                    "58,05\t4017\tC:\\5610/61439\tD:\\396629/415186\t10 11 12 13 14 15\t0 1 2";
+                richTextBox2.SelectAll();
+                richTextBox2.SelectionTabs = new int[] { 50, 100, 200, 320, 530 };
+                richTextBox2.AcceptsTab = true;
+                richTextBox2.Select(0, 0);
 
             }
 
@@ -232,12 +241,7 @@ namespace WindowsFormsApplication1
             metroPanel1.Controls.Add(siz);
 
             //progerssbar does not update with main progress bar
-            ProgressBar pBar = new ProgressBar();
-            pBar.Location = new Point(445, 0 + (25 * (count - 1)));
-            pBar.Width = 100;
-            pBar.Height = 15;
-            pBar.Maximum = 100;
-            metroPanel1.Controls.Add(pBar);
+
 
 
 
@@ -255,7 +259,7 @@ namespace WindowsFormsApplication1
             Label file = new Label();
             file.AutoSize = true;
             file.Text = num.Text + " " + filename;
-            file.Location = new Point(metroPanel2.Location.X, metroPanel2.Location.Y + (25 * count));
+            file.Location = new Point(0, 0 + (25 * (count-1)));
             metroPanel2.Controls.Add(file);
 
 

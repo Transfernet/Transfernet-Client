@@ -37,7 +37,6 @@
             this.labelTrans = new MetroFramework.Controls.MetroLabel();
             this.labelSeeder = new MetroFramework.Controls.MetroLabel();
             this.labelPrice = new MetroFramework.Controls.MetroLabel();
-            this.labelName = new MetroFramework.Controls.MetroLabel();
             this.labelPath = new MetroFramework.Controls.MetroLabel();
             this.labelLocation = new MetroFramework.Controls.MetroLabel();
             this.button3 = new System.Windows.Forms.Button();
@@ -56,7 +55,6 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.groupBox2.SuspendLayout();
-            this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroLabelName
@@ -93,8 +91,11 @@
             // 
             this.groupBox2.Controls.Add(this.metroPanel1);
             this.groupBox2.Controls.Add(this.labelPath);
+            this.groupBox2.Controls.Add(this.labelTrans);
             this.groupBox2.Controls.Add(this.labelLocation);
+            this.groupBox2.Controls.Add(this.labelSeeder);
             this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.labelPrice);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.labelSize);
             this.groupBox2.Controls.Add(this.labelName2);
@@ -104,7 +105,7 @@
             this.groupBox2.Controls.Add(this.metroLabelDate);
             this.groupBox2.Location = new System.Drawing.Point(10, 63);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(570, 465);
+            this.groupBox2.Size = new System.Drawing.Size(591, 465);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Contents";
@@ -113,17 +114,13 @@
             // 
             this.metroPanel1.AutoScroll = true;
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.metroPanel1.Controls.Add(this.labelTrans);
-            this.metroPanel1.Controls.Add(this.labelSeeder);
-            this.metroPanel1.Controls.Add(this.labelPrice);
-            this.metroPanel1.Controls.Add(this.labelName);
             this.metroPanel1.HorizontalScrollbar = true;
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(26, 230);
+            this.metroPanel1.Location = new System.Drawing.Point(13, 230);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(516, 229);
+            this.metroPanel1.Size = new System.Drawing.Size(565, 229);
             this.metroPanel1.TabIndex = 39;
             this.metroPanel1.VerticalScrollbar = true;
             this.metroPanel1.VerticalScrollbarBarColor = true;
@@ -134,7 +131,7 @@
             // 
             this.labelTrans.AutoSize = true;
             this.labelTrans.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelTrans.Location = new System.Drawing.Point(268, 23);
+            this.labelTrans.Location = new System.Drawing.Point(287, 208);
             this.labelTrans.Name = "labelTrans";
             this.labelTrans.Size = new System.Drawing.Size(122, 19);
             this.labelTrans.TabIndex = 38;
@@ -144,7 +141,7 @@
             // 
             this.labelSeeder.AutoSize = true;
             this.labelSeeder.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelSeeder.Location = new System.Drawing.Point(116, 23);
+            this.labelSeeder.Location = new System.Drawing.Point(134, 208);
             this.labelSeeder.Name = "labelSeeder";
             this.labelSeeder.Size = new System.Drawing.Size(50, 19);
             this.labelSeeder.TabIndex = 37;
@@ -154,21 +151,11 @@
             // 
             this.labelPrice.AutoSize = true;
             this.labelPrice.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelPrice.Location = new System.Drawing.Point(5, 23);
+            this.labelPrice.Location = new System.Drawing.Point(23, 208);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(38, 19);
             this.labelPrice.TabIndex = 36;
             this.labelPrice.Text = "Price";
-            // 
-            // labelName
-            // 
-            this.labelName.AutoSize = true;
-            this.labelName.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelName.Location = new System.Drawing.Point(5, 4);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(69, 19);
-            this.labelName.TabIndex = 35;
-            this.labelName.Text = "File Name";
             // 
             // labelPath
             // 
@@ -194,7 +181,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(453, 201);
+            this.button3.Location = new System.Drawing.Point(495, 175);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 23);
             this.button3.TabIndex = 35;
@@ -206,7 +193,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(357, 201);
+            this.button2.Location = new System.Drawing.Point(405, 175);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 23);
             this.button2.TabIndex = 34;
@@ -250,7 +237,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(505, 590);
+            this.cancelButton.Location = new System.Drawing.Point(520, 590);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 16;
@@ -277,7 +264,7 @@
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(144, 565);
+            this.metroLabel10.Location = new System.Drawing.Point(127, 563);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(59, 19);
             this.metroLabel10.TabIndex = 35;
@@ -287,7 +274,7 @@
             // 
             this.metroLabel11.AutoSize = true;
             this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel11.Location = new System.Drawing.Point(425, 534);
+            this.metroLabel11.Location = new System.Drawing.Point(438, 538);
             this.metroLabel11.Name = "metroLabel11";
             this.metroLabel11.Size = new System.Drawing.Size(117, 19);
             this.metroLabel11.TabIndex = 36;
@@ -295,7 +282,7 @@
             // 
             // buyButton
             // 
-            this.buyButton.Location = new System.Drawing.Point(344, 534);
+            this.buyButton.Location = new System.Drawing.Point(357, 537);
             this.buyButton.Name = "buyButton";
             this.buyButton.Size = new System.Drawing.Size(75, 23);
             this.buyButton.TabIndex = 37;
@@ -308,7 +295,7 @@
             // 
             this.metroLabel8.AutoSize = true;
             this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel8.Location = new System.Drawing.Point(36, 538);
+            this.metroLabel8.Location = new System.Drawing.Point(23, 538);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(64, 19);
             this.metroLabel8.TabIndex = 39;
@@ -318,7 +305,7 @@
             // 
             this.labelTotal.AutoSize = true;
             this.labelTotal.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelTotal.Location = new System.Drawing.Point(94, 538);
+            this.labelTotal.Location = new System.Drawing.Point(83, 537);
             this.labelTotal.Name = "labelTotal";
             this.labelTotal.Size = new System.Drawing.Size(17, 19);
             this.labelTotal.TabIndex = 40;
@@ -327,7 +314,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(36, 567);
+            this.checkBox1.Location = new System.Drawing.Point(23, 565);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.checkBox1.Size = new System.Drawing.Size(98, 17);
@@ -339,7 +326,7 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel1.Location = new System.Drawing.Point(536, 534);
+            this.metroLabel1.Location = new System.Drawing.Point(547, 538);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(17, 19);
             this.metroLabel1.TabIndex = 42;
@@ -349,7 +336,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(591, 626);
+            this.ClientSize = new System.Drawing.Size(611, 626);
             this.ControlBox = false;
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.checkBox1);
@@ -367,8 +354,6 @@
             this.Load += new System.EventHandler(this.Add_Transfernet_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.metroPanel1.ResumeLayout(false);
-            this.metroPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -396,7 +381,6 @@
         private MetroFramework.Controls.MetroLabel labelTrans;
         private MetroFramework.Controls.MetroLabel labelSeeder;
         private MetroFramework.Controls.MetroLabel labelPrice;
-        public MetroFramework.Controls.MetroLabel labelName;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroLabel labelTotal;
         private System.Windows.Forms.CheckBox checkBox1;

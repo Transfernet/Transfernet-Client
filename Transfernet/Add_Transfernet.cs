@@ -21,7 +21,6 @@ namespace WindowsFormsApplication1
             this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
             this.labelName2.Text = fileName;
             this.labelSize.Text = fileSize;
-            this.labelName.Text = fileName;
             this.labelPath.Text = filePath;
 
 
@@ -37,7 +36,7 @@ namespace WindowsFormsApplication1
 
             //displays the current time and date
             timer1.Start();
-            int i = 1;
+            int i = 0;
             var lineNumber = 0;
 
             //randomize lines that contain user data in .transfernet file
@@ -57,18 +56,18 @@ namespace WindowsFormsApplication1
                 string[] subStrings = allLines[lineNumber].Split(',');
 
                 CheckBox newbox = new CheckBox();
-                newbox.Location = new Point(labelPrice.Location.X + 5, labelPrice.Location.Y + (25 * i));
+                newbox.Location = new Point(5, 0 + (25 * i));
                 newbox.Text = subStrings[0];
                 newbox.Name = "box" + i.ToString(); 
                 metroPanel1.Controls.Add(newbox);
 
                 Label lbl = new Label();
-                lbl.Location = new Point(labelSeeder.Location.X, labelSeeder.Location.Y + (25 * i));
+                lbl.Location = new Point(0 + 125, 0 + (25 * i));
                 lbl.Text = subStrings[1];
                 metroPanel1.Controls.Add(lbl);
 
                 Label lbl2 = new Label();
-                lbl2.Location = new Point(labelTrans.Location.X, labelTrans.Location.Y + (25 * i));
+                lbl2.Location = new Point(0 + 300, 0 + (25 * i));
                 lbl2.Text = subStrings[2];
                 metroPanel1.Controls.Add(lbl2);
 
