@@ -1,10 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Diagnostics;
+using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+
+
+
+
 
 namespace WindowsFormsApplication1
 {
@@ -122,15 +130,6 @@ namespace WindowsFormsApplication1
 
                 frm.Show();
 
-                richTextBox2.SelectionTabs = new int[] { 100, 200, 300, 400 };
-                richTextBox2.Width = 580;
-                richTextBox2.Text =
-                    "24,34\t1228\tC:\\14035/61439\tD:\\399175/415186\t01 02 03 04 05 06 07 08 09 10 11\t0 1 2 3 " +
-                    "58,05\t4017\tC:\\5610/61439\tD:\\396629/415186\t10 11 12 13 14 15\t0 1 2";
-                richTextBox2.SelectAll();
-                richTextBox2.SelectionTabs = new int[] { 50, 100, 200, 320, 530 };
-                richTextBox2.AcceptsTab = true;
-                richTextBox2.Select(0, 0);
 
             }
 
@@ -150,6 +149,7 @@ namespace WindowsFormsApplication1
             {
                 
                 update();
+                addPeers();
                 
             }
 
@@ -264,6 +264,56 @@ namespace WindowsFormsApplication1
 
 
         }
+
+        private void addPeers()
+        {
+           
+
+            int i = 0;
+            var lineNumber = 0;
+            string resName = Properties.Resources.Peers;
+
+
+            //randomize lines that contain user data in .transfernet file
+
+            string[] allLines = resName.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+            Random rand = new Random();
+            allLines = allLines.OrderBy(line => rand.Next()).ToArray();
+            
+
+            //display a random amount of users
+            Random r = new Random();
+            int num = r.Next(10, allLines.Length);
+
+            // foreach (string line in File.ReadLines(labelPath.Text))
+            while (lineNumber < num)
+            {
+
+                string[] subStrings = allLines[lineNumber].Split(',');
+                
+
+                Label lbl5 = new Label();
+                lbl5.Location = new Point(5, 0 + (25 * i));
+                lbl5.Text = subStrings[0];
+                metroPanel3.Controls.Add(lbl5);
+
+                
+
+                Label lbl2 = new Label();
+                lbl2.Location = new Point(225, 0 + (25 * i));
+                lbl2.Text = subStrings[1];
+                metroPanel3.Controls.Add(lbl2);
+
+                Label lbl3 = new Label();
+                lbl3.Location = new Point(400, 0 + (25 * i));
+                lbl3.Text = subStrings[2];
+                metroPanel3.Controls.Add(lbl3);
+                
+                i++;
+                lineNumber++;
+            }
+        }
+
         #endregion update_sync
 
         #region exit
@@ -313,8 +363,13 @@ namespace WindowsFormsApplication1
             frm.Show();
         }
 
+
         #endregion ButtonMenu
 
-
+        private void blockButton_Click(object sender, EventArgs e)
+        {
+            Form frm = new BlockList();
+            frm.Show();
+        }
     }
 }
