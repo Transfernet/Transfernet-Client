@@ -33,42 +33,35 @@
             this.metroLabelSize = new MetroFramework.Controls.MetroLabel();
             this.metroLabelDate = new MetroFramework.Controls.MetroLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.labelTrans = new MetroFramework.Controls.MetroLabel();
+            this.labelSeeder = new MetroFramework.Controls.MetroLabel();
+            this.labelPrice = new MetroFramework.Controls.MetroLabel();
+            this.labelPath = new MetroFramework.Controls.MetroLabel();
+            this.labelLocation = new MetroFramework.Controls.MetroLabel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.labelSize = new MetroFramework.Controls.MetroLabel();
             this.labelName2 = new MetroFramework.Controls.MetroLabel();
-            this.groupBoxBuy = new System.Windows.Forms.GroupBox();
-            this.seeder3 = new MetroFramework.Controls.MetroLabel();
-            this.seeder2 = new MetroFramework.Controls.MetroLabel();
-            this.seeder1 = new MetroFramework.Controls.MetroLabel();
-            this.labelName = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroCheckBox8 = new MetroFramework.Controls.MetroCheckBox();
-            this.metroCheckBox7 = new MetroFramework.Controls.MetroCheckBox();
-            this.metroCheckBox6 = new MetroFramework.Controls.MetroCheckBox();
-            this.metroCheckBox5 = new MetroFramework.Controls.MetroCheckBox();
-            this.metroCheckBox4 = new MetroFramework.Controls.MetroCheckBox();
             this.displayTime = new MetroFramework.Controls.MetroLabel();
             this.cancelButton = new MetroFramework.Controls.MetroButton();
             this.advButton = new MetroFramework.Controls.MetroButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.metroCheckBox1 = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
-            this.Buy = new MetroFramework.Controls.MetroButton();
+            this.buyButton = new MetroFramework.Controls.MetroButton();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.labelTotal = new MetroFramework.Controls.MetroLabel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.groupBox2.SuspendLayout();
-            this.groupBoxBuy.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroLabelName
             // 
             this.metroLabelName.AutoSize = true;
-            this.metroLabelName.Location = new System.Drawing.Point(26, 60);
+            this.metroLabelName.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabelName.Location = new System.Drawing.Point(26, 70);
             this.metroLabelName.Name = "metroLabelName";
             this.metroLabelName.Size = new System.Drawing.Size(48, 19);
             this.metroLabelName.TabIndex = 5;
@@ -77,7 +70,8 @@
             // metroLabelSize
             // 
             this.metroLabelSize.AutoSize = true;
-            this.metroLabelSize.Location = new System.Drawing.Point(26, 100);
+            this.metroLabelSize.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabelSize.Location = new System.Drawing.Point(26, 110);
             this.metroLabelSize.Name = "metroLabelSize";
             this.metroLabelSize.Size = new System.Drawing.Size(35, 19);
             this.metroLabelSize.TabIndex = 6;
@@ -86,35 +80,108 @@
             // metroLabelDate
             // 
             this.metroLabelDate.AutoSize = true;
-            this.metroLabelDate.Location = new System.Drawing.Point(26, 133);
+            this.metroLabelDate.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabelDate.Location = new System.Drawing.Point(26, 130);
             this.metroLabelDate.Name = "metroLabelDate";
-            this.metroLabelDate.Size = new System.Drawing.Size(39, 19);
+            this.metroLabelDate.Size = new System.Drawing.Size(41, 19);
             this.metroLabelDate.TabIndex = 7;
             this.metroLabelDate.Text = "Date:";
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.metroPanel1);
+            this.groupBox2.Controls.Add(this.labelPath);
+            this.groupBox2.Controls.Add(this.labelTrans);
+            this.groupBox2.Controls.Add(this.labelLocation);
+            this.groupBox2.Controls.Add(this.labelSeeder);
             this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.labelPrice);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.labelSize);
             this.groupBox2.Controls.Add(this.labelName2);
-            this.groupBox2.Controls.Add(this.groupBoxBuy);
             this.groupBox2.Controls.Add(this.displayTime);
             this.groupBox2.Controls.Add(this.metroLabelName);
             this.groupBox2.Controls.Add(this.metroLabelSize);
             this.groupBox2.Controls.Add(this.metroLabelDate);
             this.groupBox2.Location = new System.Drawing.Point(10, 63);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(570, 465);
+            this.groupBox2.Size = new System.Drawing.Size(591, 465);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Contents";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // metroPanel1
+            // 
+            this.metroPanel1.AutoScroll = true;
+            this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel1.HorizontalScrollbar = true;
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(13, 230);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(565, 229);
+            this.metroPanel1.TabIndex = 39;
+            this.metroPanel1.VerticalScrollbar = true;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // labelTrans
+            // 
+            this.labelTrans.AutoSize = true;
+            this.labelTrans.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelTrans.Location = new System.Drawing.Point(287, 208);
+            this.labelTrans.Name = "labelTrans";
+            this.labelTrans.Size = new System.Drawing.Size(122, 19);
+            this.labelTrans.TabIndex = 38;
+            this.labelTrans.Text = "Sucessful Transfers";
+            // 
+            // labelSeeder
+            // 
+            this.labelSeeder.AutoSize = true;
+            this.labelSeeder.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelSeeder.Location = new System.Drawing.Point(134, 208);
+            this.labelSeeder.Name = "labelSeeder";
+            this.labelSeeder.Size = new System.Drawing.Size(50, 19);
+            this.labelSeeder.TabIndex = 37;
+            this.labelSeeder.Text = "Seeder";
+            // 
+            // labelPrice
+            // 
+            this.labelPrice.AutoSize = true;
+            this.labelPrice.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelPrice.Location = new System.Drawing.Point(23, 208);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(38, 19);
+            this.labelPrice.TabIndex = 36;
+            this.labelPrice.Text = "Price";
+            // 
+            // labelPath
+            // 
+            this.labelPath.AutoSize = true;
+            this.labelPath.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.labelPath.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelPath.Location = new System.Drawing.Point(93, 94);
+            this.labelPath.Name = "labelPath";
+            this.labelPath.Size = new System.Drawing.Size(31, 15);
+            this.labelPath.TabIndex = 37;
+            this.labelPath.Text = "Path";
+            // 
+            // labelLocation
+            // 
+            this.labelLocation.AutoSize = true;
+            this.labelLocation.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelLocation.Location = new System.Drawing.Point(26, 90);
+            this.labelLocation.Name = "labelLocation";
+            this.labelLocation.Size = new System.Drawing.Size(64, 19);
+            this.labelLocation.TabIndex = 36;
+            this.labelLocation.Text = "Location:";
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(453, 201);
+            this.button3.Location = new System.Drawing.Point(495, 175);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 23);
             this.button3.TabIndex = 35;
@@ -126,7 +193,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(357, 201);
+            this.button2.Location = new System.Drawing.Point(405, 175);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 23);
             this.button2.TabIndex = 34;
@@ -138,202 +205,39 @@
             // labelSize
             // 
             this.labelSize.AutoSize = true;
-            this.labelSize.Location = new System.Drawing.Point(80, 100);
+            this.labelSize.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.labelSize.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelSize.Location = new System.Drawing.Point(93, 114);
             this.labelSize.Name = "labelSize";
-            this.labelSize.Size = new System.Drawing.Size(100, 19);
+            this.labelSize.Size = new System.Drawing.Size(86, 15);
             this.labelSize.TabIndex = 33;
             this.labelSize.Text = "Added File Size";
             // 
             // labelName2
             // 
             this.labelName2.AutoSize = true;
-            this.labelName2.Location = new System.Drawing.Point(80, 60);
+            this.labelName2.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.labelName2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelName2.Location = new System.Drawing.Point(93, 73);
             this.labelName2.Name = "labelName2";
-            this.labelName2.Size = new System.Drawing.Size(113, 19);
+            this.labelName2.Size = new System.Drawing.Size(98, 15);
             this.labelName2.TabIndex = 32;
             this.labelName2.Text = "Added File Name";
-            // 
-            // groupBoxBuy
-            // 
-            this.groupBoxBuy.Controls.Add(this.seeder3);
-            this.groupBoxBuy.Controls.Add(this.seeder2);
-            this.groupBoxBuy.Controls.Add(this.seeder1);
-            this.groupBoxBuy.Controls.Add(this.labelName);
-            this.groupBoxBuy.Controls.Add(this.metroLabel8);
-            this.groupBoxBuy.Controls.Add(this.metroLabel7);
-            this.groupBoxBuy.Controls.Add(this.metroLabel6);
-            this.groupBoxBuy.Controls.Add(this.metroLabel9);
-            this.groupBoxBuy.Controls.Add(this.metroLabel2);
-            this.groupBoxBuy.Controls.Add(this.metroLabel1);
-            this.groupBoxBuy.Controls.Add(this.metroCheckBox8);
-            this.groupBoxBuy.Controls.Add(this.metroCheckBox7);
-            this.groupBoxBuy.Controls.Add(this.metroCheckBox6);
-            this.groupBoxBuy.Controls.Add(this.metroCheckBox5);
-            this.groupBoxBuy.Controls.Add(this.metroCheckBox4);
-            this.groupBoxBuy.Location = new System.Drawing.Point(26, 234);
-            this.groupBoxBuy.Name = "groupBoxBuy";
-            this.groupBoxBuy.Size = new System.Drawing.Size(516, 225);
-            this.groupBoxBuy.TabIndex = 23;
-            this.groupBoxBuy.TabStop = false;
-            // 
-            // seeder3
-            // 
-            this.seeder3.AutoSize = true;
-            this.seeder3.Location = new System.Drawing.Point(256, 131);
-            this.seeder3.Name = "seeder3";
-            this.seeder3.Size = new System.Drawing.Size(88, 19);
-            this.seeder3.TabIndex = 34;
-            this.seeder3.Text = "metroLabel14";
-            // 
-            // seeder2
-            // 
-            this.seeder2.AutoSize = true;
-            this.seeder2.Location = new System.Drawing.Point(256, 106);
-            this.seeder2.Name = "seeder2";
-            this.seeder2.Size = new System.Drawing.Size(88, 19);
-            this.seeder2.TabIndex = 33;
-            this.seeder2.Text = "metroLabel13";
-            // 
-            // seeder1
-            // 
-            this.seeder1.AutoSize = true;
-            this.seeder1.Location = new System.Drawing.Point(256, 85);
-            this.seeder1.Name = "seeder1";
-            this.seeder1.Size = new System.Drawing.Size(65, 19);
-            this.seeder1.TabIndex = 32;
-            this.seeder1.Text = "Test Label";
-            // 
-            // labelName
-            // 
-            this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(13, 20);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(69, 19);
-            this.labelName.TabIndex = 31;
-            this.labelName.Text = "File Name";
-            // 
-            // metroLabel8
-            // 
-            this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(86, 150);
-            this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(132, 19);
-            this.metroLabel8.TabIndex = 30;
-            this.metroLabel8.Text = "Kraken195 | 20123523";
-            // 
-            // metroLabel7
-            // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(86, 127);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(129, 19);
-            this.metroLabel7.TabIndex = 29;
-            this.metroLabel7.Text = "Quazaaar\t | 21537571";
-            // 
-            // metroLabel6
-            // 
-            this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(86, 106);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(129, 19);
-            this.metroLabel6.TabIndex = 28;
-            this.metroLabel6.Text = "Gemini69\t | 30012458";
-            // 
-            // metroLabel9
-            // 
-            this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(13, 179);
-            this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(82, 19);
-            this.metroLabel9.TabIndex = 21;
-            this.metroLabel9.Text = "Total = $1.55";
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(87, 85);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(130, 19);
-            this.metroLabel2.TabIndex = 27;
-            this.metroLabel2.Text = "Kraken221 | 32351123";
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(87, 64);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(128, 19);
-            this.metroLabel1.TabIndex = 26;
-            this.metroLabel1.Text = "BigMike | 409123879";
-            // 
-            // metroCheckBox8
-            // 
-            this.metroCheckBox8.AutoSize = true;
-            this.metroCheckBox8.Location = new System.Drawing.Point(13, 152);
-            this.metroCheckBox8.Name = "metroCheckBox8";
-            this.metroCheckBox8.Size = new System.Drawing.Size(50, 15);
-            this.metroCheckBox8.TabIndex = 25;
-            this.metroCheckBox8.TabStop = false;
-            this.metroCheckBox8.Text = "$1.80";
-            this.metroCheckBox8.UseSelectable = true;
-            // 
-            // metroCheckBox7
-            // 
-            this.metroCheckBox7.AutoSize = true;
-            this.metroCheckBox7.Location = new System.Drawing.Point(13, 131);
-            this.metroCheckBox7.Name = "metroCheckBox7";
-            this.metroCheckBox7.Size = new System.Drawing.Size(50, 15);
-            this.metroCheckBox7.TabIndex = 24;
-            this.metroCheckBox7.TabStop = false;
-            this.metroCheckBox7.Text = "$1.45";
-            this.metroCheckBox7.UseSelectable = true;
-            // 
-            // metroCheckBox6
-            // 
-            this.metroCheckBox6.AutoSize = true;
-            this.metroCheckBox6.Location = new System.Drawing.Point(13, 110);
-            this.metroCheckBox6.Name = "metroCheckBox6";
-            this.metroCheckBox6.Size = new System.Drawing.Size(50, 15);
-            this.metroCheckBox6.TabIndex = 23;
-            this.metroCheckBox6.TabStop = false;
-            this.metroCheckBox6.Text = "$1.30";
-            this.metroCheckBox6.UseSelectable = true;
-            // 
-            // metroCheckBox5
-            // 
-            this.metroCheckBox5.AutoSize = true;
-            this.metroCheckBox5.Location = new System.Drawing.Point(13, 89);
-            this.metroCheckBox5.Name = "metroCheckBox5";
-            this.metroCheckBox5.Size = new System.Drawing.Size(50, 15);
-            this.metroCheckBox5.TabIndex = 22;
-            this.metroCheckBox5.TabStop = false;
-            this.metroCheckBox5.Text = "$1.70";
-            this.metroCheckBox5.UseSelectable = true;
-            // 
-            // metroCheckBox4
-            // 
-            this.metroCheckBox4.AutoSize = true;
-            this.metroCheckBox4.Location = new System.Drawing.Point(13, 68);
-            this.metroCheckBox4.Name = "metroCheckBox4";
-            this.metroCheckBox4.Size = new System.Drawing.Size(50, 15);
-            this.metroCheckBox4.TabIndex = 21;
-            this.metroCheckBox4.TabStop = false;
-            this.metroCheckBox4.Text = "$1.50";
-            this.metroCheckBox4.UseSelectable = true;
             // 
             // displayTime
             // 
             this.displayTime.AutoSize = true;
-            this.displayTime.Location = new System.Drawing.Point(80, 133);
+            this.displayTime.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.displayTime.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.displayTime.Location = new System.Drawing.Point(93, 133);
             this.displayTime.Name = "displayTime";
-            this.displayTime.Size = new System.Drawing.Size(173, 19);
+            this.displayTime.Size = new System.Drawing.Size(156, 15);
             this.displayTime.TabIndex = 22;
             this.displayTime.Text = "Active Date/ Time DIsplayed";
-            this.displayTime.Click += new System.EventHandler(this.displayTime_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(506, 580);
+            this.cancelButton.Location = new System.Drawing.Point(520, 590);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 16;
@@ -344,7 +248,7 @@
             // 
             // advButton
             // 
-            this.advButton.Location = new System.Drawing.Point(10, 580);
+            this.advButton.Location = new System.Drawing.Point(10, 590);
             this.advButton.Name = "advButton";
             this.advButton.Size = new System.Drawing.Size(75, 23);
             this.advButton.TabIndex = 17;
@@ -357,20 +261,10 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // metroCheckBox1
-            // 
-            this.metroCheckBox1.AutoSize = true;
-            this.metroCheckBox1.Location = new System.Drawing.Point(49, 534);
-            this.metroCheckBox1.Name = "metroCheckBox1";
-            this.metroCheckBox1.Size = new System.Drawing.Size(108, 15);
-            this.metroCheckBox1.TabIndex = 34;
-            this.metroCheckBox1.Text = "With anonymity";
-            this.metroCheckBox1.UseSelectable = true;
-            // 
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(157, 530);
+            this.metroLabel10.Location = new System.Drawing.Point(127, 563);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(59, 19);
             this.metroLabel10.TabIndex = 35;
@@ -379,43 +273,87 @@
             // metroLabel11
             // 
             this.metroLabel11.AutoSize = true;
-            this.metroLabel11.Location = new System.Drawing.Point(425, 534);
+            this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel11.Location = new System.Drawing.Point(438, 538);
             this.metroLabel11.Name = "metroLabel11";
-            this.metroLabel11.Size = new System.Drawing.Size(128, 19);
+            this.metroLabel11.Size = new System.Drawing.Size(117, 19);
             this.metroLabel11.TabIndex = 36;
-            this.metroLabel11.Text = "Grand Total = $ 2.55";
+            this.metroLabel11.Text = "Grand Total = $ ";
             // 
-            // Buy
+            // buyButton
             // 
-            this.Buy.Location = new System.Drawing.Point(344, 534);
-            this.Buy.Name = "Buy";
-            this.Buy.Size = new System.Drawing.Size(75, 23);
-            this.Buy.TabIndex = 37;
-            this.Buy.TabStop = false;
-            this.Buy.Text = "Buy";
-            this.Buy.UseSelectable = true;
-            this.Buy.Click += new System.EventHandler(this.Buy_Click_1);
+            this.buyButton.Location = new System.Drawing.Point(357, 537);
+            this.buyButton.Name = "buyButton";
+            this.buyButton.Size = new System.Drawing.Size(75, 23);
+            this.buyButton.TabIndex = 37;
+            this.buyButton.TabStop = false;
+            this.buyButton.Text = "Buy";
+            this.buyButton.UseSelectable = true;
+            this.buyButton.Click += new System.EventHandler(this.Buy_Click_1);
+            // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel8.Location = new System.Drawing.Point(23, 538);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(64, 19);
+            this.metroLabel8.TabIndex = 39;
+            this.metroLabel8.Text = "Total = $";
+            // 
+            // labelTotal
+            // 
+            this.labelTotal.AutoSize = true;
+            this.labelTotal.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.labelTotal.Location = new System.Drawing.Point(83, 537);
+            this.labelTotal.Name = "labelTotal";
+            this.labelTotal.Size = new System.Drawing.Size(17, 19);
+            this.labelTotal.TabIndex = 40;
+            this.labelTotal.Text = "0";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(23, 565);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.checkBox1.Size = new System.Drawing.Size(98, 17);
+            this.checkBox1.TabIndex = 41;
+            this.checkBox1.Text = "With anonymity";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel1.Location = new System.Drawing.Point(547, 538);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(17, 19);
+            this.metroLabel1.TabIndex = 42;
+            this.metroLabel1.Text = "0";
             // 
             // Add_Transfernet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(591, 626);
-            this.Controls.Add(this.Buy);
+            this.ClientSize = new System.Drawing.Size(611, 626);
+            this.ControlBox = false;
+            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.labelTotal);
+            this.Controls.Add(this.buyButton);
             this.Controls.Add(this.metroLabel11);
+            this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.metroLabel10);
-            this.Controls.Add(this.metroCheckBox1);
             this.Controls.Add(this.advButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.groupBox2);
             this.Name = "Add_Transfernet";
             this.Resizable = false;
-            this.Text = "Buy Torrents";
+            this.Text = "Buy Transfers";
             this.Load += new System.EventHandler(this.Add_Transfernet_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBoxBuy.ResumeLayout(false);
-            this.groupBoxBuy.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,31 +366,24 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private MetroFramework.Controls.MetroButton cancelButton;
         private MetroFramework.Controls.MetroButton advButton;
-        private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel displayTime;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.GroupBox groupBoxBuy;
-        private MetroFramework.Controls.MetroLabel metroLabel8;
-        private MetroFramework.Controls.MetroLabel metroLabel7;
-        private MetroFramework.Controls.MetroLabel metroLabel6;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox8;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox7;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox6;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox5;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox4;
         private MetroFramework.Controls.MetroLabel labelSize;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox1;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel metroLabel11;
         public MetroFramework.Controls.MetroLabel labelName2;
-        public MetroFramework.Controls.MetroLabel labelName;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private MetroFramework.Controls.MetroLabel seeder1;
-        private MetroFramework.Controls.MetroLabel seeder3;
-        private MetroFramework.Controls.MetroLabel seeder2;
-        private MetroFramework.Controls.MetroButton Buy;
+        private MetroFramework.Controls.MetroButton buyButton;
+        public MetroFramework.Controls.MetroLabel labelPath;
+        private MetroFramework.Controls.MetroLabel labelLocation;
+        private MetroFramework.Controls.MetroPanel metroPanel1;
+        private MetroFramework.Controls.MetroLabel labelTrans;
+        private MetroFramework.Controls.MetroLabel labelSeeder;
+        private MetroFramework.Controls.MetroLabel labelPrice;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private MetroFramework.Controls.MetroLabel labelTotal;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
     }
 }

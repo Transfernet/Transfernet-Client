@@ -1,7 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading;
 using System.Windows.Forms;
+
+
+
+
 
 namespace WindowsFormsApplication1
 {
@@ -12,56 +23,87 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
-
-            //you shouldnt have to run background workers until a tnet file is actually uploaded
-            //backgroundWorker1.DoWork += backgroundWorker1_DoWork;
-            //backgroundWorker1.ProgressChanged += backgroundWorker1_ProgressChanged;
-            //backgroundWorker1.WorkerReportsProgress = true;
-            //backgroundWorker1.RunWorkerAsync();
-
-            //what is this timer for?
-            //timer
-            timer1.Tick += new EventHandler(timer1_Tick); // Everytime timer ticks, timer_Tick will be called
-            timer1.Interval = (1000) * (1);              // Timer will tick every second
-            timer1.Enabled = true;                       // Enable the timer
-            timer1.Start();                              // Start the timer
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        #region backgroundworker
+
+        private void checkStatus()
         {
-            //want to only display seconds for the "Time Elapsed" label in the info tab
+
         }
 
-        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        static bool done;
+
+        public static bool Done
         {
-            for (int i = 0; i <= 100; i++)
+            get
             {
-                //this was commented out because it is blocking selection of tabs
-                //Thread.Sleep(1000);
-                backgroundWorker1.ReportProgress(i);
+                return done;
             }
-            //There is a threading problem here.  If you have a background worker you need to make sure it only
-            //issues commands to GUI elements while it is running on the main thread
-
-            //you need to use a delegate to run a function from the background thread so it can access the main thread
-            // metroLabel31.Show();
+            set
+            {
+                done = value;
+            }
         }
 
-        private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            //metroProgressBar1.Value = e.ProgressPercentage;
-            //metroProgressBar2.Value = e.ProgressPercentage;
-            //metroProgressBar3.Value = e.ProgressPercentage;
-            //row1Progress.Value = e.ProgressPercentage;
+            General.Done = false;
+
+
+            for (int k = 0; k <= progressBar1.Maximum; k++)
+            {
+                // Report progress to 'UI' thread
+                backgroundWorker1.ReportProgress(k);
+                // Simulate long task
+                Thread.Sleep(100);
+            }
+            
         }
+
+        void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            ProgressBar pBar = new ProgressBar();
+            pBar.Location = new Point(445, 0 + (25 * (count - 1)));
+            pBar.Width = 100;
+            pBar.Height = 15;
+            pBar.Maximum = 100;
+            metroPanel1.Controls.Add(pBar);
+
+            // The progress percentage is a property of e
+            pBar.Value = e.ProgressPercentage;
+            progressBar1.Value = e.ProgressPercentage;
+            metroLabel9.Text = e.ProgressPercentage.ToString() + "%";
+            metroLabel10.Text = "Downloading";
+
+
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender,RunWorkerCompletedEventArgs e)
+        {
+            metroLabel10.Text = "Download Complete";
+            General.Done = true;
+
+        }
+
+
+        #endregion backgroundworker 
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.timer1.Start();
+            
+
         }
         #endregion basics
 
         #region AddTransfernet
+
+        //need to store the info from the recently opened file
+        public string filename;
+        public string size;
+        public string path;
 
         //there are two ways to add a transfernet file: from the menu strip or button on menu
         private void addTorrentToolStripMenuItem_Click(object sender, EventArgs e)
@@ -77,25 +119,48 @@ namespace WindowsFormsApplication1
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK) // Test result.
             {
-                var size = new FileInfo(openFileDialog1.FileName).Length;
-                Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, size.ToString(), openFileDialog1.FileName);
+                var filesize = new FileInfo(openFileDialog1.FileName).Length;
+
+                size = filesize.ToString();
+                filename = openFileDialog1.SafeFileName;
+                path = openFileDialog1.FileName;
+
+                Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, filesize.ToString(), openFileDialog1.FileName);
+                frm.FormClosing += new FormClosingEventHandler(this.Form2_FormClosing);
 
                 frm.Show();
 
-                //when a transfernet file is added, the savefilename is displayed in the files control box
 
-                //need to make it so that this does not show up until the user has confirmed
-                //that they want to "buy" the tnet file
-                //tabControl1.Controls.Add(new Label());
-                metroLabel1.Text = openFileDialog1.SafeFileName;
-                row1Name.Text = openFileDialog1.SafeFileName;
-                row1Size.Text = size.ToString();
-                row1Name.Visible = true;
-                row1Size.Visible = true;
             }
 
             Console.WriteLine(result); // <-- For debugging use.
         }
+
+
+
+        //
+        public int count = 0;
+        public void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool y = Add_Transfernet.Purchase;
+            if (y == true)
+            //if (e.CloseReason == CloseReason.UserClosing)
+           // if (string.Equals((sender as Button).Name, @"buyButton"))
+            {
+                
+                update();
+                addPeers();
+                
+            }
+
+            else
+            {
+                // Then assume that "Close" has been clicked and add nothing.
+            }
+
+        }
+
+
 
         public int j = 1;
 
@@ -112,29 +177,144 @@ namespace WindowsFormsApplication1
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK) // Test result.
             {
-                var size = new FileInfo(openFileDialog1.FileName).Length;
-                Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, size.ToString(), openFileDialog1.FileName);
+                var filesize = new FileInfo(openFileDialog1.FileName).Length;
+                Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, filesize.ToString(), openFileDialog1.FileName);
+                frm.FormClosing += new FormClosingEventHandler(this.Form2_FormClosing);
 
                 frm.Show();
+
+                size = filesize.ToString();
+                filename = openFileDialog1.SafeFileName;
+                path = openFileDialog1.FileName;
 
                 //each time a new transfernet file is added a new label needs to be added to the tabs and not overwrite the previous files added
                 //This section is a work in progress to adjust the label poition based on how many transfers have been added
 
                 //when a transfernet file is added, the savefilename is displayed in the files control box
-                var file = new Label();
-                file.Text = openFileDialog1.SafeFileName;
-                file.Location = new Point(tabPage1.Location.X + 10, tabPage1.Location.Y + 1 * j);
-                tabPage1.Controls.Add(file);
-                row1Name.Text = openFileDialog1.SafeFileName;
-                row1Size.Text = size.ToString();
-                row1Name.Visible = true;
-                row1Size.Visible = true;
+
 
                 j++;
             }
         }
 
         #endregion AddTransfernet
+
+        #region update_sync
+        public void update()
+        {
+           
+            backgroundWorker1.RunWorkerAsync();
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
+            backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker1_ProgressChanged);
+            backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker1_RunWorkerCompleted);
+
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
+
+            count++;
+
+            tabControl1.SelectedTab = tabPage2;
+            
+
+            //location inside metro panel is independent of panel's location on the form
+            //lable for num
+            Label num = new Label();
+            num.AutoSize = true;
+            num.Location = new Point(0,0+(25*(count-1)));
+            num.Text = count.ToString();
+            metroPanel1.Controls.Add(num);
+
+            //label for name
+            Label name = new Label();
+            name.AutoSize = true;
+            name.Location = new Point(70, 0 + (25 * (count-1)));
+            name.Text = filename;
+            metroPanel1.Controls.Add(name);
+
+            //label for size
+            Label siz = new Label();
+            siz.AutoSize = true;
+            siz.Location = new Point(355, 0 + (25 * (count-1)));
+            siz.Text = size;
+            metroPanel1.Controls.Add(siz);
+
+            //progerssbar does not update with main progress bar
+
+
+
+
+
+            if (General.Done == true)
+                {
+                    stopWatch.Stop();
+                   // metroLabel8.Text = elapsedTime.ToString();
+
+                }
+            
+
+
+            //labels for tab pages
+            Label file = new Label();
+            file.AutoSize = true;
+            file.Text = num.Text + " " + filename;
+            file.Location = new Point(0, 0 + (25 * (count-1)));
+            metroPanel2.Controls.Add(file);
+
+
+        }
+
+        private void addPeers()
+        {
+           
+
+            int i = 0;
+            var lineNumber = 0;
+            string resName = Properties.Resources.Peers;
+
+
+            //randomize lines that contain user data in .transfernet file
+
+            string[] allLines = resName.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+            Random rand = new Random();
+            allLines = allLines.OrderBy(line => rand.Next()).ToArray();
+            
+
+            //display a random amount of users
+            Random r = new Random();
+            int num = r.Next(10, allLines.Length);
+
+            // foreach (string line in File.ReadLines(labelPath.Text))
+            while (lineNumber < num)
+            {
+
+                string[] subStrings = allLines[lineNumber].Split(',');
+                
+
+                Label lbl5 = new Label();
+                lbl5.Location = new Point(5, 0 + (25 * i));
+                lbl5.Text = subStrings[0];
+                metroPanel3.Controls.Add(lbl5);
+
+                
+
+                Label lbl2 = new Label();
+                lbl2.Location = new Point(225, 0 + (25 * i));
+                lbl2.Text = subStrings[1];
+                metroPanel3.Controls.Add(lbl2);
+
+                Label lbl3 = new Label();
+                lbl3.Location = new Point(400, 0 + (25 * i));
+                lbl3.Text = subStrings[2];
+                metroPanel3.Controls.Add(lbl3);
+                
+                i++;
+                lineNumber++;
+            }
+        }
+
+        #endregion update_sync
 
         #region exit
 
@@ -182,8 +362,14 @@ namespace WindowsFormsApplication1
             Seeding frm = new Seeding();
             frm.Show();
         }
+
+
         #endregion ButtonMenu
 
-
+        private void blockButton_Click(object sender, EventArgs e)
+        {
+            Form frm = new BlockList();
+            frm.Show();
+        }
     }
 }

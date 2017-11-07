@@ -50,13 +50,15 @@
             this.seedButton = new MetroFramework.Controls.MetroButton();
             this.blockButton = new MetroFramework.Controls.MetroButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.timer0 = new System.Windows.Forms.Timer(this.components);
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
@@ -71,33 +73,26 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.row1Progress = new MetroFramework.Controls.MetroProgressBar();
-            this.row1Name = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.row1Num = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.row1Size = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.metroProgressBar3 = new MetroFramework.Controls.MetroProgressBar();
-            this.metroProgressBar2 = new MetroFramework.Controls.MetroProgressBar();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
             this.menuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -265,11 +260,7 @@
             this.blockButton.TabStop = false;
             this.blockButton.Text = "Block List";
             this.blockButton.UseSelectable = true;
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.blockButton.Click += new System.EventHandler(this.blockButton_Click);
             // 
             // richTextBox1
             // 
@@ -298,8 +289,11 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.metroLabel17);
+            this.tabPage1.Controls.Add(this.metroLabel5);
+            this.tabPage1.Controls.Add(this.metroLabel4);
             this.tabPage1.Controls.Add(this.metroLabel1);
+            this.tabPage1.Controls.Add(this.metroPanel2);
+            this.tabPage1.Controls.Add(this.metroLabel17);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -308,24 +302,62 @@
             this.tabPage1.Text = "Files";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // metroLabel17
+            // metroLabel5
             // 
-            this.metroLabel17.AutoSize = true;
-            this.metroLabel17.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel17.Location = new System.Drawing.Point(20, 0);
-            this.metroLabel17.Name = "metroLabel17";
-            this.metroLabel17.Size = new System.Drawing.Size(45, 19);
-            this.metroLabel17.TabIndex = 1;
-            this.metroLabel17.Text = "Name";
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel5.Location = new System.Drawing.Point(567, 3);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(20, 19);
+            this.metroLabel5.TabIndex = 28;
+            this.metroLabel5.Text = "%";
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel4.Location = new System.Drawing.Point(478, 3);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(42, 19);
+            this.metroLabel4.TabIndex = 27;
+            this.metroLabel4.Text = "Done";
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(3, 20);
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel1.Location = new System.Drawing.Point(402, 3);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(14, 19);
-            this.metroLabel1.TabIndex = 0;
-            this.metroLabel1.Text = "1";
+            this.metroLabel1.Size = new System.Drawing.Size(32, 19);
+            this.metroLabel1.TabIndex = 26;
+            this.metroLabel1.Text = "Size";
+            // 
+            // metroPanel2
+            // 
+            this.metroPanel2.AutoScroll = true;
+            this.metroPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel2.HorizontalScrollbar = true;
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            this.metroPanel2.Location = new System.Drawing.Point(0, 23);
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.Size = new System.Drawing.Size(831, 228);
+            this.metroPanel2.TabIndex = 25;
+            this.metroPanel2.VerticalScrollbar = true;
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel17
+            // 
+            this.metroLabel17.AutoSize = true;
+            this.metroLabel17.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel17.Location = new System.Drawing.Point(0, 1);
+            this.metroLabel17.Name = "metroLabel17";
+            this.metroLabel17.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel17.TabIndex = 1;
+            this.metroLabel17.Text = "Path";
             // 
             // tabPage2
             // 
@@ -465,12 +497,46 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.metroPanel3);
+            this.tabPage3.Controls.Add(this.metroLabel18);
+            this.tabPage3.Controls.Add(this.metroLabel7);
+            this.tabPage3.Controls.Add(this.metroLabel6);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(831, 251);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Peers";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // metroLabel18
+            // 
+            this.metroLabel18.AutoSize = true;
+            this.metroLabel18.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel18.Location = new System.Drawing.Point(388, 0);
+            this.metroLabel18.Name = "metroLabel18";
+            this.metroLabel18.Size = new System.Drawing.Size(40, 19);
+            this.metroLabel18.TabIndex = 30;
+            this.metroLabel18.Text = "Flags";
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel7.Location = new System.Drawing.Point(222, 0);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(44, 19);
+            this.metroLabel7.TabIndex = 29;
+            this.metroLabel7.Text = "Client";
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel6.Location = new System.Drawing.Point(0, 0);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(21, 19);
+            this.metroLabel6.TabIndex = 28;
+            this.metroLabel6.Text = "IP";
             // 
             // tabPage4
             // 
@@ -498,125 +564,6 @@
             this.pictureBox2.Size = new System.Drawing.Size(257, 50);
             this.pictureBox2.TabIndex = 21;
             this.pictureBox2.TabStop = false;
-            // 
-            // metroPanel1
-            // 
-            this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.metroPanel1.Controls.Add(this.row1Progress);
-            this.metroPanel1.Controls.Add(this.row1Name);
-            this.metroPanel1.Controls.Add(this.metroLabel5);
-            this.metroPanel1.Controls.Add(this.row1Num);
-            this.metroPanel1.Controls.Add(this.metroLabel6);
-            this.metroPanel1.Controls.Add(this.row1Size);
-            this.metroPanel1.Controls.Add(this.metroLabel7);
-            this.metroPanel1.Controls.Add(this.metroProgressBar3);
-            this.metroPanel1.Controls.Add(this.metroProgressBar2);
-            this.metroPanel1.Controls.Add(this.metroLabel4);
-            this.metroPanel1.HorizontalScrollbarBarColor = true;
-            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(279, 119);
-            this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(863, 200);
-            this.metroPanel1.TabIndex = 23;
-            this.metroPanel1.VerticalScrollbar = true;
-            this.metroPanel1.VerticalScrollbarBarColor = true;
-            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 10;
-            // 
-            // row1Progress
-            // 
-            this.row1Progress.Location = new System.Drawing.Point(445, 0);
-            this.row1Progress.Name = "row1Progress";
-            this.row1Progress.Size = new System.Drawing.Size(101, 19);
-            this.row1Progress.TabIndex = 6;
-            this.row1Progress.Visible = false;
-            // 
-            // row1Name
-            // 
-            this.row1Name.AutoSize = true;
-            this.row1Name.Location = new System.Drawing.Point(71, 0);
-            this.row1Name.Name = "row1Name";
-            this.row1Name.Size = new System.Drawing.Size(94, 19);
-            this.row1Name.TabIndex = 7;
-            this.row1Name.Text = "Wonderful Life";
-            this.row1Name.Visible = false;
-            // 
-            // metroLabel5
-            // 
-            this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(71, 32);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(96, 19);
-            this.metroLabel5.TabIndex = 11;
-            this.metroLabel5.Text = "Wonderful_Life";
-            this.metroLabel5.Visible = false;
-            // 
-            // row1Num
-            // 
-            this.row1Num.AutoSize = true;
-            this.row1Num.Location = new System.Drawing.Point(0, 0);
-            this.row1Num.Name = "row1Num";
-            this.row1Num.Size = new System.Drawing.Size(14, 19);
-            this.row1Num.TabIndex = 8;
-            this.row1Num.Text = "1";
-            this.row1Num.Visible = false;
-            // 
-            // metroLabel6
-            // 
-            this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(0, 65);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(16, 19);
-            this.metroLabel6.TabIndex = 12;
-            this.metroLabel6.Text = "3";
-            this.metroLabel6.Visible = false;
-            // 
-            // row1Size
-            // 
-            this.row1Size.AutoSize = true;
-            this.row1Size.Location = new System.Drawing.Point(351, 0);
-            this.row1Size.Name = "row1Size";
-            this.row1Size.Size = new System.Drawing.Size(35, 19);
-            this.row1Size.TabIndex = 9;
-            this.row1Size.Text = "1 GB";
-            this.row1Size.Visible = false;
-            // 
-            // metroLabel7
-            // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(71, 65);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(103, 19);
-            this.metroLabel7.TabIndex = 13;
-            this.metroLabel7.Text = "Its_A_Wonderful";
-            this.metroLabel7.Visible = false;
-            // 
-            // metroProgressBar3
-            // 
-            this.metroProgressBar3.Location = new System.Drawing.Point(445, 69);
-            this.metroProgressBar3.Name = "metroProgressBar3";
-            this.metroProgressBar3.Size = new System.Drawing.Size(101, 19);
-            this.metroProgressBar3.TabIndex = 15;
-            this.metroProgressBar3.Visible = false;
-            // 
-            // metroProgressBar2
-            // 
-            this.metroProgressBar2.Location = new System.Drawing.Point(445, 36);
-            this.metroProgressBar2.Name = "metroProgressBar2";
-            this.metroProgressBar2.Size = new System.Drawing.Size(101, 19);
-            this.metroProgressBar2.TabIndex = 14;
-            this.metroProgressBar2.Visible = false;
-            // 
-            // metroLabel4
-            // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(0, 32);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(16, 19);
-            this.metroLabel4.TabIndex = 10;
-            this.metroLabel4.Text = "2";
-            this.metroLabel4.Visible = false;
             // 
             // metroLabel13
             // 
@@ -658,17 +605,51 @@
             this.metroLabel16.TabIndex = 16;
             this.metroLabel16.Text = "Downloading";
             // 
+            // metroPanel1
+            // 
+            this.metroPanel1.AutoScroll = true;
+            this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel1.HorizontalScrollbar = true;
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(279, 119);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(859, 200);
+            this.metroPanel1.TabIndex = 26;
+            this.metroPanel1.VerticalScrollbar = true;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // metroPanel3
+            // 
+            this.metroPanel3.AutoScroll = true;
+            this.metroPanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel3.HorizontalScrollbar = true;
+            this.metroPanel3.HorizontalScrollbarBarColor = true;
+            this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel3.HorizontalScrollbarSize = 10;
+            this.metroPanel3.Location = new System.Drawing.Point(0, 22);
+            this.metroPanel3.Name = "metroPanel3";
+            this.metroPanel3.Size = new System.Drawing.Size(831, 229);
+            this.metroPanel3.TabIndex = 31;
+            this.metroPanel3.VerticalScrollbar = true;
+            this.metroPanel3.VerticalScrollbarBarColor = true;
+            this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel3.VerticalScrollbarSize = 10;
+            // 
             // General
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1161, 627);
+            this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.metroLabel16);
             this.Controls.Add(this.metroLabel15);
             this.Controls.Add(this.metroLabel14);
             this.Controls.Add(this.metroLabel13);
-            this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControl1);
@@ -685,16 +666,15 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.metroPanel1.ResumeLayout(false);
-            this.metroPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -714,8 +694,7 @@
         private MetroFramework.Controls.MetroButton dlButton;
         private MetroFramework.Controls.MetroButton seedButton;
         public System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.Timer timer0;
         private System.Windows.Forms.ToolStripMenuItem aboutTransfernetClientToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem releaseNotesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportABugToolStripMenuItem;
@@ -726,7 +705,6 @@
         private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
         private System.Windows.Forms.TabPage tabPage2;
         private MetroFramework.Controls.MetroLabel metroLabel35;
         private MetroFramework.Controls.MetroLabel metroLabel34;
@@ -745,22 +723,20 @@
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroButton blockButton;
-        private MetroFramework.Controls.MetroPanel metroPanel1;
-        public MetroFramework.Controls.MetroProgressBar row1Progress;
-        public MetroFramework.Controls.MetroLabel row1Name;
-        private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroLabel row1Num;
-        private MetroFramework.Controls.MetroLabel metroLabel6;
-        private MetroFramework.Controls.MetroLabel row1Size;
-        private MetroFramework.Controls.MetroLabel metroLabel7;
-        public MetroFramework.Controls.MetroProgressBar metroProgressBar3;
-        public MetroFramework.Controls.MetroProgressBar metroProgressBar2;
-        private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel17;
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private MetroFramework.Controls.MetroLabel metroLabel14;
         private MetroFramework.Controls.MetroLabel metroLabel15;
         private MetroFramework.Controls.MetroLabel metroLabel16;
+        private MetroFramework.Controls.MetroPanel metroPanel2;
+        private MetroFramework.Controls.MetroPanel metroPanel1;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel metroLabel18;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroPanel metroPanel3;
     }
 }
 
