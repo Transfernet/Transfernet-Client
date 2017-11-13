@@ -76,7 +76,7 @@ namespace WindowsFormsApplication1
             //the labels need to update their totals when boxes are being checked
 
             double total = 0;
-            double grandtot = 0;
+           
             foreach (Control c in metroPanel1.Controls)
             {
                 if (c is CheckBox)
@@ -98,6 +98,7 @@ namespace WindowsFormsApplication1
 
                 }
             }
+            /*
             if (checkBox1.Checked == true)
             {
                 grandtot = total + 1;
@@ -108,13 +109,14 @@ namespace WindowsFormsApplication1
                 grandtot = total;
                 metroLabel1.Text = grandtot.ToString();
             }
+            */
         }
         #endregion price_updates
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             DateTime datetime = DateTime.Now;
-            this.displayTime.Text = datetime.ToString();
+
             price_update();
         }
 
@@ -235,8 +237,12 @@ namespace WindowsFormsApplication1
             */
         }
 
+
         #endregion buttons
 
-        
+        private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
