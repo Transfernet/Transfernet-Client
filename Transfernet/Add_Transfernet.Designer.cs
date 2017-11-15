@@ -48,9 +48,10 @@
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.labelPath = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.labelSize = new MetroFramework.Controls.MetroLabel();
-            this.labelPath = new MetroFramework.Controls.MetroLabel();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.metroPanel2.SuspendLayout();
@@ -267,6 +268,15 @@
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
             // 
+            // labelPath
+            // 
+            this.labelPath.AutoSize = true;
+            this.labelPath.Location = new System.Drawing.Point(13, 4);
+            this.labelPath.Name = "labelPath";
+            this.labelPath.Size = new System.Drawing.Size(83, 19);
+            this.labelPath.TabIndex = 2;
+            this.labelPath.Text = "metroLabel4";
+            // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
@@ -285,14 +295,14 @@
             this.labelSize.TabIndex = 47;
             this.labelSize.Text = "filesize";
             // 
-            // labelPath
+            // metroButton1
             // 
-            this.labelPath.AutoSize = true;
-            this.labelPath.Location = new System.Drawing.Point(13, 4);
-            this.labelPath.Name = "labelPath";
-            this.labelPath.Size = new System.Drawing.Size(83, 19);
-            this.labelPath.TabIndex = 2;
-            this.labelPath.Text = "metroLabel4";
+            this.metroButton1.Location = new System.Drawing.Point(651, 590);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(125, 23);
+            this.metroButton1.TabIndex = 48;
+            this.metroButton1.Text = "Free Preview";
+            this.metroButton1.UseSelectable = true;
             // 
             // Add_Transfernet
             // 
@@ -300,6 +310,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(814, 626);
             this.ControlBox = false;
+            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.labelSize);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroPanel2);
@@ -346,5 +357,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel labelSize;
         private MetroFramework.Controls.MetroLabel labelPath;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }

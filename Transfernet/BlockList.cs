@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1
             this.metroTextBox1.MaxLength = 32767;
             this.metroTextBox1.Name = "metroTextBox1";
             this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.WaterMark = "Enter Username...";
+            this.metroTextBox1.PromptText = "Enter Username...";
             this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.metroTextBox1.SelectedText = "";
             this.metroTextBox1.SelectionLength = 0;
@@ -84,6 +84,8 @@ namespace WindowsFormsApplication1
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
+            this.panel1.HorizontalScrollbar = true;
             this.panel1.HorizontalScrollbarBarColor = true;
             this.panel1.HorizontalScrollbarHighlightOnWheel = false;
             this.panel1.HorizontalScrollbarSize = 10;
@@ -91,6 +93,7 @@ namespace WindowsFormsApplication1
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(251, 137);
             this.panel1.TabIndex = 4;
+            this.panel1.VerticalScrollbar = true;
             this.panel1.VerticalScrollbarBarColor = true;
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
             this.panel1.VerticalScrollbarSize = 10;
@@ -161,11 +164,12 @@ namespace WindowsFormsApplication1
                 i++;
 
                 //append new text to the block list 
-                File.AppendAllText(pathCur + "\\BlockList.txt", lbl.Text + '\n');
+                File.AppendAllText(pathCur + "\\BlockList.txt", lbl.Text+ Environment.NewLine);
                 
             }
 
             
         }
+
     }
 }
