@@ -25,9 +25,17 @@ namespace WindowsFormsApplication1
 
         private void Add_Transfernet_Load(object sender, EventArgs e)
         {
+            metroComboBox1.SelectedIndex = 0;
 
-            //displays the current time and date
-            timer1.Start();
+            string pathCur = System.IO.Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
+            string path = pathCur + "\\BlockList.txt";
+
+            string[] allLinesBL = File.ReadAllLines(path);
+
+            var lineCount = File.ReadLines(path).Count();
+
+                //displays the current time and date
+                timer1.Start();
             int i = 0;
             var lineNumber = 0;
 
@@ -46,22 +54,39 @@ namespace WindowsFormsApplication1
             {
 
                 string[] subStrings = allLines[lineNumber].Split(',');
-
+                
+                //price
                 CheckBox newbox = new CheckBox();
                 newbox.Location = new Point(5, 0 + (25 * i));
                 newbox.Text = subStrings[0];
                 newbox.Name = "box" + i.ToString(); 
                 metroPanel1.Controls.Add(newbox);
 
+                //name label
                 Label lbl = new Label();
                 lbl.Location = new Point(0 + 125, 0 + (25 * i));
                 lbl.Text = subStrings[1];
                 metroPanel1.Controls.Add(lbl);
 
+                //successful transfers
                 Label lbl2 = new Label();
                 lbl2.Location = new Point(0 + 300, 0 + (25 * i));
                 lbl2.Text = subStrings[2];
                 metroPanel1.Controls.Add(lbl2);
+
+
+                //check if name is in the Blacklist and changes it to red
+                for (int j = 0; j < lineCount; ++j)
+                {
+                    if (allLinesBL[j] == lbl.Text)
+                    {
+                        newbox.ForeColor = Color.Red;
+                        lbl.ForeColor = Color.Red;
+                        lbl2.ForeColor = Color.Red;
+                        lbl2.Text = "blocked";
+                    }
+                }
+
 
                 i++;
                 lineNumber++;
@@ -75,8 +100,10 @@ namespace WindowsFormsApplication1
 
             //the labels need to update their totals when boxes are being checked
 
+            double avg = 0;
             double total = 0;
-            double grandtot = 0;
+            double num = 0;
+           
             foreach (Control c in metroPanel1.Controls)
             {
                 if (c is CheckBox)
@@ -86,18 +113,21 @@ namespace WindowsFormsApplication1
                     if (cb.Checked == true)
                     {
                         double value = Convert.ToDouble(cb.Text);
-                        total = total + value;
-                        labelTotal.Text = total.ToString();
+                        num = num + 1;
+                        total = (total + value);
+                        avg = total / num;
+                        labelTotal.Text = avg.ToString();
                     }
                     else
                     {
 
-                        labelTotal.Text = total.ToString();
+                        labelTotal.Text = avg.ToString();
 
                     }
 
                 }
             }
+            /*
             if (checkBox1.Checked == true)
             {
                 grandtot = total + 1;
@@ -108,16 +138,16 @@ namespace WindowsFormsApplication1
                 grandtot = total;
                 metroLabel1.Text = grandtot.ToString();
             }
+            */
         }
         #endregion price_updates
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             DateTime datetime = DateTime.Now;
-            this.displayTime.Text = datetime.ToString();
+
             price_update();
         }
-
 
         #region buttons
         //advance settings
@@ -235,8 +265,12 @@ namespace WindowsFormsApplication1
             */
         }
 
+
         #endregion buttons
 
-        
+        private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

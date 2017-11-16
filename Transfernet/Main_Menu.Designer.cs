@@ -73,6 +73,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
             this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
@@ -84,7 +85,6 @@
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
             this.menuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -258,7 +258,7 @@
             this.blockButton.Size = new System.Drawing.Size(185, 23);
             this.blockButton.TabIndex = 5;
             this.blockButton.TabStop = false;
-            this.blockButton.Text = "Block List";
+            this.blockButton.Text = "Blacklist";
             this.blockButton.UseSelectable = true;
             this.blockButton.Click += new System.EventHandler(this.blockButton_Click);
             // 
@@ -508,6 +508,23 @@
             this.tabPage3.Text = "Peers";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // metroPanel3
+            // 
+            this.metroPanel3.AutoScroll = true;
+            this.metroPanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel3.HorizontalScrollbar = true;
+            this.metroPanel3.HorizontalScrollbarBarColor = true;
+            this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel3.HorizontalScrollbarSize = 10;
+            this.metroPanel3.Location = new System.Drawing.Point(0, 22);
+            this.metroPanel3.Name = "metroPanel3";
+            this.metroPanel3.Size = new System.Drawing.Size(831, 229);
+            this.metroPanel3.TabIndex = 31;
+            this.metroPanel3.VerticalScrollbar = true;
+            this.metroPanel3.VerticalScrollbarBarColor = true;
+            this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel3.VerticalScrollbarSize = 10;
+            // 
             // metroLabel18
             // 
             this.metroLabel18.AutoSize = true;
@@ -621,23 +638,6 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
-            // 
-            // metroPanel3
-            // 
-            this.metroPanel3.AutoScroll = true;
-            this.metroPanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.metroPanel3.HorizontalScrollbar = true;
-            this.metroPanel3.HorizontalScrollbarBarColor = true;
-            this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel3.HorizontalScrollbarSize = 10;
-            this.metroPanel3.Location = new System.Drawing.Point(0, 22);
-            this.metroPanel3.Name = "metroPanel3";
-            this.metroPanel3.Size = new System.Drawing.Size(831, 229);
-            this.metroPanel3.TabIndex = 31;
-            this.metroPanel3.VerticalScrollbar = true;
-            this.metroPanel3.VerticalScrollbarBarColor = true;
-            this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel3.VerticalScrollbarSize = 10;
             // 
             // General
             // 

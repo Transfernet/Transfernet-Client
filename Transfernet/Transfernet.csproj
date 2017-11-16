@@ -129,6 +129,9 @@
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BlockList.resx">
+      <DependentUpon>BlockList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Seeding.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +166,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Transfernet Files For Testing\BlockList.txt" />
     <None Include="Transfernet Files For Testing\Peers.txt" />
     <None Include="Resources\Icon1.ico" />
     <None Include="Resources\logo2.png" />
