@@ -1,7 +1,7 @@
 # TransferNet Client
 In order to install the package dependencies you need to to navigate to Tools->Nuget Package Manager->Package Manager Console 
 
-Once the console pops up, you should type "nuget restore" 
+Once the console pops up, you should type "nuget restore". 
 
 If "nuget" isnt recognized as a command type "Install-Package NuGet.CommandLine" and restart VS
 
