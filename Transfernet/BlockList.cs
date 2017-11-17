@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1
             this.metroTextBox1.MaxLength = 32767;
             this.metroTextBox1.Name = "metroTextBox1";
             this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.PromptText = "Enter Username...";
+            this.metroTextBox1.WaterMark = "Enter Username...";
             this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.metroTextBox1.SelectedText = "";
             this.metroTextBox1.SelectionLength = 0;
@@ -129,6 +129,7 @@ namespace WindowsFormsApplication1
         {
 
             // need to check to see if BlockList.txt file exists
+            //if the file doesn't exist, it is created and then needs to be closed
 #if DEBUG
             string path = "..\\Debug\\Data\\BlockList.txt";
             
@@ -149,6 +150,8 @@ namespace WindowsFormsApplication1
             string[] allLines = File.ReadAllLines(path);
 
             var lineCount = File.ReadLines(path).Count();
+
+            //this loop reads the blocklist file and then displays the names on the form
             for (int j = 0; j < lineCount; ++j)
             {
 
@@ -162,7 +165,8 @@ namespace WindowsFormsApplication1
                 k++;
             }
         }
-        //block button needs to add the username to the blacklist
+        
+        //when enter or the block button is pressed, the username is added to the txt file
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
