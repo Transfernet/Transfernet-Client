@@ -127,8 +127,8 @@ namespace WindowsFormsApplication1
         //function to read users from blacklist text
         private void readBlacklist()
         {
-           
-            string path = pathCur + "\\BlockList.txt";
+
+            string path = "..\\Data\\Blocklist.txt";
            
             string[] allLines = File.ReadAllLines(path);
 

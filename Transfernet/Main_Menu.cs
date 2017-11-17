@@ -64,19 +64,22 @@ namespace WindowsFormsApplication1
 
         void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+
+            //small progress bar in top panel... BROKEN does not update with large progressbar
+            //commenting out this progress bar for now
             ProgressBar pBar = new ProgressBar();
             pBar.Location = new Point(445, 0 + (25 * (count - 1)));
             pBar.Width = 100;
             pBar.Height = 15;
             pBar.Maximum = 100;
-            metroPanel1.Controls.Add(pBar);
+            //metroPanel1.Controls.Add(pBar);
 
             // The progress percentage is a property of e
             pBar.Value = e.ProgressPercentage;
             progressBar1.Value = e.ProgressPercentage;
             metroLabel9.Text = e.ProgressPercentage.ToString() + "%";
             metroLabel10.Text = "Downloading";
-
+            
 
         }
 
@@ -84,6 +87,7 @@ namespace WindowsFormsApplication1
         {
             metroLabel10.Text = "Download Complete";
             General.Done = true;
+           
 
         }
 
@@ -98,7 +102,7 @@ namespace WindowsFormsApplication1
         }
         #endregion basics
 
-        #region AddTransfernet
+        #region AddTransfernetFile
 
         //need to store the info from the recently opened file
         public string filename;
@@ -197,7 +201,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        #endregion AddTransfernet
+        #endregion AddTransfernetFile
 
         #region update_sync
         public void update()
@@ -209,16 +213,12 @@ namespace WindowsFormsApplication1
             backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker1_ProgressChanged);
             backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker1_RunWorkerCompleted);
 
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
-
-
             count++;
 
             tabControl1.SelectedTab = tabPage2;
             
 
-            //location inside metro panel is independent of panel's location on the form
+            //Note: location inside metro panel is independent of panel's location on the form (0,0 is top left corner of panel)
             //lable for num
             Label num = new Label();
             num.AutoSize = true;
@@ -240,18 +240,12 @@ namespace WindowsFormsApplication1
             siz.Text = size;
             metroPanel1.Controls.Add(siz);
 
-            //progerssbar does not update with main progress bar
-
-
-
-
-
-            if (General.Done == true)
-                {
-                    stopWatch.Stop();
-                   // metroLabel8.Text = elapsedTime.ToString();
-
-                }
+            //label for progress instead of bar
+            Label prog = new Label();
+            prog.AutoSize = true;
+            prog.Location = new Point(435, 0 + (25 * (count - 1)));
+            prog.Text = "Download in Progress";
+            metroPanel1.Controls.Add(prog);
             
 
 
@@ -366,10 +360,14 @@ namespace WindowsFormsApplication1
 
         #endregion ButtonMenu
 
+        #region BlackList
+
         private void blockButton_Click(object sender, EventArgs e)
         {
             Form frm = new BlockList();
             frm.Show();
         }
+
+        #endregion  BlackList
     }
 }

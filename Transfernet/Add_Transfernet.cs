@@ -116,6 +116,7 @@ namespace WindowsFormsApplication1
                         num = num + 1;
                         total = (total + value);
                         avg = total / num;
+                        Math.Round(avg, 2);
                         labelTotal.Text = avg.ToString();
                     }
                     else
@@ -247,6 +248,7 @@ namespace WindowsFormsApplication1
                 Add_Transfernet.Purchase = true;
             
                 this.Close();
+                
             }
             /*
             //if we want a "confirm purchase" message box to appear when the buy button is clicked 
