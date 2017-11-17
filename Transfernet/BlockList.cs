@@ -127,9 +127,10 @@ namespace WindowsFormsApplication1
         //function to read users from blacklist text
         private void readBlacklist()
         {
-
-            string path = "..\\Data\\Blocklist.txt";
-           
+            
+            string path = "..\\Debug\\Data\\Blocklist.txt";
+            string pathRelease = "..\\Release\\Data\\Blocklits.txt";  
+                     
             string[] allLines = File.ReadAllLines(path);
 
             var lineCount = File.ReadLines(path).Count();
@@ -164,8 +165,8 @@ namespace WindowsFormsApplication1
                 i++;
 
                 //append new text to the block list 
-                File.AppendAllText(pathCur + "\\BlockList.txt", lbl.Text+ Environment.NewLine);
-                
+                File.AppendAllText("..\\Debug\\Data\\BlockList.txt", lbl.Text+ Environment.NewLine);
+                File.AppendAllText("..\\Release\\Data\\BlockList.txt", lbl.Text + Environment.NewLine);
             }
 
             
