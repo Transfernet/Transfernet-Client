@@ -27,8 +27,8 @@ namespace WindowsFormsApplication1
         {
             metroComboBox1.SelectedIndex = 0;
 
-            string pathCur = System.IO.Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
-            string path = pathCur + "\\BlockList.txt";
+
+            string path = "..\\Data\\BlockList.txt";
 
             string[] allLinesBL = File.ReadAllLines(path);
 
@@ -116,7 +116,7 @@ namespace WindowsFormsApplication1
                         num = num + 1;
                         total = (total + value);
                         avg = total / num;
-                        Math.Round(avg, 2);
+                        avg = Math.Round(avg, 2);
                         labelTotal.Text = avg.ToString();
                     }
                     else
