@@ -56,7 +56,7 @@ namespace WindowsFormsApplication1
             {
                 // Report progress to 'UI' thread
                 backgroundWorker1.ReportProgress(k);
-                // Simulate long task
+                // Simulate long task for .1 seconds
                 Thread.Sleep(100);
             }
             
