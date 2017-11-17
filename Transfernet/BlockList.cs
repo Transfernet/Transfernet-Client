@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
         }
-
+        #region Initializing Components
         private void InitializeComponent()
         {
             this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
@@ -114,32 +114,47 @@ namespace WindowsFormsApplication1
             this.PerformLayout();
 
         }
-
+        #endregion 
         private void BlockList_Load(object sender, EventArgs e)
         {
             readBlacklist();
         }
 
-        int i=0;
+        int i = 0;
         int k = 0;
 
         string pathCur = System.IO.Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
         //function to read users from blacklist text
         private void readBlacklist()
         {
+
+            // need to check to see if BlockList.txt file exists
+#if DEBUG
+            string path = "..\\Debug\\Data\\BlockList.txt";
             
-            string path = "..\\Debug\\Data\\Blocklist.txt";
-            string pathRelease = "..\\Release\\Data\\Blocklits.txt";  
-                     
+            if (!File.Exists(path))
+            {
+                Directory.CreateDirectory("..\\Debug\\Data");
+                File.Create("..\\Debug\\Data\\BlockList.txt").Close();
+            }
+#else
+            string path = "..\\Release\\Data\\Blocklist.txt";  
+            if (!File.Exists(path))
+            {
+                Directory.CreateDirectory("..\\Release\\Data");
+                File.Create("..\\Release\\Data\\BlockList.txt").Close();
+            }
+#endif
+
             string[] allLines = File.ReadAllLines(path);
 
             var lineCount = File.ReadLines(path).Count();
-            for(int j = 0 ; j < lineCount; ++j )
+            for (int j = 0; j < lineCount; ++j)
             {
-               
+
 
                 Label lbl = new Label();
-                lbl.Location = new Point(0 , 0 + (25 * j));
+                lbl.Location = new Point(0, 0 + (25 * j));
                 lbl.Text = allLines[j];
                 panel1.Controls.Add(lbl);
 
@@ -151,11 +166,7 @@ namespace WindowsFormsApplication1
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(metroTextBox1.Text))
-            {
-                // do nothing
-            }
-            else
+            if (!string.IsNullOrWhiteSpace(metroTextBox1.Text))
             {
                 Label lbl = new Label();
                 lbl.Text = metroTextBox1.Text;
@@ -165,11 +176,13 @@ namespace WindowsFormsApplication1
                 i++;
 
                 //append new text to the block list 
-                File.AppendAllText("..\\Debug\\Data\\BlockList.txt", lbl.Text+ Environment.NewLine);
+#if DEBUG
+                File.AppendAllText("..\\Debug\\Data\\BlockList.txt", lbl.Text + Environment.NewLine);
+#else
                 File.AppendAllText("..\\Release\\Data\\BlockList.txt", lbl.Text + Environment.NewLine);
+#endif
             }
 
-            
         }
 
     }
