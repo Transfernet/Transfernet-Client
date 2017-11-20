@@ -187,6 +187,13 @@ namespace TransferNetClient
 #endif
             }
 
+            this.Focus();
+
+        }
+
+        void f_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Focus();
         }
 
     }

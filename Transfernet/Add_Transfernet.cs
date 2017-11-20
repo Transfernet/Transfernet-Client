@@ -11,16 +11,17 @@ namespace TransferNetClient
     {
         public General referenceToTransfernet;
 
-        public Add_Transfernet(string fileName, string fileSize, string filePath)
+        public Add_Transfernet(string fileName, FileInfo fileSize, string filePath)
         {
             InitializeComponent();
             this.Icon = TransferNetClient.Properties.Resources.icon;
             this.labelName2.Text = fileName;
-            this.labelSize.Text = fileSize;
+            
             this.labelPath.Text = filePath;
+            
 
 
-    }
+        }
 
 
         private void Add_Transfernet_Load(object sender, EventArgs e)
@@ -28,7 +29,7 @@ namespace TransferNetClient
             metroComboBox1.SelectedIndex = 0;
 
 
-            string path = "..\\Data\\BlockList.txt";
+            string path = "..\\Debug\\Data\\BlockList.txt";
 
             string[] allLinesBL = File.ReadAllLines(path);
 
@@ -273,6 +274,11 @@ namespace TransferNetClient
         private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            this.Focus();
         }
     }
 }
