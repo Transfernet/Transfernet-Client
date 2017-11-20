@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication1
+namespace TransferNetClient
 {
     public partial class Advanced_Settings : MetroFramework.Forms.MetroForm
     {
         public Advanced_Settings()
         {
             InitializeComponent();
-            this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
+            this.Icon = TransferNetClient.Properties.Resources.icon;
 
 
         }

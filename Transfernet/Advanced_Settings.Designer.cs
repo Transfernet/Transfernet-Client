@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace TransferNetClient
 {
     partial class Advanced_Settings
     {

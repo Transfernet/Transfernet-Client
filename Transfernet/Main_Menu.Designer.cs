@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace TransferNetClient
 {
     partial class General
     {
@@ -566,7 +566,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::WindowsFormsApplication1.Properties.Resources.logo3;
+            this.pictureBox1.Image = global::TransferNetClient.Properties.Resources.logo3;
             this.pictureBox1.Location = new System.Drawing.Point(20, 9);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(86, 48);
@@ -575,7 +575,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::WindowsFormsApplication1.Properties.Resources.logoText;
+            this.pictureBox2.Image = global::TransferNetClient.Properties.Resources.logoText;
             this.pictureBox2.Location = new System.Drawing.Point(112, 9);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(257, 50);

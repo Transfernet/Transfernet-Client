@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace TransferNetClient
 {
     partial class Updates
     {
@@ -47,7 +47,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::WindowsFormsApplication1.Properties.Resources.logo2;
+            this.pictureBox1.Image = global::TransferNetClient.Properties.Resources.logo2;
             this.pictureBox1.Location = new System.Drawing.Point(-5, 153);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(350, 50);

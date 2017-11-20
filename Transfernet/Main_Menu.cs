@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 
 
-namespace WindowsFormsApplication1
+namespace TransferNetClient
 {
     public partial class General : MetroFramework.Forms.MetroForm
     {
@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1
         public General()
         {
             InitializeComponent();
-            this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
+            this.Icon = TransferNetClient.Properties.Resources.icon;
         }
 
         #region backgroundworker

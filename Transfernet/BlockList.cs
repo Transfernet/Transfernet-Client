@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Linq;
 
-namespace WindowsFormsApplication1
+namespace TransferNetClient
 {
 
     //Block List needs to be able to remember the entires when it is pulled up next
@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1
         public BlockList()
         {
             InitializeComponent();
-            this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
+            this.Icon = TransferNetClient.Properties.Resources.icon;
         }
         #region Initializing Components
         private void InitializeComponent()

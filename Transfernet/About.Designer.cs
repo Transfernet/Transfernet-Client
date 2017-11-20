@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace TransferNetClient
 {
     partial class About
     {
@@ -69,9 +69,9 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.ErrorImage = global::WindowsFormsApplication1.Properties.Resources.logo;
-            this.pictureBox1.Image = global::WindowsFormsApplication1.Properties.Resources.logo;
-            this.pictureBox1.InitialImage = global::WindowsFormsApplication1.Properties.Resources.logo;
+            this.pictureBox1.ErrorImage = global::TransferNetClient.Properties.Resources.logo;
+            this.pictureBox1.Image = global::TransferNetClient.Properties.Resources.logo;
+            this.pictureBox1.InitialImage = global::TransferNetClient.Properties.Resources.logo;
             this.pictureBox1.Location = new System.Drawing.Point(46, 16);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(257, 130);

@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication1
+namespace TransferNetClient
 {
     public partial class Add_Transfernet : MetroFramework.Forms.MetroForm
     {
@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1
         public Add_Transfernet(string fileName, string fileSize, string filePath)
         {
             InitializeComponent();
-            this.Icon = WindowsFormsApplication1.Properties.Resources.icon;
+            this.Icon = TransferNetClient.Properties.Resources.icon;
             this.labelName2.Text = fileName;
             this.labelSize.Text = fileSize;
             this.labelPath.Text = filePath;
