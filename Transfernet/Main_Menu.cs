@@ -299,8 +299,6 @@ namespace TransferNetClient
                 lbl5.Text = subStrings[0];
                 metroPanel3.Controls.Add(lbl5);
 
-                
-
                 Label lbl2 = new Label();
                 lbl2.Location = new Point(225, 0 + (25 * i));
                 lbl2.Text = subStrings[1];
