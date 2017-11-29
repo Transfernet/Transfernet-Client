@@ -173,7 +173,7 @@ namespace TransferNetClient
                 btn.Text = "Unblock";
                 btn.Location = new Point(250, (0 + (25 * j)));
                 panel1.Controls.Add(btn);
-
+                
                 btn.Click += new EventHandler(button_Click);
 
                 k++;
@@ -190,18 +190,20 @@ namespace TransferNetClient
             {
                 Label lbl = new Label();
                 lbl.Text = metroTextBox1.Text;
-                lbl.Location = new Point(0, (0 + (25 * (i + k))));
+                lbl.Name = "lbl" + k.ToString(); 
+                lbl.Location = new Point(0, (0 + (25 * ( k))));
                 panel1.Controls.Add(lbl);
                 metroTextBox1.Text = String.Empty;
                 
 
                 Button btn = new Button();
                 btn.Text = "Unblock";
-                btn.Location = new Point(250, (0 + (25 * (i + k))));
+                btn.Name = "btn" + k.ToString();
+                btn.Location = new Point(250, (0 + (25 * ( k))));
                 panel1.Controls.Add(btn);
                 btn.Click += new EventHandler(button_Click);
 
-                i++;
+                k++;
                 //append new text to the block list 
 #if DEBUG
                 File.AppendAllText("..\\Debug\\Data\\BlockList.txt", lbl.Text + Environment.NewLine);
@@ -215,13 +217,31 @@ namespace TransferNetClient
         }
 
         //process for removing a name from the list
+        //NOTE: all the numbering for the labels and buttons is off when one is removved
         protected void button_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
-            // identify which button was clicked and perform necessary actions
-
-            Debug.WriteLine(button.Name);
             
+            // identify which button was clicked and perform necessary actions
+            string sub = button.Name.Substring(3);
+            int removeLine = Convert.ToInt32(sub);
+
+            var file = File.ReadAllLines("..\\Debug\\Data\\BlockList.txt").ToList();
+            file.RemoveAt(removeLine);
+            string btt = "btn" + sub;
+            string label = "lbl" + sub;
+            
+            if (button.Name == btt)
+            {
+                panel1.Controls.Remove(button);
+                panel1.Controls.RemoveByKey(label);
+            }
+           
+
+            File.WriteAllLines("..\\Debug\\Data\\BlockList.txt", file.ToArray());
+
+            readBlacklist();
+
         }
 
         #endregion button clicks
