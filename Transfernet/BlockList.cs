@@ -3,12 +3,15 @@ using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Linq;
+using System.Diagnostics;
 
 namespace TransferNetClient
 {
 
-    //Block List needs to be able to remember the entires when it is pulled up next
-    //possibly have the list exported to a text file and when loading the form it loads the file
+    /*Summary: The Block List contains names of seeders that the user does not trust
+     The code creates a text file in the bin that holds all these names and the names will show up even after the application is closed and reopened
+    
+    */
     public partial class BlockList : MetroFramework.Forms.MetroForm
     {
         private MetroFramework.Controls.MetroTextBox metroTextBox1;
@@ -36,7 +39,7 @@ namespace TransferNetClient
             // 
             // 
             this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(148, 1);
+            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(241, 1);
             this.metroTextBox1.CustomButton.Name = "";
             this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -49,13 +52,13 @@ namespace TransferNetClient
             this.metroTextBox1.MaxLength = 32767;
             this.metroTextBox1.Name = "metroTextBox1";
             this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.WaterMark = "Enter Username...";
+            this.metroTextBox1.PromptText = "Enter Username...";
             this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.metroTextBox1.SelectedText = "";
             this.metroTextBox1.SelectionLength = 0;
             this.metroTextBox1.SelectionStart = 0;
             this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(170, 23);
+            this.metroTextBox1.Size = new System.Drawing.Size(263, 23);
             this.metroTextBox1.TabIndex = 0;
             this.metroTextBox1.UseSelectable = true;
             this.metroTextBox1.WaterMark = "Enter Username...";
@@ -64,7 +67,7 @@ namespace TransferNetClient
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(199, 73);
+            this.metroButton1.Location = new System.Drawing.Point(292, 73);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(75, 23);
             this.metroButton1.TabIndex = 1;
@@ -91,7 +94,7 @@ namespace TransferNetClient
             this.panel1.HorizontalScrollbarSize = 10;
             this.panel1.Location = new System.Drawing.Point(23, 148);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(251, 137);
+            this.panel1.Size = new System.Drawing.Size(344, 137);
             this.panel1.TabIndex = 4;
             this.panel1.VerticalScrollbar = true;
             this.panel1.VerticalScrollbarBarColor = true;
@@ -101,7 +104,7 @@ namespace TransferNetClient
             // BlockList
             // 
             this.AcceptButton = this.metroButton1;
-            this.ClientSize = new System.Drawing.Size(297, 308);
+            this.ClientSize = new System.Drawing.Size(390, 308);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroButton1);
@@ -151,21 +154,34 @@ namespace TransferNetClient
 
             var lineCount = File.ReadLines(path).Count();
 
-            //this loop reads the blocklist file and then displays the names on the form
+            //this loop reads the blocklist file and then displays the names on the form (inculdes the unblock button)
+            //bad things will happen once an unblock feature is added
+            //maybe the positon of labels needs to be relative
             for (int j = 0; j < lineCount; ++j)
             {
 
 
                 Label lbl = new Label();
+                lbl.Name = "lbl" + j.ToString();
                 lbl.Location = new Point(0, 0 + (25 * j));
                 lbl.Text = allLines[j];
                 panel1.Controls.Add(lbl);
 
 
+                Button btn = new Button();
+                btn.Name = "btn" + j.ToString();
+                btn.Text = "Unblock";
+                btn.Location = new Point(250, (0 + (25 * j)));
+                panel1.Controls.Add(btn);
+                
+                btn.Click += new EventHandler(button_Click);
+
                 k++;
             }
         }
-        
+
+        #region button clicks
+
         //when enter or the block button is pressed, the username is added to the txt file
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -174,11 +190,20 @@ namespace TransferNetClient
             {
                 Label lbl = new Label();
                 lbl.Text = metroTextBox1.Text;
-                lbl.Location = new Point(0, (0 + (25 * (i + k))));
+                lbl.Name = "lbl" + k.ToString(); 
+                lbl.Location = new Point(0, (0 + (25 * ( k))));
                 panel1.Controls.Add(lbl);
                 metroTextBox1.Text = String.Empty;
-                i++;
+                
 
+                Button btn = new Button();
+                btn.Text = "Unblock";
+                btn.Name = "btn" + k.ToString();
+                btn.Location = new Point(250, (0 + (25 * ( k))));
+                panel1.Controls.Add(btn);
+                btn.Click += new EventHandler(button_Click);
+
+                k++;
                 //append new text to the block list 
 #if DEBUG
                 File.AppendAllText("..\\Debug\\Data\\BlockList.txt", lbl.Text + Environment.NewLine);
@@ -187,6 +212,42 @@ namespace TransferNetClient
 #endif
             }
 
+            this.Focus();
+
+        }
+
+        //process for removing a name from the list
+        //NOTE: all the numbering for the labels and buttons is off when one is removved
+        protected void button_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            
+            // identify which button was clicked and perform necessary actions
+            string sub = button.Name.Substring(3);
+            int removeLine = Convert.ToInt32(sub);
+
+            var file = File.ReadAllLines("..\\Debug\\Data\\BlockList.txt").ToList();
+            file.RemoveAt(removeLine);
+            string btt = "btn" + sub;
+            string label = "lbl" + sub;
+            
+            if (button.Name == btt)
+            {
+                panel1.Controls.Remove(button);
+                panel1.Controls.RemoveByKey(label);
+            }
+           
+
+            File.WriteAllLines("..\\Debug\\Data\\BlockList.txt", file.ToArray());
+
+            readBlacklist();
+
+        }
+
+        #endregion button clicks
+        void f_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Focus();
         }
 
     }

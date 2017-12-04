@@ -29,6 +29,8 @@ namespace TransferNetClient
 
         private void checkStatus()
         {
+            //need a way to queue multiple downloads
+            //don't start download if one is still in progress
 
         }
 
@@ -49,7 +51,8 @@ namespace TransferNetClient
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            General.Done = false;
+            
+
 
 
             for (int k = 0; k <= progressBar1.Maximum; k++)
@@ -58,7 +61,11 @@ namespace TransferNetClient
                 backgroundWorker1.ReportProgress(k);
                 // Simulate long task for .1 seconds
                 Thread.Sleep(100);
+
+
             }
+
+
             
         }
 
@@ -79,7 +86,8 @@ namespace TransferNetClient
             progressBar1.Value = e.ProgressPercentage;
             metroLabel9.Text = e.ProgressPercentage.ToString() + "%";
             metroLabel10.Text = "Downloading";
-            
+
+
 
         }
 
@@ -123,13 +131,13 @@ namespace TransferNetClient
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK) // Test result.
             {
-                var filesize = new FileInfo(openFileDialog1.FileName).Length;
+                FileInfo filesize = new FileInfo(openFileDialog1.FileName);
 
-                size = filesize.ToString();
+                size = filesize.Length.ToString();
                 filename = openFileDialog1.SafeFileName;
                 path = openFileDialog1.FileName;
 
-                Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, filesize.ToString(), openFileDialog1.FileName);
+                Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, filesize, openFileDialog1.FileName);
                 frm.FormClosing += new FormClosingEventHandler(this.Form2_FormClosing);
 
                 frm.Show();
@@ -137,7 +145,7 @@ namespace TransferNetClient
 
             }
 
-            Console.WriteLine(result); // <-- For debugging use.
+           
         }
 
 
@@ -181,13 +189,13 @@ namespace TransferNetClient
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK) // Test result.
             {
-                var filesize = new FileInfo(openFileDialog1.FileName).Length;
-                Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, filesize.ToString(), openFileDialog1.FileName);
+                FileInfo filesize = new FileInfo(openFileDialog1.FileName);
+                Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, filesize, openFileDialog1.FileName);
                 frm.FormClosing += new FormClosingEventHandler(this.Form2_FormClosing);
 
                 frm.Show();
 
-                size = filesize.ToString();
+                size = filesize.Length.ToString();
                 filename = openFileDialog1.SafeFileName;
                 path = openFileDialog1.FileName;
 
@@ -246,7 +254,7 @@ namespace TransferNetClient
             prog.Location = new Point(435, 0 + (25 * (count - 1)));
             prog.Text = "Download in Progress";
             metroPanel1.Controls.Add(prog);
-            
+
 
 
             //labels for tab pages
@@ -256,7 +264,7 @@ namespace TransferNetClient
             file.Location = new Point(0, 0 + (25 * (count-1)));
             metroPanel2.Controls.Add(file);
 
-
+            this.Focus();
         }
 
         private void addPeers()
@@ -364,6 +372,8 @@ namespace TransferNetClient
         {
             Form frm = new BlockList();
             frm.Show();
+
+            
         }
 
         #endregion  BlackList

@@ -50,7 +50,6 @@
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.labelPath = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.labelSize = new MetroFramework.Controls.MetroLabel();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -286,15 +285,6 @@
             this.metroLabel1.TabIndex = 46;
             this.metroLabel1.Text = "Included Files:";
             // 
-            // labelSize
-            // 
-            this.labelSize.AutoSize = true;
-            this.labelSize.Location = new System.Drawing.Point(651, 29);
-            this.labelSize.Name = "labelSize";
-            this.labelSize.Size = new System.Drawing.Size(47, 19);
-            this.labelSize.TabIndex = 47;
-            this.labelSize.Text = "filesize";
-            // 
             // metroButton1
             // 
             this.metroButton1.Location = new System.Drawing.Point(651, 590);
@@ -303,6 +293,7 @@
             this.metroButton1.TabIndex = 48;
             this.metroButton1.Text = "Free Preview";
             this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // Add_Transfernet
             // 
@@ -311,7 +302,6 @@
             this.ClientSize = new System.Drawing.Size(814, 626);
             this.ControlBox = false;
             this.Controls.Add(this.metroButton1);
-            this.Controls.Add(this.labelSize);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroPanel2);
             this.Controls.Add(this.metroLabel2);
@@ -355,7 +345,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroLabel labelSize;
         private MetroFramework.Controls.MetroLabel labelPath;
         private MetroFramework.Controls.MetroButton metroButton1;
     }
