@@ -36,5 +36,10 @@ namespace TransferNetClient
         {
             System.Diagnostics.Process.Start("http://transfernet.io");
         }
-    }
+
+		private void metroLabel2_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
