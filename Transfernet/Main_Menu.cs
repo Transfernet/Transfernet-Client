@@ -140,7 +140,7 @@ namespace TransferNetClient
                 Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, filesize, openFileDialog1.FileName);
                 frm.FormClosing += new FormClosingEventHandler(this.Form2_FormClosing);
 
-                frm.Show();
+                frm.ShowDialog();
 
 
             }
@@ -335,7 +335,7 @@ namespace TransferNetClient
         private void aboutTransfernetClientToolStripMenuItem_Click(object sender, EventArgs e)
         {
             About frm = new About();
-            frm.Show();
+            frm.ShowDialog();
         }
 
         private void reportABugToolStripMenuItem_Click(object sender, EventArgs e)
@@ -351,7 +351,7 @@ namespace TransferNetClient
         private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Updates frm = new Updates();
-            frm.Show();
+            frm.ShowDialog();
         }
 
         #endregion HelpMenu
@@ -360,7 +360,7 @@ namespace TransferNetClient
         private void seedButton_Click(object sender, EventArgs e)
         {
             Seeding frm = new Seeding();
-            frm.Show();
+            frm.ShowDialog();
         }
 
 
@@ -371,11 +371,16 @@ namespace TransferNetClient
         private void blockButton_Click(object sender, EventArgs e)
         {
             Form frm = new BlockList();
-            frm.Show();
+            frm.ShowDialog();
 
             
         }
 
-        #endregion  BlackList
-    }
+		#endregion  BlackList
+
+		private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+	}
 }
