@@ -4,6 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace TransferNetClient
 {
@@ -16,18 +17,19 @@ namespace TransferNetClient
             InitializeComponent();
             this.Icon = TransferNetClient.Properties.Resources.icon;
             this.labelName2.Text = fileName;
-            
+
             this.labelPath.Text = filePath;
-            
+
 
 
         }
 
 
+
         private void Add_Transfernet_Load(object sender, EventArgs e)
         {
             metroComboBox1.SelectedIndex = 0;
-
+            timer1.Start();
 
             string path = "..\\Debug\\Data\\BlockList.txt";
 
@@ -35,8 +37,8 @@ namespace TransferNetClient
 
             var lineCount = File.ReadLines(path).Count();
 
-                //displays the current time and date
-                timer1.Start();
+            //displays the current time and date
+
             int i = 0;
             var lineNumber = 0;
 
@@ -55,26 +57,39 @@ namespace TransferNetClient
             {
 
                 string[] subStrings = allLines[lineNumber].Split(',');
-                
+
+                double maxvalue = (double)numericUpDown1.Value;
+                string price2str = subStrings[0];
+                double priceint = Convert.ToDouble(price2str);
+
+                Panel p = new Panel();
+                p.Width = 550;
+                p.Height = 20;
+
                 //price
                 CheckBox newbox = new CheckBox();
-                newbox.Location = new Point(5, 0 + (25 * i));
+                newbox.Location = new Point(5, 0);
                 newbox.Text = subStrings[0];
-                newbox.Name = "box" + i.ToString(); 
-                metroPanel1.Controls.Add(newbox);
+                newbox.Name = "box" + i.ToString();
+                p.Controls.Add(newbox);
+
+                //each row is a panel with the tag set as the price for easy comparison to the max value;
+                p.Tag = subStrings[0];
+
 
                 //name label
                 Label lbl = new Label();
-                lbl.Location = new Point(0 + 125, 0 + (25 * i));
+                lbl.Location = new Point(0 + 125, 5);
                 lbl.Text = subStrings[1];
-                metroPanel1.Controls.Add(lbl);
+                p.Controls.Add(lbl);
 
                 //successful transfers
                 Label lbl2 = new Label();
-                lbl2.Location = new Point(0 + 300, 0 + (25 * i));
+                lbl2.Location = new Point(0 + 300, 5);
                 lbl2.Text = subStrings[2];
-                metroPanel1.Controls.Add(lbl2);
+                p.Controls.Add(lbl2);
 
+                flowLayoutPanel1.Controls.Add(p);
 
                 //check if name is in the Blacklist and changes it to red
                 for (int j = 0; j < lineCount; ++j)
@@ -86,16 +101,23 @@ namespace TransferNetClient
                         lbl2.ForeColor = Color.Red;
                         lbl2.Text = "blocked";
                     }
+                    //   }
                 }
 
 
                 i++;
                 lineNumber++;
+
+
             }
+
+
+            
 
 
         }
         #region price_updates
+        //broken
         private void price_update()
         {
 
@@ -104,16 +126,16 @@ namespace TransferNetClient
             double avg = 0;
             double total = 0;
             double num = 0;
-           
-            foreach (Control c in metroPanel1.Controls)
-            {
-                if (c is CheckBox)
-                {
-                    CheckBox cb = (CheckBox)c;
 
-                    if (cb.Checked == true)
+            //check each panel for the price
+            foreach (Panel p in flowLayoutPanel1.Controls)
+            {
+                Debug.Write(p.Tag);
+                foreach (Control c in p.Controls)
+                {
+                    if ((c is CheckBox) && ((CheckBox)c).Checked)
                     {
-                        double value = Convert.ToDouble(cb.Text);
+                        double value = Convert.ToDouble(c.Text);
                         num = num + 1;
                         total = (total + value);
                         avg = total / num;
@@ -126,29 +148,61 @@ namespace TransferNetClient
                         labelTotal.Text = avg.ToString();
 
                     }
+                  }
 
                 }
-            }
-            /*
-            if (checkBox1.Checked == true)
+           }
+                    
+
+
+
+        
+
+        //removes entries that were above the max value
+        private void price_maxvalue()
+        {
+
+        
+           foreach (Control p in flowLayoutPanel1.Controls)
             {
-                grandtot = total + 1;
-                metroLabel1.Text = grandtot.ToString();
+
+                if (p is Panel)
+                {
+                    decimal tag = Convert.ToDecimal(p.Tag);
+                    if (tag > numericUpDown1.Value)
+                    {
+                        //add panel to a hidden panel; remove it from the panel that is seen
+                        flowLayoutPanel2.Controls.Add(p);
+                        flowLayoutPanel1.Controls.Remove(p);
+                    }
+
+                    //now check to make sure that any of the previously removed entries don't need to be readded
+                    foreach(Control p2 in flowLayoutPanel2.Controls)
+                    {
+                        decimal tag2 = Convert.ToDecimal(p2.Tag);
+                        if (tag2 <= numericUpDown1.Value)
+                        {
+                            flowLayoutPanel2.Controls.Remove(p2);
+                            flowLayoutPanel1.Controls.Add(p2);
+                        }
+                    }
+                }
             }
-            else
-            {
-                grandtot = total;
-                metroLabel1.Text = grandtot.ToString();
-            }
-            */
+        
         }
+
+        //readds entries that were removed if the max value changes
+
+
         #endregion price_updates
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            DateTime datetime = DateTime.Now;
+            //DateTime datetime = DateTime.Now;
 
             price_update();
+            price_maxvalue();
         }
 
         #region buttons
@@ -170,7 +224,7 @@ namespace TransferNetClient
         //select all
         private void button2_Click(object sender, EventArgs e)
         {
-            foreach (Control c in metroPanel1.Controls)
+            foreach (Control c in flowLayoutPanel1.Controls)
             {
                 if (c is CheckBox)
                 {
@@ -188,7 +242,7 @@ namespace TransferNetClient
         //select none
         private void button3_Click(object sender, EventArgs e)
         {
-            foreach (Control c in metroPanel1.Controls)
+            foreach (Control c in flowLayoutPanel1.Controls)
             {
                 if (c is CheckBox)
                 {
@@ -226,7 +280,7 @@ namespace TransferNetClient
             
             int count = 0;
             //counting to see that at least one box is checked
-            foreach (Control c in metroPanel1.Controls)
+            foreach (Control c in flowLayoutPanel1.Controls)
             {
                 if (c is CheckBox)
                 {

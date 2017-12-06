@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.labelTrans = new MetroFramework.Controls.MetroLabel();
             this.labelTotal = new MetroFramework.Controls.MetroLabel();
             this.labelSeeder = new MetroFramework.Controls.MetroLabel();
@@ -51,6 +51,7 @@
             this.labelPath = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.metroPanel2.SuspendLayout();
@@ -58,9 +59,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.flowLayoutPanel1);
             this.groupBox2.Controls.Add(this.metroLabel3);
             this.groupBox2.Controls.Add(this.numericUpDown1);
-            this.groupBox2.Controls.Add(this.metroPanel1);
             this.groupBox2.Controls.Add(this.labelTrans);
             this.groupBox2.Controls.Add(this.labelTotal);
             this.groupBox2.Controls.Add(this.labelSeeder);
@@ -74,6 +75,17 @@
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 148);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(550, 221);
+            this.flowLayoutPanel1.TabIndex = 42;
+            // 
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
@@ -86,27 +98,21 @@
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.DecimalPlaces = 2;
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.numericUpDown1.Location = new System.Drawing.Point(198, 29);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown1.TabIndex = 40;
-            // 
-            // metroPanel1
-            // 
-            this.metroPanel1.AutoScroll = true;
-            this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.metroPanel1.HorizontalScrollbar = true;
-            this.metroPanel1.HorizontalScrollbarBarColor = true;
-            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(13, 148);
-            this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(565, 229);
-            this.metroPanel1.TabIndex = 39;
-            this.metroPanel1.VerticalScrollbar = true;
-            this.metroPanel1.VerticalScrollbarBarColor = true;
-            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 10;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            131072});
             // 
             // labelTrans
             // 
@@ -293,7 +299,14 @@
             this.metroButton1.TabIndex = 48;
             this.metroButton1.Text = "Free Preview";
             this.metroButton1.UseSelectable = true;
-
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(607, 349);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(200, 100);
+            this.flowLayoutPanel2.TabIndex = 0;
+            this.flowLayoutPanel2.Visible = false;
             // 
             // Add_Transfernet
             // 
@@ -301,6 +314,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(814, 626);
             this.ControlBox = false;
+            this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroPanel2);
@@ -333,7 +347,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private MetroFramework.Controls.MetroButton buyButton;
-        private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroLabel labelTrans;
         private MetroFramework.Controls.MetroLabel labelSeeder;
         private MetroFramework.Controls.MetroLabel labelPrice;
@@ -347,5 +360,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel labelPath;
         private MetroFramework.Controls.MetroButton metroButton1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }
