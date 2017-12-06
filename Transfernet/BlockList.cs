@@ -17,6 +17,8 @@ namespace TransferNetClient
         private MetroFramework.Controls.MetroTextBox metroTextBox1;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroPanel panel1;
+        private CheckedListBox checkedListBox1;
+        private FlowLayoutPanel flowLayoutPanel1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
 
         public BlockList()
@@ -31,6 +33,8 @@ namespace TransferNetClient
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.panel1 = new MetroFramework.Controls.MetroPanel();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // metroTextBox1
@@ -81,7 +85,7 @@ namespace TransferNetClient
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel1.Location = new System.Drawing.Point(23, 126);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(113, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(122, 20);
             this.metroLabel1.TabIndex = 3;
             this.metroLabel1.Text = "Blacklisted Users:";
             // 
@@ -92,7 +96,7 @@ namespace TransferNetClient
             this.panel1.HorizontalScrollbarBarColor = true;
             this.panel1.HorizontalScrollbarHighlightOnWheel = false;
             this.panel1.HorizontalScrollbarSize = 10;
-            this.panel1.Location = new System.Drawing.Point(23, 148);
+            this.panel1.Location = new System.Drawing.Point(628, 114);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(344, 137);
             this.panel1.TabIndex = 4;
@@ -101,10 +105,28 @@ namespace TransferNetClient
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
             this.panel1.VerticalScrollbarSize = 10;
             // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(23, 301);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(120, 89);
+            this.checkedListBox1.TabIndex = 7;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 151);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(344, 145);
+            this.flowLayoutPanel1.TabIndex = 6;
+            // 
             // BlockList
             // 
             this.AcceptButton = this.metroButton1;
-            this.ClientSize = new System.Drawing.Size(390, 308);
+            this.ClientSize = new System.Drawing.Size(1137, 413);
+            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroButton1);
@@ -165,14 +187,21 @@ namespace TransferNetClient
                 lbl.Name = "lbl" + j.ToString();
                 lbl.Location = new Point(0, 0 + (25 * j));
                 lbl.Text = allLines[j];
-                panel1.Controls.Add(lbl);
+                //panel1.Controls.Add(lbl);
+                flowLayoutPanel1.Controls.Add(lbl);
+
+                ContextMenu cm = new ContextMenu();
+               // cm.MenuItems.Add("Unblock", new EventHandler(UnblockUser));
+                
+
+                lbl.ContextMenu = cm;
 
 
                 Button btn = new Button();
                 btn.Name = "btn" + j.ToString();
                 btn.Text = "Unblock";
                 btn.Location = new Point(250, (0 + (25 * j)));
-                panel1.Controls.Add(btn);
+                //panel1.Controls.Add(btn);
                 
                 btn.Click += new EventHandler(button_Click);
 
@@ -193,6 +222,7 @@ namespace TransferNetClient
                 lbl.Name = "lbl" + k.ToString(); 
                 lbl.Location = new Point(0, (0 + (25 * ( k))));
                 panel1.Controls.Add(lbl);
+                
                 metroTextBox1.Text = String.Empty;
                 
 
@@ -201,6 +231,7 @@ namespace TransferNetClient
                 btn.Name = "btn" + k.ToString();
                 btn.Location = new Point(250, (0 + (25 * ( k))));
                 panel1.Controls.Add(btn);
+                
                 btn.Click += new EventHandler(button_Click);
 
                 k++;
@@ -217,7 +248,7 @@ namespace TransferNetClient
         }
 
         //process for removing a name from the list
-        //NOTE: all the numbering for the labels and buttons is off when one is removved
+        //NOTE: all the numbering for the labels and buttons is off when one is removed
         protected void button_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
@@ -233,6 +264,7 @@ namespace TransferNetClient
             
             if (button.Name == btt)
             {
+;
                 panel1.Controls.Remove(button);
                 panel1.Controls.RemoveByKey(label);
             }
@@ -245,6 +277,26 @@ namespace TransferNetClient
         }
 
         #endregion button clicks
+
+        private void UnblockUser(object sender, MouseEventArgs e)
+        {
+
+            switch (e.Button)
+            {
+
+                case MouseButtons.Left:
+                    // Left click
+                    break;
+
+                case MouseButtons.Right:
+                    // Right click
+
+                    break;
+            }
+
+
+        }
+
         void f_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Focus();

@@ -49,6 +49,7 @@ namespace TransferNetClient
         }
 
 
+
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             
@@ -105,7 +106,7 @@ namespace TransferNetClient
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            this.transferButton.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
 
         }
         #endregion basics
@@ -193,7 +194,7 @@ namespace TransferNetClient
                 Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, filesize, openFileDialog1.FileName);
                 frm.FormClosing += new FormClosingEventHandler(this.Form2_FormClosing);
 
-                frm.Show();
+                frm.ShowDialog();
 
                 size = filesize.Length.ToString();
                 filename = openFileDialog1.SafeFileName;
@@ -207,6 +208,7 @@ namespace TransferNetClient
 
                 j++;
             }
+
         }
 
         #endregion AddTransfernetFile

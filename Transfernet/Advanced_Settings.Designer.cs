@@ -38,6 +38,7 @@
             this.metroCheckBox3 = new MetroFramework.Controls.MetroCheckBox();
             this.metroCheckBox2 = new MetroFramework.Controls.MetroCheckBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -48,9 +49,11 @@
             this.groupBox1.Controls.Add(this.saveFolderTextBox);
             this.groupBox1.Controls.Add(this.saveFileButton);
             this.groupBox1.Controls.Add(this.metroCheckBox1);
-            this.groupBox1.Location = new System.Drawing.Point(7, 63);
+            this.groupBox1.Location = new System.Drawing.Point(9, 78);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(357, 132);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(476, 162);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Save In";
@@ -61,9 +64,10 @@
             // 
             // 
             this.saveFolderTextBox.CustomButton.Image = null;
-            this.saveFolderTextBox.CustomButton.Location = new System.Drawing.Point(289, 1);
+            this.saveFolderTextBox.CustomButton.Location = new System.Drawing.Point(519, 2);
+            this.saveFolderTextBox.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.saveFolderTextBox.CustomButton.Name = "";
-            this.saveFolderTextBox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.saveFolderTextBox.CustomButton.Size = new System.Drawing.Size(31, 28);
             this.saveFolderTextBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.saveFolderTextBox.CustomButton.TabIndex = 1;
             this.saveFolderTextBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -71,7 +75,8 @@
             this.saveFolderTextBox.CustomButton.Visible = false;
             this.saveFolderTextBox.Lines = new string[] {
         "(Saves To Default Folder)"};
-            this.saveFolderTextBox.Location = new System.Drawing.Point(6, 39);
+            this.saveFolderTextBox.Location = new System.Drawing.Point(8, 48);
+            this.saveFolderTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.saveFolderTextBox.MaxLength = 32767;
             this.saveFolderTextBox.Name = "saveFolderTextBox";
             this.saveFolderTextBox.PasswordChar = '\0';
@@ -81,7 +86,7 @@
             this.saveFolderTextBox.SelectionLength = 0;
             this.saveFolderTextBox.SelectionStart = 0;
             this.saveFolderTextBox.ShortcutsEnabled = true;
-            this.saveFolderTextBox.Size = new System.Drawing.Size(311, 23);
+            this.saveFolderTextBox.Size = new System.Drawing.Size(415, 28);
             this.saveFolderTextBox.TabIndex = 4;
             this.saveFolderTextBox.Text = "(Saves To Default Folder)";
             this.saveFolderTextBox.UseSelectable = true;
@@ -90,9 +95,10 @@
             // 
             // saveFileButton
             // 
-            this.saveFileButton.Location = new System.Drawing.Point(323, 39);
+            this.saveFileButton.Location = new System.Drawing.Point(431, 48);
+            this.saveFileButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.saveFileButton.Name = "saveFileButton";
-            this.saveFileButton.Size = new System.Drawing.Size(31, 23);
+            this.saveFileButton.Size = new System.Drawing.Size(41, 28);
             this.saveFileButton.TabIndex = 3;
             this.saveFileButton.Text = "...";
             this.saveFileButton.UseSelectable = true;
@@ -101,9 +107,10 @@
             // metroCheckBox1
             // 
             this.metroCheckBox1.AutoSize = true;
-            this.metroCheckBox1.Location = new System.Drawing.Point(6, 86);
+            this.metroCheckBox1.Location = new System.Drawing.Point(8, 106);
+            this.metroCheckBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.metroCheckBox1.Name = "metroCheckBox1";
-            this.metroCheckBox1.Size = new System.Drawing.Size(111, 15);
+            this.metroCheckBox1.Size = new System.Drawing.Size(123, 17);
             this.metroCheckBox1.TabIndex = 1;
             this.metroCheckBox1.Text = "Create Subfolder";
             this.metroCheckBox1.UseSelectable = true;
@@ -111,18 +118,21 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.nameSaveFile);
-            this.groupBox3.Location = new System.Drawing.Point(7, 216);
+            this.groupBox3.Location = new System.Drawing.Point(9, 266);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(357, 100);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Size = new System.Drawing.Size(476, 123);
             this.groupBox3.TabIndex = 19;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Name";
             // 
             // nameSaveFile
             // 
-            this.nameSaveFile.Location = new System.Drawing.Point(6, 44);
+            this.nameSaveFile.Location = new System.Drawing.Point(8, 54);
+            this.nameSaveFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nameSaveFile.Name = "nameSaveFile";
-            this.nameSaveFile.Size = new System.Drawing.Size(345, 20);
+            this.nameSaveFile.Size = new System.Drawing.Size(459, 22);
             this.nameSaveFile.TabIndex = 1;
             this.nameSaveFile.Text = "(If user wants to rename file)";
             // 
@@ -130,9 +140,11 @@
             // 
             this.groupBox4.Controls.Add(this.metroCheckBox3);
             this.groupBox4.Controls.Add(this.metroCheckBox2);
-            this.groupBox4.Location = new System.Drawing.Point(7, 340);
+            this.groupBox4.Location = new System.Drawing.Point(9, 418);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(357, 113);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Size = new System.Drawing.Size(476, 139);
             this.groupBox4.TabIndex = 20;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Options";
@@ -142,9 +154,10 @@
             this.metroCheckBox3.AutoSize = true;
             this.metroCheckBox3.Checked = true;
             this.metroCheckBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.metroCheckBox3.Location = new System.Drawing.Point(24, 69);
+            this.metroCheckBox3.Location = new System.Drawing.Point(32, 85);
+            this.metroCheckBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.metroCheckBox3.Name = "metroCheckBox3";
-            this.metroCheckBox3.Size = new System.Drawing.Size(88, 15);
+            this.metroCheckBox3.Size = new System.Drawing.Size(97, 17);
             this.metroCheckBox3.TabIndex = 1;
             this.metroCheckBox3.Text = "Start Torrent";
             this.metroCheckBox3.UseSelectable = true;
@@ -152,22 +165,36 @@
             // metroCheckBox2
             // 
             this.metroCheckBox2.AutoSize = true;
-            this.metroCheckBox2.Location = new System.Drawing.Point(24, 34);
+            this.metroCheckBox2.Location = new System.Drawing.Point(32, 42);
+            this.metroCheckBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.metroCheckBox2.Name = "metroCheckBox2";
-            this.metroCheckBox2.Size = new System.Drawing.Size(107, 15);
+            this.metroCheckBox2.Size = new System.Drawing.Size(115, 17);
             this.metroCheckBox2.TabIndex = 0;
             this.metroCheckBox2.Text = "Skip hash check";
             this.metroCheckBox2.UseSelectable = true;
             // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(388, 565);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(97, 23);
+            this.metroButton1.TabIndex = 21;
+            this.metroButton1.Text = "Done";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            // 
             // Advanced_Settings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(376, 475);
+            this.ClientSize = new System.Drawing.Size(501, 612);
+            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Advanced_Settings";
+            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Resizable = false;
             this.Text = "Advanced Settings";
             this.Load += new System.EventHandler(this.Advanced_Settings_Load);
@@ -193,5 +220,6 @@
         private MetroFramework.Controls.MetroCheckBox metroCheckBox3;
         private MetroFramework.Controls.MetroCheckBox metroCheckBox2;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }
