@@ -368,6 +368,7 @@ namespace TransferNetClient
 
         #endregion ButtonMenu
 
+
         #region BlackList
 
         private void blockButton_Click(object sender, EventArgs e)
@@ -378,6 +379,11 @@ namespace TransferNetClient
             
         }
 
-        #endregion  BlackList
-    }
+		#endregion  BlackList
+
+		private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+	}
 }
