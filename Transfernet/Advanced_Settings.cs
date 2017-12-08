@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace TransferNetClient
 {
+    //Summary: The page currently doesn't have any functionality
+
     public partial class Advanced_Settings : MetroFramework.Forms.MetroForm
     {
         public Advanced_Settings()
@@ -25,10 +27,6 @@ namespace TransferNetClient
             
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
 
         private void saveFileButton_Click(object sender, EventArgs e)
         {

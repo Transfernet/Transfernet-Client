@@ -12,6 +12,11 @@ using System.Windows.Forms;
 
 
 
+/*Things that are broken
+ * elapsed time when downloading / estimated time
+ * download in progress doesn't change to download complete when the progress bar is filled
+ * buttons remain highlighted after you click on one
+ */
 
 
 namespace TransferNetClient
@@ -106,6 +111,7 @@ namespace TransferNetClient
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //trying to figure out how to recustomize the button to not have a 'highlighted' state but did not work
             this.transferButton.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
 
         }
@@ -177,40 +183,6 @@ namespace TransferNetClient
 
         public int j = 1;
 
-        private void transferButton_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-            openFileDialog1.InitialDirectory = "c:\\Downloads";
-            openFileDialog1.Filter = "content files (*.content)|*.content|All files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 1;
-            openFileDialog1.RestoreDirectory = true;
-
-            // Show the dialog and get result.
-            DialogResult result = openFileDialog1.ShowDialog();
-            if (result == DialogResult.OK) // Test result.
-            {
-                FileInfo filesize = new FileInfo(openFileDialog1.FileName);
-                Add_Transfernet frm = new Add_Transfernet(openFileDialog1.SafeFileName, filesize, openFileDialog1.FileName);
-                frm.FormClosing += new FormClosingEventHandler(this.Form2_FormClosing);
-
-                frm.ShowDialog();
-
-                size = filesize.Length.ToString();
-                filename = openFileDialog1.SafeFileName;
-                path = openFileDialog1.FileName;
-
-                //each time a new transfernet file is added a new label needs to be added to the tabs and not overwrite the previous files added
-                //This section is a work in progress to adjust the label poition based on how many transfers have been added
-
-                //when a transfernet file is added, the savefilename is displayed in the files control box
-
-
-                j++;
-            }
-
-        }
-
         #endregion AddTransfernetFile
 
         #region update_sync
@@ -226,36 +198,44 @@ namespace TransferNetClient
             count++;
 
             tabControl1.SelectedTab = tabPage2;
-            
 
-            //Note: location inside metro panel is independent of panel's location on the form (0,0 is top left corner of panel)
+
+            //none of these labels appear yet because these variables have been deleted somewhere along the way
+
+            
+            Panel p = new Panel();
+            p.Width = 850;
+            p.Height = 20;
+
             //lable for num
             Label num = new Label();
             num.AutoSize = true;
-            num.Location = new Point(0,0+(25*(count-1)));
+            num.Location = new Point(0,0);
             num.Text = count.ToString();
-            metroPanel1.Controls.Add(num);
+            p.Controls.Add(num);
 
             //label for name
             Label name = new Label();
             name.AutoSize = true;
-            name.Location = new Point(70, 0 + (25 * (count-1)));
+            name.Location = new Point(70, 0);
             name.Text = filename;
-            metroPanel1.Controls.Add(name);
+            p.Controls.Add(name);
 
             //label for size
             Label siz = new Label();
             siz.AutoSize = true;
-            siz.Location = new Point(355, 0 + (25 * (count-1)));
+            siz.Location = new Point(355, 0);
             siz.Text = size;
-            metroPanel1.Controls.Add(siz);
+            p.Controls.Add(siz);
 
-            //label for progress instead of bar
+            //label for progress instead of bar because 2 background workers was messing up a lot of things
             Label prog = new Label();
             prog.AutoSize = true;
-            prog.Location = new Point(435, 0 + (25 * (count - 1)));
+            prog.Location = new Point(435, 0);
             prog.Text = "Download in Progress";
-            metroPanel1.Controls.Add(prog);
+            p.Controls.Add(prog);
+
+            flowLayoutPanel1.Controls.Add(p);
 
 
 

@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace TransferNetClient 
 {
+
+    //Summary:  The About Page information can be edited from the design page.  The information is not complete as of right now.
+  
     public partial class About : MetroFramework.Forms.MetroForm
     {
         public About()

@@ -8,10 +8,15 @@ using System.Diagnostics;
 
 namespace TransferNetClient
 {
+    /*Summary:  This form pulls up once you add a content file to the main menu.
+     * The .content file contains fake information that is to represent information that needs to be displayed
+     * each line in the .content file is comma delimited and contains price, seeder, sucessful transfers
+     */
     public partial class Add_Transfernet : MetroFramework.Forms.MetroForm
     {
         public General referenceToTransfernet;
 
+        //this form reqires info about what file was opened from the Main_Menu 
         public Add_Transfernet(string fileName, FileInfo fileSize, string filePath)
         {
             InitializeComponent();
@@ -37,9 +42,7 @@ namespace TransferNetClient
 
             var lineCount = File.ReadLines(path).Count();
 
-            //displays the current time and date
-
-            int i = 0;
+            
             var lineNumber = 0;
 
             //randomize lines that contain user data in .transfernet file
@@ -55,13 +58,10 @@ namespace TransferNetClient
             // foreach (string line in File.ReadLines(labelPath.Text))
             while (lineNumber < num)
             {
-
+                //making sub strings from the content file
                 string[] subStrings = allLines[lineNumber].Split(',');
 
-                double maxvalue = (double)numericUpDown1.Value;
-                string price2str = subStrings[0];
-                double priceint = Convert.ToDouble(price2str);
-
+                //want one line of information placed in a new panel so it all can be easily removed
                 Panel p = new Panel();
                 p.Width = 550;
                 p.Height = 20;
@@ -70,7 +70,7 @@ namespace TransferNetClient
                 CheckBox newbox = new CheckBox();
                 newbox.Location = new Point(5, 0);
                 newbox.Text = subStrings[0];
-                newbox.Name = "box" + i.ToString();
+                
                 p.Controls.Add(newbox);
 
                 //each row is a panel with the tag set as the price for easy comparison to the max value;
@@ -89,6 +89,7 @@ namespace TransferNetClient
                 lbl2.Text = subStrings[2];
                 p.Controls.Add(lbl2);
 
+                //add the panel to a flow layout panel
                 flowLayoutPanel1.Controls.Add(p);
 
                 //check if name is in the Blacklist and changes it to red
@@ -104,8 +105,6 @@ namespace TransferNetClient
                     //   }
                 }
 
-
-                i++;
                 lineNumber++;
 
 
@@ -117,7 +116,8 @@ namespace TransferNetClient
 
         }
         #region price_updates
-        //broken
+
+       
         private void price_update()
         {
 
@@ -152,13 +152,14 @@ namespace TransferNetClient
 
                 }
            }
-                    
 
 
 
-        
 
-        //removes entries that were above the max value
+
+
+        //removes entries that are above the max value
+        //readds entries that were removed if the max value changes
         private void price_maxvalue()
         {
 
@@ -171,7 +172,7 @@ namespace TransferNetClient
                     decimal tag = Convert.ToDecimal(p.Tag);
                     if (tag > numericUpDown1.Value)
                     {
-                        //add panel to a hidden panel; remove it from the panel that is seen
+                        //add panel to a hidden panel2; remove it from the panel1 that is seen
                         flowLayoutPanel2.Controls.Add(p);
                         flowLayoutPanel1.Controls.Remove(p);
                     }
@@ -191,26 +192,28 @@ namespace TransferNetClient
         
         }
 
-        //readds entries that were removed if the max value changes
+
 
 
         #endregion price_updates
 
-
+        //needs to constantly be checking to see if values are updated
+        //probably a better way to know when to run these
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //DateTime datetime = DateTime.Now;
+            
 
             price_update();
             price_maxvalue();
         }
 
         #region buttons
+
         //advance settings
         private void advButton_Click(object sender, EventArgs e)
         {
             Advanced_Settings frm = new Advanced_Settings();
-            frm.Show();
+            frm.ShowDialog();
         }
 
         //Cancel
@@ -224,39 +227,45 @@ namespace TransferNetClient
         //select all
         private void button2_Click(object sender, EventArgs e)
         {
-            foreach (Control c in flowLayoutPanel1.Controls)
+            foreach (Panel p in flowLayoutPanel1.Controls)
             {
-                if (c is CheckBox)
+                foreach (Control c in p.Controls)
                 {
-                    CheckBox cb = (CheckBox)c;
-
-                    if (cb.Checked == false)
+                    if (c is CheckBox)
                     {
-                        cb.Checked = true;
+                        CheckBox cb = (CheckBox)c;
+
+                        if (cb.Checked == false)
+                        {
+                            cb.Checked = true;
+                        }
                     }
                 }
+                price_update();
             }
-            price_update();
         }
+
 
         //select none
         private void button3_Click(object sender, EventArgs e)
         {
-            foreach (Control c in flowLayoutPanel1.Controls)
+            foreach (Panel p in flowLayoutPanel1.Controls)
             {
-                if (c is CheckBox)
+                foreach (Control c in p.Controls)
                 {
-                    CheckBox cb = (CheckBox)c;
-
-                    if (cb.Checked == true)
+                    if (c is CheckBox)
                     {
-                        cb.Checked = false;
+                        CheckBox cb = (CheckBox)c;
+
+                        if (cb.Checked == true)
+                        {
+                            cb.Checked = false;
+                        }
                     }
                 }
+                price_update();
             }
-            price_update();
         }
-
         //buy
 
         static bool purchase;
@@ -273,22 +282,25 @@ namespace TransferNetClient
             }
         }
        
-
+ 
         private void Buy_Click_1(object sender, EventArgs e)
         {
             price_update();
             
             int count = 0;
             //counting to see that at least one box is checked
-            foreach (Control c in flowLayoutPanel1.Controls)
+            foreach (Panel p in flowLayoutPanel1.Controls)
             {
-                if (c is CheckBox)
+                foreach (Control c in p.Controls)
                 {
-                    CheckBox cb = (CheckBox)c;
-
-                    if (cb.Checked == true)
+                    if (c is CheckBox)
                     {
-                        count++;
+                        CheckBox cb = (CheckBox)c;
+
+                        if (cb.Checked == true)
+                        {
+                            count++;
+                        }
                     }
                 }
             }
@@ -305,6 +317,7 @@ namespace TransferNetClient
                 this.Close();
                 
             }
+
             /*
             //if we want a "confirm purchase" message box to appear when the buy button is clicked 
             else
@@ -325,10 +338,6 @@ namespace TransferNetClient
 
         #endregion buttons
 
-        private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
     }
 }
